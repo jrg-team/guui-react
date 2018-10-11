@@ -48,6 +48,7 @@ workflows:
       - prepare
       - build:
           requires:
+            - prepare
       - tu:
           requires:
             - build
