@@ -32,7 +32,7 @@ jobs:
           root: .
           paths:
             - dist
-  tu:
+  test:
     <<: *defaults
     steps:
       - checkout
@@ -47,10 +47,10 @@ workflows:
       - prepare
       - build:
           requires:
-            - prepare
-      - tu:
+            - test
+      - test:
           requires:
-            - build
+            - prepare
 
 
 
