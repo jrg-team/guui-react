@@ -11,7 +11,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-{{ checksum "package.json" }}
       - run: npm install
       - save_cache:
           paths:
@@ -39,6 +39,8 @@ jobs:
       - attach_workspace:
           at: .
       - run: npm run test
+      - store_test_results:
+          path: test-results
 
 workflows:
   version: 2
@@ -51,9 +53,3 @@ workflows:
       - test:
           requires:
             - prepare
-
-
-
-- store_test_results:
-  path: test-results
-
