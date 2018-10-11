@@ -13,7 +13,6 @@ jobs:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
       - run: npm install
-      - run: npm test
       - save_cache:
           paths:
             - node_modules
@@ -32,7 +31,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - build
+            - dist
   tu:
     <<: *defaults
     steps:
