@@ -6,13 +6,16 @@ import GuButton from '../lib/button';
 
 configure({adapter: new Adapter()});
 
-it('renders without crashing', () => {
-  // const component = renderer.create(
-  //   <Button>Hi</Button>,
-  // );
-  const component = shallow(<GuButton>Hi</GuButton>);
-  expect(component.text()).toEqual('Hi');
-
-  // expect(component.toJSON()).toMatchSnapshot();
-
+describe('Button', () => {
+  it('children', () => {
+    const component = shallow(<GuButton>Hi</GuButton>);
+    expect(component.text()).toEqual('Hi');
+  });
+  it('disabled', () => {
+    const fn = () => {
+    }
+    const component = shallow(<GuButton disabled={true} onClick={fn}>Hi</GuButton>);
+    component.click()
+    expect(fn).not.toHaveBeenCalled()
+  })
 });

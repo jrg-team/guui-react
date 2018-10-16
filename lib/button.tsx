@@ -36,7 +36,7 @@ class Button extends Component<IProps, IState> {
 
   render() {
     return (
-      <button onClick={this.onClick} className={this.sc()}>
+      <button onClick={this.onClick} className={this.sc()} disabled={this.props.disabled}>
         {this.props.children}
         <div className={this.sc('icon', 'active')}></div>
       </button>
