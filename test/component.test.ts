@@ -1,4 +1,4 @@
-import Component, {scopedClass} from '../lib/component';
+import Component, {scopedClasses} from '../lib/component';
 
 describe('Component', () => {
   it('exist', () => {
@@ -7,12 +7,12 @@ describe('Component', () => {
   describe('scopedClass', () => {
     it('string', () => {
       const context = {constructor: {name: 'button'}}
-      expect(scopedClass.call(context, 'a')).toBe('gu-button-a')
-      expect(scopedClass.call(context, 'a', 'b')).toBe('gu-button-a gu-button-b')
-      expect(scopedClass.call(context, ['a', 'b'])).toBe('gu-button-a gu-button-b')
-      expect(scopedClass.call(context, {a: true, b: true})).toBe('gu-button-a gu-button-b')
-      expect(scopedClass.call(context, {a: true, b: false})).toBe('gu-button-a')
-      expect(scopedClass.call(context)).toBe('gu-button')
+      expect(scopedClasses.call(context, 'a')).toBe('gu-button-a')
+      expect(scopedClasses.call(context, 'a', 'b')).toBe('gu-button-a gu-button-b')
+      expect(scopedClasses.call(context, ['a', 'b'])).toBe('gu-button-a gu-button-b')
+      expect(scopedClasses.call(context, {a: true, b: true})).toBe('gu-button-a gu-button-b')
+      expect(scopedClasses.call(context, {a: true, b: false})).toBe('gu-button-a')
+      expect(scopedClasses.call(context)).toBe('gu-button')
     });
   });
 })

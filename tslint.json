@@ -10,7 +10,8 @@
     "trailing-comma": false,
     "arrow-parens": false,
     "jsx-self-close": false,
-    "max-line-length": false
+    "max-line-length": false,
+    "ordered-imports": false
   },
   "linterOptions": {
     "exclude": [
