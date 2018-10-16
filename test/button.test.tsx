@@ -1,4 +1,4 @@
-import {shallow, configure, mount} from 'enzyme';
+import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import * as React from 'react';
 // import renderer from 'react-test-renderer';
@@ -13,7 +13,7 @@ describe('Button', () => {
   });
   it('disabled', () => {
     const fn = jest.fn()
-    const component = shallow(<GuButton disabled={true} onClick={fn}>Hi</GuButton>)
+    const component = mount(<GuButton disabled={true} onClick={fn}>Hi</GuButton>)
     component.find('button').simulate('click')
     expect(fn.mock.calls.length).toEqual(0)
   })
