@@ -7,7 +7,9 @@
     "semicolon": false,
     "no-unused-expression": [true, "allow-fast-null-checks"],
     "member-ordering": false,
-    "trailing-comma": false
+    "trailing-comma": false,
+    "arrow-parens": false,
+    "jsx-self-close": false
   },
   "linterOptions": {
     "exclude": [

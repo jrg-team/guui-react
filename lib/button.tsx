@@ -1,5 +1,7 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
+import './button.sass'
+import Component from './component'
 
 interface IProps {
   icon?: string;
@@ -14,7 +16,7 @@ interface IState {
   x: string
 }
 
-class Button extends React.Component<IProps, IState> {
+class Button extends Component<IProps, IState> {
   constructor(props: IProps) {
     super(props)
     this.state = {
@@ -34,8 +36,9 @@ class Button extends React.Component<IProps, IState> {
 
   render() {
     return (
-      <button onClick={this.onClick}>
+      <button onClick={this.onClick} className={this.scopedClass()}>
         {this.props.children}
+        <div className={this.scopedClass('icon', 'active')}></div>
       </button>
     );
   }
