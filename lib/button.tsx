@@ -36,9 +36,9 @@ class Button extends Component<IProps, IState> {
 
   render() {
     return (
-      <button onClick={this.onClick} className={this.scopedClass()}>
+      <button onClick={this.onClick} className={this.sc()}>
         {this.props.children}
-        <div className={this.scopedClass('icon', 'active')}></div>
+        <div className={this.sc('icon', 'active')}></div>
       </button>
     );
   }
