@@ -1,7 +1,13 @@
 {
   "extends": ["tslint:recommended", "tslint-react"],
   "rules":{
-    "quotemark": [true, "single", "jsx-double"]
+    "no-console": [false, "log", "error"],
+    "quotemark": [true, "single", "jsx-double"],
+    "member-access": false,
+    "semicolon": false,
+    "no-unused-expression": [true, "allow-fast-null-checks"],
+    "member-ordering": false,
+    "trailing-comma": false
   },
   "linterOptions": {
     "exclude": [

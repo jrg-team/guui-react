@@ -19,6 +19,10 @@ module.exports = {
         enforce: 'pre',
         use: [{ loader: 'tslint-loader' }],
       },
+      {
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader',
+      }
     ],
   },
   plugins: [new CheckerPlugin()],

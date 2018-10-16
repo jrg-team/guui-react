@@ -1,4 +1,5 @@
 {
+  "files": ["types/custom.d.js"],
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "build/dist",
