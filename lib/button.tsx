@@ -25,6 +25,10 @@ interface IState {
 }
 
 class Button extends Component<IProps, IState> {
+  static propTypes = {
+    icon: PropTypes.string,
+  }
+
   public static defaultProps: Partial<IProps> = {
     iconPosition: 'left',
     size: 'default',
@@ -45,10 +49,6 @@ class Button extends Component<IProps, IState> {
     })
     this.props.onClick && this.props.onClick(e)
   }
-  static propTypes = {
-    icon: PropTypes.string,
-  }
-
   render() {
     return (
       <button onClick={this.onClick} className={this.sc()} disabled={this.props.disabled}>

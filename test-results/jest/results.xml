@@ -1,6 +1,40 @@
-<testsuites name="jest tests" tests="1" failures="0" time="3.53">
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2018-10-15T05:06:37" time="1.318" tests="1">
-    <testcase classname=" renders without crashing" name=" renders without crashing" time="0.011">
+<testsuites name="jest tests" tests="12" failures="0" time="4.831">
+  <testsuite name="Component" errors="0" failures="0" skipped="0" timestamp="2018-10-17T08:03:48" time="2.461" tests="2">
+    <testcase classname="Component exist" name="Component exist" time="0.009">
+    </testcase>
+    <testcase classname="Component scopedClass string" name="Component scopedClass string" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="Button" errors="0" failures="0" skipped="10" timestamp="2018-10-17T08:03:48" time="2.999" tests="10">
+    <testcase classname="Button 将 children 显示为内容" name="Button 将 children 显示为内容" time="0.001">
+      <skipped/>
+    </testcase>
+    <testcase classname="Button 接受 disabled" name="Button 接受 disabled" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Button 接受 icon" name="Button 接受 icon" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Button 接受 iconPosition" name="Button 接受 iconPosition" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Button 接受 loading" name="Button 接受 loading" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Button 接受 size" name="Button 接受 size" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Button 接受 href 和 target" name="Button 接受 href 和 target" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Button 接受 type" name="Button 接受 type" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Button 接受 color 和 ghost" name="Button 接受 color 和 ghost" time="0">
+      <skipped/>
+    </testcase>
+    <testcase classname="Button 接受 onClick" name="Button 接受 onClick" time="0">
+      <skipped/>
     </testcase>
   </testsuite>
 </testsuites>
