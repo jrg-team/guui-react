@@ -1,7 +1,8 @@
 import * as React from 'react';
+import {camelToKebab} from './namer';
 
 export function scopedClasses(this: any, c?: string | string[] | { [K: string]: boolean }, ...args: string[]): string {
-  const prefix = ['gu', this.constructor.name]
+  const prefix = ['gu', camelToKebab(this.constructor.name)]
   const result = []
   if (!c) {
     return prefix.join('-')

@@ -11,7 +11,20 @@
     "arrow-parens": false,
     "jsx-self-close": false,
     "max-line-length": false,
-    "ordered-imports": false
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "no-shadowed-variable": [
+      true,
+      {
+        "class": true,
+        "enum": true,
+        "function": false,
+        "interface": false,
+        "namespace": true,
+        "typeAlias": false,
+        "typeParameter": false
+      }
+    ]
   },
   "linterOptions": {
     "exclude": [
