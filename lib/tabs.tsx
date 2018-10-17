@@ -8,6 +8,7 @@ interface IProps {
   selected: string;
   onChange?: (name: string) => void;
   children?: Array<React.ReactElement<TabProps>>;
+  autoChange?: boolean
 }
 
 interface IState {
@@ -17,6 +18,10 @@ interface IState {
 class Tabs extends Component<IProps, IState> {
   public static propTypes = {
     selected: PropTypes.string.isRequired
+  };
+
+  public static defaultProps: Partial<IProps> = {
+    autoChange: false
   };
 
   constructor(props: IProps) {
