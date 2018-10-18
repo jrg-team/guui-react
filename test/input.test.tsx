@@ -6,7 +6,7 @@ import GuInput from '../lib/input'
 
 configure({adapter: new Adapter()});
 
-describe('Input', () => {
+xdescribe('Input', () => {
   let c: ReactWrapper
   beforeEach(() => {
     c = mount(
@@ -18,7 +18,7 @@ describe('Input', () => {
     expect(c.find('.gu-input').props().value).toEqual('hi')
   })
 
-  xit('接受 size', () => {
+  it('接受 size', () => {
     expect(c.find('.gu-input-small').exists()).toEqual(true)
   })
 
