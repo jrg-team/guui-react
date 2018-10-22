@@ -13,7 +13,8 @@ describe('Component', () => {
       expect(scopedClasses.call(context, {a: true, b: true})).toBe('gu-collapseItem-a gu-collapseItem-b')
       expect(scopedClasses.call(context, {a: true, b: false})).toBe('gu-collapseItem-a')
       expect(scopedClasses.call(context)).toBe('gu-collapseItem')
-      expect(scopedClasses.call(context, '', {active: true})).toBe('gu-collapseItem gu-collapseItem-active')
+      expect(scopedClasses.call(context, '', {active: true}, ['hover']))
+        .toBe('gu-collapseItem gu-collapseItem-active gu-collapseItem-hover')
     });
   });
 })
