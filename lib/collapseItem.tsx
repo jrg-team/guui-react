@@ -4,7 +4,7 @@ import Component from './component'
 
 export interface IProps {
   title: string;
-  name?: string;
+  name: string;
 }
 
 interface IState {

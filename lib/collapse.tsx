@@ -5,7 +5,8 @@ import Component from './component'
 import {IProps as CollapseItemProps} from './collapseItem'
 
 interface IProps {
-  activeKey: string[] | string;
+  selectedItems: string[];
+  single: boolean;
   onChange?: (name: string) => void;
   children?: Array<React.ReactElement<CollapseItemProps>>;
 }
@@ -16,14 +17,19 @@ interface IState {
 
 class Collapse extends Component<IProps, IState> {
   public static propTypes = {
-    activeKey: PropTypes.string.isRequired
+    selectedItems: PropTypes.array.isRequired,
+    single: PropTypes.bool.isRequired
+  };
+
+  public static defaultProps: Partial<IProps> = {
+    single: false
   };
 
   constructor(props: IProps) {
     super(props)
   }
 
-  onClickItem = (name: string, e: React.MouseEvent<HTMLSpanElement>) => {
+  onClickItem = (name: string, e: React.MouseEvent<HTMLDivElement>) => {
     this.props.onChange && this.props.onChange(name)
   }
 
