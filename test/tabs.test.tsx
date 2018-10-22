@@ -7,7 +7,7 @@ import Tab from '../lib/tab';
 
 configure({adapter: new Adapter()});
 
-describe('Tabs', () => {
+xdescribe('Tabs', () => {
   let c: ReactWrapper
   beforeEach(() => {
     c = mount(
@@ -20,9 +20,8 @@ describe('Tabs', () => {
         </Tab>
       </Tabs>
     );
-    console.log(c.html());
   })
-  xit('将 children 显示为内容', () => {
+  it('将 children 显示为内容', () => {
     expect(c.find('#span1').exists()).toEqual(true);
     expect(c.find('#span2').exists()).toEqual(false);
   });

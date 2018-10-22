@@ -8,7 +8,7 @@ export interface IProps {
 }
 
 interface IState {
-  x: string
+  active: boolean
 }
 
 class CollapseItem extends Component<IProps, IState> {
@@ -18,12 +18,25 @@ class CollapseItem extends Component<IProps, IState> {
 
   constructor(props: IProps) {
     super(props)
+    this.state = {
+      active: false
+    }
+  }
+
+  setActive(bool: boolean) {
+    this.setState({
+      active: bool
+    })
+  }
+
+  onClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    console.log('todo')
   }
 
   render() {
     return (
-      <div className={this.sc()}>
-        <div className={this.sc('title')} data-name={this.props.name}>{this.props.title}</div>
+      <div className="gu-collapse-item gu-collapse-item-active" onClick={this.onClick}>
+        <header className={this.sc('title')}>{this.props.title}</header>
         <div className={this.sc('content')}>{this.props.children}</div>
       </div>
     );
