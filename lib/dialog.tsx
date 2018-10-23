@@ -58,7 +58,6 @@ class Dialog extends Component<IProps, IState> {
   render() {
     const {children, title, closable, footer} = this.props
 
-    console.log(footer);
     const renderTitle = () => {
       let titleHtml
       if (title) {
