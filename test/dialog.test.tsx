@@ -6,7 +6,7 @@ import GuDialog from '../lib/dialog';
 
 configure({adapter: new Adapter()});
 
-describe('Dialog', () => {
+xdescribe('Default Dialog', () => {
   let c: ReactWrapper
   beforeEach(() => {
     c = mount(
@@ -24,6 +24,14 @@ describe('Dialog', () => {
     expect(c.exists()).toEqual(true);
   });
 
+  it('closable 为 true 显示关闭按钮', () => {
+    expect(c.find('.gu-dialog-close').exists()).toEqual(true);
+  });
+})
+
+describe('Dialog', () => {
+  let c: ReactWrapper
+
   it('visible 为 false 不显示内容', () => {
     c = mount(
       <GuDialog visible={false}>
@@ -31,10 +39,6 @@ describe('Dialog', () => {
       </GuDialog>
     );
     expect(c.find('.gu-dialog').exists()).toEqual(false);
-  });
-
-  it('closable 为 true 显示关闭按钮', () => {
-    expect(c.find('.gu-dialog-close').exists()).toEqual(true);
   });
 
   it('closable 为 false 不显示关闭按钮', () => {
@@ -57,19 +61,30 @@ describe('Dialog', () => {
 
   it('footer 为 false 不显示 footer', () => {
     c = mount(
-      <GuDialog visible={true} footer={false}>
+      <GuDialog visible={true} footer={null}>
         <p> 这是一段文字 </p>
       </GuDialog>
     );
     expect(c.find('.gu-dialog-footer').exists()).toEqual(false);
   });
 
-  it('接受confirmText 和 cancelText', () => {
+  it('接受自定义 footer', () => {
     c = mount(
-      <GuDialog visible={true} cancelText="取消消" confirmText="确定定">
+      <GuDialog visible={true} footer={[]}>
         <p> 这是一段文字 </p>
       </GuDialog>
     );
+    console.log(c.html());
+    expect(c.find('.gu-dialog-footer').exists()).toEqual(false);
+  });
+
+  it('接受confirmText 和 cancelText', () => {
+    c = mount(
+      <GuDialog visible={true} cancelText="取消消" okText="确定定">
+        <p> 这是一段文字 </p>
+      </GuDialog>
+    );
+
     expect(c.find('.gu-button').first().text()).toEqual('取消消');
     expect(c.find('.gu-button').last().text()).toEqual('确定定');
   });

@@ -8,9 +8,9 @@ interface IProps {
   title?: string;
   visible: boolean;
   closable?: boolean;
-  footer?: boolean;
-  confirmText?: string;
-  confirmButtonProps?: ButtonProps;
+  footer?: string | React.ReactNode;
+  okText?: string;
+  okButtonProps?: ButtonProps;
   cancelText?: string;
   cancelButtonProps?: ButtonProps;
   width?: string|number;
@@ -26,22 +26,21 @@ interface IState {
 class Dialog extends Component<IProps, IState> {
   static propTypes = {
     width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    footer: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     title: PropTypes.string,
     closable: PropTypes.bool,
-    footer: PropTypes.bool,
-    confirmText: PropTypes.string,
+    okText: PropTypes.string,
     cancelText: PropTypes.string,
-    confirmButtonProps: PropTypes.object,
+    okButtonProps: PropTypes.object,
     cancelButtonProps: PropTypes.object,
     visible: PropTypes.bool
   }
 
   public static defaultProps: Partial<IProps> = {
     width: 500,
-    confirmText: '确定',
+    okText: '确定',
     cancelText: '取消',
-    closable: true,
-    footer: true
+    closable: true
   };
 
   constructor(props: IProps) {
@@ -59,6 +58,7 @@ class Dialog extends Component<IProps, IState> {
   render() {
     const {children, title, closable, footer} = this.props
 
+    console.log(footer);
     const renderTitle = () => {
       let titleHtml
       if (title) {
@@ -68,15 +68,17 @@ class Dialog extends Component<IProps, IState> {
     }
 
     const renderFooter = () => {
-      if (footer) {
+      if (footer === null) {
+        return ''
+      } else if (footer === undefined) {
         return (
           <div className={this.sc('footer')}>
             <Button {...this.props.cancelButtonProps} onClick={this.onCancel}>{this.props.cancelText}</Button>
-            <Button {...this.props.confirmButtonProps} onClick={this.onConfirm}>{this.props.confirmText}</Button>
+            <Button {...this.props.okButtonProps} onClick={this.onConfirm}>{this.props.okText}</Button>
           </div>
         )
       } else {
-        return ''
+        return (footer)
       }
     }
     if (this.props.visible) {
