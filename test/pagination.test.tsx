@@ -18,7 +18,7 @@ describe('Pagination', () => {
     expect(c.find('.gu-pagination-item').length).toEqual(4);
   });
   it('接受currentPage', () => {
-    expect(c.find('span[data-name=2]').getDOMNode().classList.contains('gu-pagination-active')).toEqual(true)
+    expect(c.find('span[data-name=2]').hasClass('gu-pagination-active')).toEqual(true)
   })
   it('onChange', () => {
     c.find('.gu-pagination-prev').simulate('click')
