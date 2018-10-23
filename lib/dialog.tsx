@@ -40,7 +40,7 @@ class Dialog extends Component<IProps, IState> {
     width: 500,
     okText: '确定',
     cancelText: '取消',
-    closable: true
+    closable: true,
   };
 
   constructor(props: IProps) {
@@ -78,7 +78,11 @@ class Dialog extends Component<IProps, IState> {
           </div>
         )
       } else {
-        return (footer)
+        return (
+          <div className={this.sc('footer')}>
+            {footer}
+          </div>
+        )
       }
     }
     if (this.props.visible) {

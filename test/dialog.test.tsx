@@ -3,6 +3,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import * as React from 'react';
 // import renderer from 'react-test-renderer';
 import GuDialog from '../lib/dialog';
+import {Button as GuButton} from '../lib/button';
 
 configure({adapter: new Adapter()});
 
@@ -59,7 +60,7 @@ describe('Dialog', () => {
     expect(c.find('.gu-dialog-title').text()).toEqual('这是标题');
   });
 
-  it('footer 为 false 不显示 footer', () => {
+  it('footer 为 null 不显示 footer', () => {
     c = mount(
       <GuDialog visible={true} footer={null}>
         <p> 这是一段文字 </p>
@@ -68,17 +69,8 @@ describe('Dialog', () => {
     expect(c.find('.gu-dialog-footer').exists()).toEqual(false);
   });
 
-  it('接受自定义 footer', () => {
-    c = mount(
-      <GuDialog visible={true} footer={[]}>
-        <p> 这是一段文字 </p>
-      </GuDialog>
-    );
-    console.log(c.html());
-    expect(c.find('.gu-dialog-footer').exists()).toEqual(false);
-  });
 
-  it('接受confirmText 和 cancelText', () => {
+  it('接受 okText 和 cancelText', () => {
     c = mount(
       <GuDialog visible={true} cancelText="取消消" okText="确定定">
         <p> 这是一段文字 </p>
@@ -89,17 +81,36 @@ describe('Dialog', () => {
     expect(c.find('.gu-button').last().text()).toEqual('确定定');
   });
 
-  it('接受 onConfirm 和 onClose', () => {
-    const confirmFn = jest.fn();
+  it('接受 onConfirm 和 onCancel', () => {
+    const okFn = jest.fn();
     const cancelFn = jest.fn();
     c = mount(
-      <GuDialog visible={true} onConfirm={confirmFn} onCancel={cancelFn}>
+      <GuDialog visible={true} onConfirm={okFn} onCancel={cancelFn}>
         <p> 这是一段文字 </p>
       </GuDialog>
     );
     c.find('.gu-button').first().simulate('click')
     expect(cancelFn.mock.calls.length).toBe(1);
     c.find('.gu-button').last().simulate('click')
-    expect(confirmFn.mock.calls.length).toBe(1);
+    expect(okFn.mock.calls.length).toBe(1);
+  });
+
+  it('接受自定义 footer', () => {
+    const okFn = jest.fn();
+    const cancelFn = jest.fn();
+
+    c = mount(
+      <GuDialog visible={true} footer={[
+        <GuButton key="cancel" onClick={cancelFn}>Return</GuButton>,
+        <GuButton key="ok" onClick={okFn}>Submit</GuButton>
+      ]}>
+        <p> 这是一段文字 </p>
+      </GuDialog>
+    );
+    expect(c.find('.gu-dialog-footer').exists()).toEqual(true);
+    c.find('.gu-button').first().simulate('click')
+    expect(cancelFn.mock.calls.length).toBe(1);
+    c.find('.gu-button').last().simulate('click')
+    expect(okFn.mock.calls.length).toBe(1);
   });
 });
