@@ -26,12 +26,35 @@ xdescribe('Tabs', () => {
     expect(c.find('#span2').exists()).toEqual(false);
   });
 
-  it('onChange', () => {
+  it('auto 为 false 的 onChange', () => {
+    const fn = (e: string) => {
+      expect(e).toEqual('second')
+    }
+
     c.setProps({
-      onChange: () => {
-        console.log('hi')
-      }
+      onChange: fn
     })
     c.find('span[data-name="second"]').simulate('click')
+  })
+
+  it('auto 为 true 的 onChange', () => {
+    const fn = jest.fn();
+
+    c = mount(
+      <Tabs selected="first" onChange={fn} autoChange={true}>
+        <Tab title="tab1" name="first">
+          <span id="span1"></span>
+        </Tab>
+        <Tab title="tab2" name="second">
+          <span id="span2"></span>
+        </Tab>
+      </Tabs>
+    );
+
+    c.find('span[data-name="second"]').simulate('click')
+    expect(c.find('#span1').exists()).toEqual(false);
+    expect(c.find('#span2').exists()).toEqual(true);
+    expect(fn.mock.calls.length).toBe(1);
+
   })
 });

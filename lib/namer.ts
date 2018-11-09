@@ -6,6 +6,10 @@ export function camelToKebab(camel: string) {
   return result
 }
 
+export function lowerFirstLetter(name: string) {
+  return name.charAt(0).toLowerCase() + name.slice(1);
+}
+
 export function plural(singular: string) {
   const special = {
     quiz: 'quizzes',

@@ -11,10 +11,13 @@
     "arrow-parens": false,
     "jsx-self-close": false,
     "max-line-length": false,
+    "no-empty": false,
     "ordered-imports": false,
     "object-literal-sort-keys": false,
     "jsx-no-lambda": false,
+    "no-trailing-whitespace": false,
     "jsx-alignment": false,
+    "jsx-wrap-multilines": false,
     "no-shadowed-variable": [
       true,
       {

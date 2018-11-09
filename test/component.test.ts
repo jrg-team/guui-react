@@ -6,13 +6,15 @@ describe('Component', () => {
   });
   describe('scopedClass', () => {
     it('string', () => {
-      const context = {constructor: {name: 'button'}}
-      expect(scopedClasses.call(context, 'a')).toBe('gu-button-a')
-      expect(scopedClasses.call(context, 'a', 'b')).toBe('gu-button-a gu-button-b')
-      expect(scopedClasses.call(context, ['a', 'b'])).toBe('gu-button-a gu-button-b')
-      expect(scopedClasses.call(context, {a: true, b: true})).toBe('gu-button-a gu-button-b')
-      expect(scopedClasses.call(context, {a: true, b: false})).toBe('gu-button-a')
-      expect(scopedClasses.call(context)).toBe('gu-button')
+      const context = {constructor: {name: 'CollapseItem'}}
+      expect(scopedClasses.call(context, 'a')).toBe('gu-collapseItem-a')
+      expect(scopedClasses.call(context, 'a', 'b')).toBe('gu-collapseItem-a gu-collapseItem-b')
+      expect(scopedClasses.call(context, ['a', 'b'])).toBe('gu-collapseItem-a gu-collapseItem-b')
+      expect(scopedClasses.call(context, {a: true, b: true})).toBe('gu-collapseItem-a gu-collapseItem-b')
+      expect(scopedClasses.call(context, {a: true, b: false})).toBe('gu-collapseItem-a')
+      expect(scopedClasses.call(context)).toBe('gu-collapseItem')
+      expect(scopedClasses.call(context, '', {active: true}, ['hover']))
+        .toBe('gu-collapseItem gu-collapseItem-active gu-collapseItem-hover')
     });
   });
 })

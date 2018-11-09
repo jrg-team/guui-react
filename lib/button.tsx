@@ -4,7 +4,7 @@ import Icon from './icon'
 import './button.sass'
 import Component from './component'
 
-interface IProps {
+export interface IProps {
   icon?: string;
   iconPosition?: 'left' | 'right';
   size: 'small' | 'default' | 'large';
@@ -24,7 +24,7 @@ interface IState {
   x: string
 }
 
-class Button extends Component<IProps, IState> {
+export class Button extends Component<IProps, IState> {
   static propTypes = {
     icon: PropTypes.string,
   }
@@ -59,5 +59,3 @@ class Button extends Component<IProps, IState> {
     );
   }
 }
-
-export default Button;
