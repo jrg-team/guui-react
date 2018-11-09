@@ -2,48 +2,45 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import './tabs.sass'
 import Component from './component'
-import {IProps as TabProps} from './tab'
+import {IProps as CollapseItemProps} from './collapseItem'
 
 interface IProps {
-  selected: string;
+  selectedItems: string[];
+  single: boolean;
   onChange?: (name: string) => void;
-  children?: Array<React.ReactElement<TabProps>>;
-  autoChange?: boolean
+  children?: Array<React.ReactElement<CollapseItemProps>>;
 }
 
 interface IState {
   x: string
 }
 
-class Tabs extends Component<IProps, IState> {
+class Collapse extends Component<IProps, IState> {
   public static propTypes = {
-    selected: PropTypes.string.isRequired
+    selectedItems: PropTypes.array.isRequired,
+    single: PropTypes.bool.isRequired
   };
 
   public static defaultProps: Partial<IProps> = {
-    autoChange: false
+    single: false
   };
 
   constructor(props: IProps) {
     super(props)
   }
 
-  onClickTitle = (name: string, e: React.MouseEvent<HTMLSpanElement>) => {
+  onClickItem = (name: string, e: React.MouseEvent<HTMLDivElement>) => {
     this.props.onChange && this.props.onChange(name)
   }
 
   render() {
     const {children} = this.props
-    const items = children && children.map((x, index) => {
-      return <span onClick={this.onClickTitle.bind(null, x.props.name)} key={index} data-name={x.props.name}>{x.props.title}</span>
-    })
     return (
       <div className={this.sc()}>
-        {items}
         {children}
       </div>
     );
   }
 }
 
-export default Tabs;
+export default Collapse;
