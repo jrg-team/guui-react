@@ -15,7 +15,6 @@
     "ordered-imports": false,
     "object-literal-sort-keys": false,
     "jsx-no-lambda": false,
-    "jsx-alignment": false,
     "no-trailing-whitespace": false,
     "jsx-alignment": false,
     "jsx-wrap-multilines": false,

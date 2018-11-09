@@ -20,7 +20,6 @@ xdescribe('Tabs', () => {
         </Tab>
       </Tabs>
     );
-    console.log(c.html());
   })
   it('将 children 显示为内容', () => {
     expect(c.find('#span1').exists()).toEqual(true);
