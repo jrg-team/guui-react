@@ -11,6 +11,7 @@
     "arrow-parens": false,
     "jsx-self-close": false,
     "max-line-length": false,
+    "interface-name": false,
     "no-empty": false,
     "ordered-imports": false,
     "object-literal-sort-keys": false,
