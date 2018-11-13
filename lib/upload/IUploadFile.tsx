@@ -1,6 +1,6 @@
 
-export default interface IUploadFile {
-  id: string;
+export default interface IUploadFile extends File {
+  id?: string;
   size: number;
   type: string;
   name: string;

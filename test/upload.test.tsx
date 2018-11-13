@@ -10,12 +10,14 @@ xdescribe('GuUpload 简单属性', () => {
   let c: ReactWrapper
   beforeEach(() => {
     c = mount(
-      <GuUpload></GuUpload>
+      <GuUpload>
+
+      </GuUpload>
     );
   })
 
   it('接受 accept 属性', () => {
-
+    expect(c.find('.gu-input').props().value).toEqual('hi')
   })
 
   it('接受 url 属性', () => {
