@@ -1,4 +1,4 @@
-import Component, {scopedClasses} from '../lib/component';
+import Component, {scopedClasses} from '../../lib/component';
 
 describe('Component', () => {
   it('exist', () => {
