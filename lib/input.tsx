@@ -4,12 +4,18 @@ import * as React from 'react';
 import Component from './component'
 
 interface IProps {
-  size: 'small' | 'default' | 'large';
-  value: string,
+  size?: 'small' | 'default' | 'large';
+  value?: string,
   type?: 'text' | 'textarea'
+  label: string,
+  labelPosition: 'top' | 'left',
+  error?: string,
+  errorPosition?: 'left' | 'bottom',
   placeholder?: string,
   disabled?: boolean,
-  onChange?: React.ChangeEventHandler<HTMLInputElement>,
+  prefix?: string,
+  postfix?: string,
+  onInput?: React.EventHandler<React.SyntheticEvent<HTMLInputElement>>,
   onPressEnter?: React.KeyboardEventHandler<HTMLInputElement>
 }
 
@@ -17,7 +23,7 @@ interface IState {
   x: string
 }
 
-class Input extends Component<IProps, IState>{
+class Input extends Component<IProps, IState> {
   static propTypes = {
     value: PropTypes.string
   }
@@ -25,25 +31,27 @@ class Input extends Component<IProps, IState>{
   public static defaultProps: Partial<IProps> = {
     size: 'default',
     type: 'text',
-    disabled: false
+    disabled: false,
+    errorPosition: 'bottom'
   };
 
   constructor(props: IProps) {
     super(props)
   }
 
-  onChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    this.props.onChange && this.props.onChange(e)
+  onChange: React.EventHandler<React.SyntheticEvent<HTMLInputElement>> = (e) => {
+    this.props.onInput && this.props.onInput(e);
   }
 
   onPressEnter: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
-    console.log(1);
     this.props.onPressEnter && this.props.onPressEnter(e)
   }
 
   render() {
     return (
-      <input type={this.props.type} value={this.props.value} onChange={this.onChange} className={this.sc('', this.props.size)} placeholder={this.props.placeholder} disabled={this.props.disabled}/>
+      <input type={this.props.type} value={this.props.value} onChange={this.onChange}
+        className={this.sc('', this.props.size)} placeholder={this.props.placeholder}
+        disabled={this.props.disabled}/>
       )
   }
 }

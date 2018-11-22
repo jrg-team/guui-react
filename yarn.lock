@@ -68,10 +68,18 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^16.4.16":
+"@types/react@*":
   version "16.4.16"
   resolved "http://registry.npm.taobao.org/@types/react/download/@types/react-16.4.16.tgz#99f91b1200ae8c2062030402006d3b3c3a177043"
   integrity sha1-mfkbEgCujCBiAwQCAG07PDoXcEM=
+  dependencies:
+    "@types/prop-types" "*"
+    csstype "^2.2.0"
+
+"@types/react@^16.7.6":
+  version "16.7.6"
+  resolved "http://registry.npm.taobao.org/@types/react/download/@types/react-16.7.6.tgz#80e4bab0d0731ad3ae51f320c4b08bdca5f03040"
+  integrity sha1-gOS6sNBzGtOuUfMgxLCL3KXwMEA=
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -5530,22 +5538,27 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-dom@^16.5.2:
-  version "16.5.2"
-  resolved "http://registry.npm.taobao.org/react-dom/download/react-dom-16.5.2.tgz#b69ee47aa20bab5327b2b9d7c1fe2a30f2cfa9d7"
-  integrity sha1-tp7keqILq1MnsrnXwf4qMPLPqdc=
+react-dom@^16.6.3:
+  version "16.6.3"
+  resolved "http://registry.npm.taobao.org/react-dom/download/react-dom-16.6.3.tgz#8fa7ba6883c85211b8da2d0efeffc9d3825cccc0"
+  integrity sha1-j6e6aIPIUhG42i0O/v/J04JczMA=
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
-    schedule "^0.5.0"
+    scheduler "^0.11.2"
 
 react-is@^16.5.2:
   version "16.5.2"
   resolved "http://registry.npm.taobao.org/react-is/download/react-is-16.5.2.tgz#e2a7b7c3f5d48062eb769fcb123505eb928722e3"
   integrity sha1-4qe3w/XUgGLrdp/LEjUF65KHIuM=
 
-react-test-renderer@^16.0.0-0, react-test-renderer@^16.5.2:
+react-is@^16.6.3:
+  version "16.6.3"
+  resolved "http://registry.npm.taobao.org/react-is/download/react-is-16.6.3.tgz#d2d7462fcfcbe6ec0da56ad69047e47e56e7eac0"
+  integrity sha1-0tdGL8/L5uwNpWrWkEfkflbn6sA=
+
+react-test-renderer@^16.0.0-0:
   version "16.5.2"
   resolved "http://registry.npm.taobao.org/react-test-renderer/download/react-test-renderer-16.5.2.tgz#92e9d2c6f763b9821b2e0b22f994ee675068b5ae"
   integrity sha1-kunSxvdjuYIbLgsi+ZTuZ1Bota4=
@@ -5555,15 +5568,25 @@ react-test-renderer@^16.0.0-0, react-test-renderer@^16.5.2:
     react-is "^16.5.2"
     schedule "^0.5.0"
 
-react@^16.5.2:
-  version "16.5.2"
-  resolved "http://registry.npm.taobao.org/react/download/react-16.5.2.tgz#19f6b444ed139baa45609eee6dc3d318b3895d42"
-  integrity sha1-Gfa0RO0Tm6pFYJ7ubcPTGLOJXUI=
+react-test-renderer@^16.6.3:
+  version "16.6.3"
+  resolved "http://registry.npm.taobao.org/react-test-renderer/download/react-test-renderer-16.6.3.tgz#5f3a1a7d5c3379d46f7052b848b4b72e47c89f38"
+  integrity sha1-XzoafVwzedRvcFK4SLS3LkfInzg=
+  dependencies:
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
+    react-is "^16.6.3"
+    scheduler "^0.11.2"
+
+react@^16.6.3:
+  version "16.6.3"
+  resolved "http://registry.npm.taobao.org/react/download/react-16.6.3.tgz#25d77c91911d6bbdd23db41e70fb094cc1e0871c"
+  integrity sha1-Jdd8kZEda73SPbQecPsJTMHghxw=
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
-    schedule "^0.5.0"
+    scheduler "^0.11.2"
 
 read-pkg-up@^1.0.1:
   version "1.0.1"
@@ -5904,6 +5927,14 @@ schedule@^0.5.0:
   resolved "http://registry.npm.taobao.org/schedule/download/schedule-0.5.0.tgz#c128fffa0b402488b08b55ae74bb9df55cc29cc8"
   integrity sha1-wSj/+gtAJIiwi1WudLud9VzCnMg=
   dependencies:
+    object-assign "^4.1.1"
+
+scheduler@^0.11.2:
+  version "0.11.2"
+  resolved "http://registry.npm.taobao.org/scheduler/download/scheduler-0.11.2.tgz#a8db5399d06eba5abac51b705b7151d2319d33d3"
+  integrity sha1-qNtTmdBuulq6xRtwW3FR0jGdM9M=
+  dependencies:
+    loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
 schema-utils@^0.4.4, schema-utils@^0.4.5:

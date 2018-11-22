@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {lowerFirstLetter} from './namer';
 
-type ClassValue = string | string[] | { [K: string]: boolean }
+type ClassValue = string | string[] | { [K: string]: boolean } | undefined
 
 export function scopedClasses(this: any, ...args: ClassValue[]): string {
   const prefix = ['gu', lowerFirstLetter(this.constructor.name)]
