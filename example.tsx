@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom';
 import {Button as GuButton, Icon as GuIcon} from './lib';
 import Tabs from './lib/tabs';
 import Tab from './lib/tab';
+import Input from './lib/input';
 
 const div = document.createElement('div');
 document.body.appendChild(div);
@@ -24,5 +25,12 @@ ReactDOM.render((
         <span id="span2"></span>
       </Tab>
     </Tabs>
+
+    <div className="input">
+      <h1>我是Input</h1>
+      <Input placeholder={'用户名'}/>
+      <Input placeholder={'密码'} type={'password'}/>
+      <Input placeholder={'用户名'} value={'张三'} />
+    </div>
   </div>
 ), div);

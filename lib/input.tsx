@@ -1,12 +1,12 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-
+import './input.sass'
 import Component from './component'
 
 interface IProps {
   size: 'small' | 'default' | 'large';
   value: string,
-  type?: 'text' | 'textarea'
+  type?: 'text' | 'textarea' | 'password'
   placeholder?: string,
   disabled?: boolean,
   onChange?: React.ChangeEventHandler<HTMLInputElement>,
@@ -37,13 +37,17 @@ class Input extends Component<IProps, IState>{
   }
 
   onPressEnter: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
-    console.log(1);
     this.props.onPressEnter && this.props.onPressEnter(e)
   }
 
   render() {
     return (
-      <input type={this.props.type} value={this.props.value} onChange={this.onChange} className={this.sc('', this.props.size)} placeholder={this.props.placeholder} disabled={this.props.disabled}/>
+      <input type={this.props.type}
+             value={this.props.value}
+             onChange={this.onChange}
+             className={this.sc('', this.props.size)}
+             placeholder={this.props.placeholder}
+             disabled={this.props.disabled}/>
       )
   }
 }
