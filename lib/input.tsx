@@ -1,6 +1,6 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-
+import './input.sass'
 import Component from './component'
 
 interface IProps {
@@ -44,6 +44,7 @@ class Input extends Component<IProps, IState> {
   }
 
   onPressEnter: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
+    console.log(1);
     this.props.onPressEnter && this.props.onPressEnter(e)
   }
 

@@ -1,7 +1,7 @@
 import {configure, mount, ReactWrapper} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import * as React from 'react';
-import Pagination from '../lib/pagination';
+import Pagination from '../../lib/pagination';
 
 configure({adapter: new Adapter()});
 
@@ -12,7 +12,6 @@ describe('Pagination', () => {
     c = mount(
       <Pagination totalPage={4} currentPage={2} onChange={fn}></Pagination>
     );
-    console.log(c.html());
   })
   it('接受 totalPage', () => {
     expect(c.find('.gu-pagination-item').length).toEqual(4);

@@ -2,8 +2,8 @@ import {configure, mount, ReactWrapper} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import * as React from 'react';
 // import renderer from 'react-test-renderer';
-import Tabs from '../lib/tabs';
-import Tab from '../lib/tab';
+import Tabs from '../../lib/tabs';
+import Tab from '../../lib/tab';
 
 configure({adapter: new Adapter()});
 

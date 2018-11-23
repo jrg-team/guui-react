@@ -2,7 +2,7 @@ import {configure, mount, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import * as React from 'react';
 // import renderer from 'react-test-renderer';
-import {Button as GuButton} from '../lib/button';
+import {Button as GuButton} from '../../lib/button';
 
 configure({adapter: new Adapter()});
 

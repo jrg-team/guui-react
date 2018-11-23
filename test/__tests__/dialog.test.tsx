@@ -2,8 +2,8 @@ import {configure,  mount, ReactWrapper} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import * as React from 'react';
 // import renderer from 'react-test-renderer';
-import GuDialog from '../lib/dialog';
-import {Button as GuButton} from '../lib/button';
+import GuDialog from '../../lib/dialog';
+import {Button as GuButton} from '../../lib/button';
 
 configure({adapter: new Adapter()});
 

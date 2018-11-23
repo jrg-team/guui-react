@@ -9,7 +9,7 @@ module.exports = {
     },
   },
   moduleFileExtensions: ['ts', 'tsx', 'js'],
-  testMatch: ['<rootDir>/test/**/*.test.(tsx|ts)'],
+  testMatch: ['<rootDir>/**/__tests__/**/*.test.(tsx|ts)'],
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest',
   },

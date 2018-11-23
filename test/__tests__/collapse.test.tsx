@@ -1,8 +1,8 @@
 import {configure, mount, ReactWrapper} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import * as React from 'react';
-import Collapse from '../lib/collapse';
-import CollapseItem from '../lib/collapseItem';
+import Collapse from '../../lib/collapse';
+import CollapseItem from '../../lib/collapseItem';
 
 configure({adapter: new Adapter()});
 
