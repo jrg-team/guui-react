@@ -31,6 +31,10 @@ ReactDOM.render((
       <Input placeholder={'用户名'}/>
       <Input placeholder={'密码'} type={'password'}/>
       <Input placeholder={'用户名'} value={'张三'} />
+      <Input placeholder={'用户名'} value={'张三'} label={'用户名'} />
+      <Input placeholder={'用户名'} value={'张三'} label={'用户名'} labelPosition={'left'}/>
+      <Input placeholder={'用户名'} value={'张三'} error={'密码错误'}/>
+      <Input placeholder={'用户名'} value={'张三'} error={'密码错误'} errorPosition={'right'}/>
     </div>
   </div>
 ), div);
