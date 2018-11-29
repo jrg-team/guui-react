@@ -6,7 +6,7 @@ import GuInput from '../../lib/input'
 
 configure({adapter: new Adapter()});
 
-describe('Input', () => {
+xdescribe('Input', () => {
 
   describe('属性', () => {
 

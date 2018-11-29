@@ -7,7 +7,7 @@ jest.mock('../../lib/http')
 
 configure({adapter: new Adapter()});
 
-describe('GuUploader 简单属性', () => {
+xdescribe('GuUploader 简单属性', () => {
 
   it('必填 url、method、name、fileList、responseParser 属性', () => {
     console.error = jest.fn()
