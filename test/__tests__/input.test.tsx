@@ -2,7 +2,7 @@ import {configure, mount, ReactWrapper} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import * as React from 'react';
 
-import GuInput from '../../lib/input'
+import GuInput from '../../lib/input/input'
 
 configure({adapter: new Adapter()});
 

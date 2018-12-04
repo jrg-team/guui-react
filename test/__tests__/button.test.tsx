@@ -6,7 +6,7 @@ import {Button as GuButton} from '../../lib/button';
 
 configure({adapter: new Adapter()});
 
-xdescribe('Button', () => {
+describe('Button', () => {
   it('将 children 显示为内容', () => {
     const component = shallow(<GuButton>Hi</GuButton>);
     expect(component.text()).toEqual('Hi');
