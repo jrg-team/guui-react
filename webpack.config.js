@@ -2,7 +2,7 @@ var path = require('path');
 const { CheckerPlugin } = require('awesome-typescript-loader');
 
 module.exports = {
-  entry: { index: './lib/index.tsx' },
+  entry: { guui: './lib/index.tsx' },
   output: {
     path: path.resolve(__dirname, 'dist'),
     library: 'Gu',

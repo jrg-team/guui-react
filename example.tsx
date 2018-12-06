@@ -6,5 +6,6 @@ document.body.appendChild(div);
 
 ReactDOM.render((
   <div>
+    hi
   </div>
 ), div);

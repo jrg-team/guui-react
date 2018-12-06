@@ -17,6 +17,7 @@
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.dev.js",
     "build": "webpack -p --config webpack.config.prod.js",
+    "docs": "webpack -p --config webpack.config.docs.js",
     "test": "jest",
     "ci": "JEST_JUNIT_OUTPUT=./test-results/jest/results.xml jest --config=jest.config.ci.js"
   },
