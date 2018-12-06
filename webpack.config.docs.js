@@ -12,6 +12,6 @@ module.exports = Object.assign({}, base, {
   },
   plugins: [...base.plugins, new HtmlWebpackPlugin({
     title: 'GUUI - React',
-    filename: 'index.html'
+    template: 'index.html'
   })],
 })
