@@ -6,5 +6,8 @@ module.exports = Object.assign({}, base, {
   entry: {
     example: './example.tsx',
   },
-  plugins: [...base.plugins, new HtmlWebpackPlugin()],
+  plugins: [...base.plugins, new HtmlWebpackPlugin({
+    title: 'GUUI - React',
+    template: 'index.html'
+  })],
 });
