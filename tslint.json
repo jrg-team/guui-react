@@ -2,6 +2,7 @@
   "extends": ["tslint:recommended", "tslint-react"],
   "rules":{
     "no-console": [false, "log", "error"],
+    "no-empty-interface": false,
     "quotemark": [true, "single", "jsx-double"],
     "member-access": false,
     "semicolon": false,
