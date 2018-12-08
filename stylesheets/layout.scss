@@ -1,0 +1,25 @@
+@import "helper";
+@include component(layout) {
+  display: flex;
+  &-horizontal {
+    flex-direction: row;
+  }
+  &-vertical {
+    flex-direction: column;
+  }
+  & > & {
+    flex-grow: 1;
+  }
+}
+@include component(header) {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+@include component(footer) {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+@include component(main) {
+  flex-grow: 1;
+  flex-shrink: 0;
+}

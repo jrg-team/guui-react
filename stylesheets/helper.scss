@@ -1,0 +1,8 @@
+$prefix: gu;
+
+@mixin component($name) {
+  .#{$prefix}-#{$name} {
+    @content
+  }
+}
+

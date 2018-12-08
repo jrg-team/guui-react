@@ -1,0 +1,20 @@
+.LayoutExample {
+  min-height: 40vh;
+  margin-bottom: 32px;
+  .header {
+    background: #333;
+    color: white;
+  }
+  .aside {
+    background: green;
+    color: white;
+  }
+  .main {
+    background: red;
+    color: white;
+  }
+  .footer {
+    background: #666;
+    color: white;
+  }
+}

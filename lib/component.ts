@@ -1,8 +1,6 @@
 import * as React from 'react';
 import {lowerFirstLetter} from './namer';
 
-type ClassValue = string | string[] | { [K: string]: boolean } | undefined
-
 export function scopedClasses(this: any, ...args: ClassValue[]): string {
   const prefix = ['gu', lowerFirstLetter(this.constructor.name)]
   if (args.length === 0) {
@@ -27,22 +25,19 @@ export function scopedClasses(this: any, ...args: ClassValue[]): string {
   }).join(' ');
 }
 
-export function classes(this: any, c?: string | string[] | { [K: string]: boolean }, ...args: string[]): string {
-  const result = []
-  if (!c) {
-    return ''
-  } else if (typeof c === 'string') {
-    result.push(c, ...args)
-  } else if (Array.isArray(c)) {
-    result.push(...c)
-  } else {
-    for (const key in c) {
-      if (c[key]) {
-        result.push(key)
-      }
+export function classes(this: any, ...args: ClassValue[]): string {
+  return args.map((c: ClassValue) => {
+    const result = [];
+    if (!c) { return ''; }
+    if (typeof c === 'string') {
+      result.push(c);
+    } else if (Array.isArray(c)) {
+      result.push(...c);
+    } else {
+      result.push(...Object.keys(c).filter(k => c[k]));
     }
-  }
-  return result.join(' ')
+    return result.join(' ');
+  }).join(' ');
 }
 
 export default class Component<P, S> extends React.Component<P, S> {

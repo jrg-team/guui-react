@@ -1,6 +1,6 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import './tab.sass'
+import '../stylesheets/tab.sass'
 import Component from './component'
 
 export interface IProps {

@@ -1,7 +1,6 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import Icon from './icon'
-import './button.sass'
 import Component from './component'
 
 export interface IProps {
