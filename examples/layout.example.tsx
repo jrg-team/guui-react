@@ -1,10 +1,13 @@
 import * as React from 'react';
 import {Layout, Main, Header, Footer, Aside} from 'lib/layout/index';
-import 'stylesheets/examples/layout.example.scss';
+import './layout.example.scss';
 
 function LayoutExample(props: any) {
   return (
     <div>
+      <h1>布局组件</h1>
+      <h2>示例1</h2>
+      <p>经典布局</p>
       <Layout dir="vertical" className="LayoutExample">
         <Header className="header">
           header
@@ -15,6 +18,8 @@ function LayoutExample(props: any) {
         </Layout>
         <Footer className="footer">footer</Footer>
       </Layout>
+      <h2>示例2</h2>
+      <p>经典布局</p>
       <Layout dir="vertical" className="LayoutExample">
         <Header className="header">
           header

@@ -3,6 +3,7 @@
   "rules":{
     "no-console": [false, "log", "error"],
     "no-empty-interface": false,
+    "space-before-function-paren": false,
     "no-namespace": false,
     "quotemark": [true, "single", "jsx-double"],
     "member-access": false,

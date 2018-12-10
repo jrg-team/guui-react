@@ -24,8 +24,16 @@ module.exports = {
         use: [{ loader: 'tslint-loader' }],
       },
       {
-        test: /\.svg$/,
+        test: /icons\/.+\.svg$/,
         loader: 'svg-sprite-loader',
+      },
+      {
+        test: /\.svg$/,
+        loader: 'file-loader',
+      },
+      {
+        test: /\.md$/,
+        loader: 'text-loader',
       },
       {
         test: /\.s(a|c)ss$/,
@@ -34,4 +42,10 @@ module.exports = {
     ],
   },
   plugins: [new CheckerPlugin()],
+  resolveLoader: {
+    modules: [
+      'node_modules',
+      path.resolve(__dirname, 'loaders')
+    ]
+  }
 };
