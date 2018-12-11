@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grid combines Row and Col 1`] = `
+<div
+  className="gu-row gu-row-alignLeft "
+  style={
+    Object {
+      "margin": undefined,
+    }
+  }
+>
+  <div
+    className="gu-col gu-col-span2"
+    style={
+      Object {
+        "padding": undefined,
+      }
+    }
+  >
+    <div
+      className="col"
+    />
+  </div>
+  <div
+    className="gu-col gu-col-span2"
+    style={
+      Object {
+        "padding": undefined,
+      }
+    }
+  >
+    <div
+      className="col"
+    />
+  </div>
+  <div
+    className="gu-col gu-col-span2"
+    style={
+      Object {
+        "padding": undefined,
+      }
+    }
+  >
+    <div
+      className="col"
+    />
+  </div>
+  <div
+    className="gu-col gu-col-span2"
+    style={
+      Object {
+        "padding": undefined,
+      }
+    }
+  >
+    <div
+      className="col"
+    />
+  </div>
+  <div
+    className="gu-col gu-col-span2"
+    style={
+      Object {
+        "padding": undefined,
+      }
+    }
+  >
+    <div
+      className="col"
+    />
+  </div>
+  <div
+    className="gu-col gu-col-span2"
+    style={
+      Object {
+        "padding": undefined,
+      }
+    }
+  >
+    <div
+      className="col"
+    />
+  </div>
+  <div
+    className="gu-col gu-col-span2"
+    style={
+      Object {
+        "padding": undefined,
+      }
+    }
+  >
+    <div
+      className="col"
+    />
+  </div>
+  <div
+    className="gu-col gu-col-span2"
+    style={
+      Object {
+        "padding": undefined,
+      }
+    }
+  >
+    <div
+      className="col"
+    />
+  </div>
+  <div
+    className="gu-col gu-col-span2"
+    style={
+      Object {
+        "padding": undefined,
+      }
+    }
+  >
+    <div
+      className="col"
+    />
+  </div>
+  <div
+    className="gu-col gu-col-span2"
+    style={
+      Object {
+        "padding": undefined,
+      }
+    }
+  >
+    <div
+      className="col"
+    />
+  </div>
+  <div
+    className="gu-col gu-col-span2"
+    style={
+      Object {
+        "padding": undefined,
+      }
+    }
+  >
+    <div
+      className="col"
+    />
+  </div>
+  <div
+    className="gu-col gu-col-span2"
+    style={
+      Object {
+        "padding": undefined,
+      }
+    }
+  >
+    <div
+      className="col"
+    />
+  </div>
+</div>
+`;

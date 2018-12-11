@@ -5,12 +5,11 @@
 
 # testing
 /coverage
+/test-results
 
 # production
 /dist
 /docs
-
-.idea/
 
 # misc
 .DS_Store
