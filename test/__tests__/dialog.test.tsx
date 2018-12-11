@@ -3,7 +3,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import * as React from 'react';
 // import renderer from 'react-test-renderer';
 import GuDialog from '../../lib/dialog';
-import {Button as GuButton} from '../../lib/button';
+import {Button as GuButton} from '../../lib/button/button';
 
 configure({adapter: new Adapter()});
 
@@ -68,7 +68,6 @@ describe('Dialog', () => {
     );
     expect(c.find('.gu-dialog-footer').exists()).toEqual(false);
   });
-
 
   it('接受 okText 和 cancelText', () => {
     c = mount(

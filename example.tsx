@@ -6,6 +6,7 @@ import 'stylesheets/_index.scss';
 import {Layout, Main, Header, Footer, Aside} from './lib/layout/index';
 import LayoutExample from 'examples/layout.example';
 import GridExample from 'examples/grid.example';
+import ButtonExample from 'examples/button.example';
 import Home from 'examples/home';
 import logo from 'examples/guui.svg';
 
@@ -36,12 +37,14 @@ ReactDOM.render(
             <ol>
               <li><Link to="/layout">Layout</Link></li>
               <li><Link to="/grid">Grid</Link></li>
+              <li><Link to="/button">Button</Link></li>
             </ol>
           </Aside>
           <Main className="site-main">
             <Route path="/" exact={true} component={Home}/>
             <Route path="/layout" component={LayoutExample}/>
             <Route path="/grid" component={GridExample}/>
+            <Route path="/button" component={ButtonExample}/>
           </Main>
         </Layout>
         <Footer className="site-footer">footer</Footer>

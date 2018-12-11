@@ -1,13 +1,10 @@
 import * as React from 'react';
 import {classes, createScopedClasses} from 'utils/classes';
-import {CSSProperties} from 'react';
 
 const componentName = 'Footer';
 const sc = createScopedClasses(componentName);
 
-interface IProps {
-  className?: ClassValue;
-  style?: CSSProperties
+interface IProps extends IStyledProps {
 };
 
 const Footer: GFC<IProps> = (props) => {

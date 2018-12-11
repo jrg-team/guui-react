@@ -3,18 +3,39 @@ $prefix: gu;
 $colors: (
   red: #f1453d,
   green: #8cc152,
-  blue: #4a90e2,
-  black: #424242
+  blue: #0086e6,
+  black: #424242,
+  white: #fff,
 );
 
 $blue: map_get($colors, blue);
 $red: map_get($colors, red);
 $green: map_get($colors, green);
 $black: map_get($colors, black);
+$white: map_get($colors, white);
+
+$main-color: $blue;
+
+$text-color: #333;
+
+$input-height: 32px;
+$input-height-small: 24px;
+$input-height-large: 48px;
+$input-border-color: lighten($text-color, 60%);
+$input-border-radius: 4px;
+
+$transition-duration: 200ms;
+
 
 @mixin component($name) {
   .#{$prefix}-#{$name} {
-    @content
+    @content;
   }
 }
-
+@function component($name, $modifier:null) {
+  @if $modifier == null {
+    @return ".#{$prefix}-#{$name}"
+  } @else {
+    @return ".#{$prefix}-#{$name}-#{$modifier}"
+  }
+}

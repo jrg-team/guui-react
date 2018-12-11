@@ -2,7 +2,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 import Component from './component'
-import {Button, IProps as ButtonProps} from './button'
+import {Button, IProps as ButtonProps} from './button/button'
 
 interface IProps {
   title?: string;

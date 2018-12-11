@@ -1,14 +1,10 @@
 import * as React from 'react';
 import {classes, createScopedClasses} from 'utils/classes';
-import {CSSProperties} from 'react';
-// import * as PropTypes from 'prop-types';
 
 const componentName = 'Col';
 const sc = createScopedClasses(componentName);
 
-interface IProps {
-  className?: ClassValue;
-  style?: CSSProperties;
+interface IProps extends IStyledProps {
   span?: number;
   offset?: number;
   gutter?: number;

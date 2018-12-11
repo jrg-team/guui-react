@@ -1,15 +1,12 @@
 import * as React from 'react';
 import {classes, createScopedClasses} from 'utils/classes';
 import * as PropTypes from 'prop-types';
-import {CSSProperties} from 'react';
 
 const componentName = 'Layout';
 const sc = createScopedClasses(componentName);
 
-interface IProps {
+interface IProps extends IStyledProps {
   dir?: 'horizontal' | 'vertical';
-  className?: ClassValue;
-  style?: CSSProperties;
 };
 
 const Layout: GFC<IProps> = (props) => {

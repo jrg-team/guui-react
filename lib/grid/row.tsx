@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {classes, createScopedClasses} from 'utils/classes';
-import {CSSProperties, ReactElement} from 'react';
+import {ReactElement} from 'react';
 import * as PropTypes from 'prop-types';
 import Col from './col';
 import {upperFirstLetter} from 'utils/namer';
@@ -8,9 +8,7 @@ import {upperFirstLetter} from 'utils/namer';
 const componentName = 'Row';
 const sc = createScopedClasses(componentName);
 
-interface IProps {
-  className?: ClassValue;
-  style?: CSSProperties;
+interface IProps extends IStyledProps {
   gutter?: number;
   align?: 'left' | 'right' | 'center' | 'spaceBetween' | 'spaceAround';
   verticalAlign?: 'top' | 'bottom' | 'center'

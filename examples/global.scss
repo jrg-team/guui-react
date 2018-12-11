@@ -1,3 +1,4 @@
+@import "helper";
 body { margin: 0; line-height: 1.5; font-size: 16px; }
 * {margin: 0;padding: 0;}
 ul, ol { list-style: none;}
@@ -6,19 +7,19 @@ h1, h2, h3, h4, h5, h6 {font-weight: normal;}
 a {text-decoration: none; color: black;}
 .site {
   &-wrapper { min-height: 100vh; }
-  &-header { display: flex; padding: 0 48px; align-items: center; border-bottom: 1px solid;
+  &-header { display: flex; padding: 0 48px; align-items: center; border-bottom: 1px solid $main-color;
     & > .actions { margin-left: auto; }
   }
   &-body { padding: 0 48px; display: flex; }
-  &-footer { padding: 8px 48px; display: flex; border-top: 1px solid; }
-  &-logo { background: lighten(black, 90%); display: flex; padding: 4px; }
-  &-nav { display: flex;
+  &-footer { padding: 8px 48px; display: flex; border-top: 1px solid $main-color; }
+  &-logo { background: $main-color; display: flex; padding: 4px; margin: 8px 0;}
+  &-nav { display: flex; color: $main-color;
     > li { padding: 0 16px;
       &:last-child { padding-right: 0; }
     }
   }
-  &-aside { border-right: 1px solid; padding-right: 1em; min-width: 10em;
-    h2 { margin: 0.5em 0 0.2em; }
+  &-aside { border-right: 1px solid $main-color; padding-right: 1em; min-width: 10em;
+    h2 { margin: 0.5em 0 0.2em; color: $main-color;}
     > ol { flex-shrink: 0;
       li { line-height: 2; }
     }

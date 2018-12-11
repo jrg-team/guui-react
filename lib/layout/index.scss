@@ -1,5 +1,5 @@
 @import "helper";
-@include component(layout) {
+#{component(layout)} {
   display: flex;
   &-horizontal {
     flex-direction: row;
@@ -11,15 +11,15 @@
     flex-grow: 1;
   }
 }
-@include component(header) {
+#{component(header)} {
   flex-grow: 0;
   flex-shrink: 0;
 }
-@include component(footer) {
+#{component(footer)} {
   flex-grow: 0;
   flex-shrink: 0;
 }
-@include component(main) {
+#{component(main)} {
   flex-grow: 1;
   flex-shrink: 0;
 }

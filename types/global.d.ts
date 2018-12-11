@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Validator} from 'prop-types';
+import {CSSProperties} from 'react';
 
 declare global {
   interface GuuiFunctionComponent<P = {}> extends React.FunctionComponent<P> {
@@ -13,7 +13,12 @@ declare global {
     propTypes?: any
   }
 
+  interface IStyledProps {
+    className?: ClassValue;
+    style?: CSSProperties;
+  }
+
   type GFC<P = {}> = GuuiFunctionComponent<P>
 
-  type ClassValue = string | string[] | { [K: string]: boolean } | undefined | false | null
+  type ClassValue = string | string[] | { [K: string]: boolean | undefined } | undefined | false | null
 }

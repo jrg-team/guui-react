@@ -1,13 +1,10 @@
 import * as React from 'react';
 import {createScopedClasses, classes} from 'utils/classes';
-import {CSSProperties} from 'react';
 
 const componentName = 'Header';
 const sc = createScopedClasses(componentName);
 
-interface IProps {
-  className?: ClassValue;
-  style?: CSSProperties;
+interface IProps extends IStyledProps {
 };
 
 const Header: GFC<IProps> = (props) => {
