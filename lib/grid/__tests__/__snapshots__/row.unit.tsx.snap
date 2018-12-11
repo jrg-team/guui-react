@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Row align  = center 1`] = `
+<div
+  className="gu-row gu-row-alignCenter "
+  style={
+    Object {
+      "margin": undefined,
+    }
+  }
+/>
+`;
+
+exports[`Row align  = right 1`] = `
+<div
+  className="gu-row gu-row-alignRight "
+  style={
+    Object {
+      "margin": undefined,
+    }
+  }
+/>
+`;
+
+exports[`Row align  = spaceAround 1`] = `
+<div
+  className="gu-row gu-row-alignSpaceAround "
+  style={
+    Object {
+      "margin": undefined,
+    }
+  }
+/>
+`;
+
+exports[`Row align  = spaceBetween 1`] = `
+<div
+  className="gu-row gu-row-alignSpaceBetween "
+  style={
+    Object {
+      "margin": undefined,
+    }
+  }
+/>
+`;
+
+exports[`Row className  = xxx 1`] = `
+<div
+  className="gu-row gu-row-alignLeft xxx"
+  style={
+    Object {
+      "margin": undefined,
+    }
+  }
+/>
+`;
+
+exports[`Row gutter  = 16 1`] = `
+<div
+  className="gu-row gu-row-alignLeft "
+  style={
+    Object {
+      "margin": "0 -8px",
+    }
+  }
+/>
+`;
+
+exports[`Row style  = {color: 'red'} 1`] = `
+<div
+  className="gu-row gu-row-alignLeft "
+  style={
+    Object {
+      "color": "red",
+      "margin": undefined,
+    }
+  }
+/>
+`;
+
+exports[`Row verticalAlign = bottom 1`] = `
+<div
+  className="gu-row gu-row-alignLeft gu-row-verticalAlignBottom "
+  style={
+    Object {
+      "margin": undefined,
+    }
+  }
+/>
+`;
+
+exports[`Row verticalAlign = center 1`] = `
+<div
+  className="gu-row gu-row-alignLeft gu-row-verticalAlignCenter "
+  style={
+    Object {
+      "margin": undefined,
+    }
+  }
+/>
+`;

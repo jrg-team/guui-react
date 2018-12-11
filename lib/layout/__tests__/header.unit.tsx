@@ -7,6 +7,9 @@ import Header from '../header';
 configure({adapter: new Adapter()});
 
 describe(Header.displayName, () => {
+  it('DisplayName', () => {
+    expect(Header.displayName).toEqual('Header');
+  });
   describe('props: className', () => {
     it('= xxx', () => {
       const tree = renderer

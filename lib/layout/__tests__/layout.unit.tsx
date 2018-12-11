@@ -7,6 +7,9 @@ import Layout from '../layout';
 configure({adapter: new Adapter()});
 
 describe(Layout.displayName, () => {
+  it('DisplayName', () => {
+    expect(Layout.displayName).toEqual('Layout');
+  });
   describe('props: dir', () => {
     it('default = vertical', () => {
       const tree = renderer

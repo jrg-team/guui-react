@@ -5,12 +5,12 @@ import {CSSProperties} from 'react';
 const componentName = 'Main';
 const sc = createScopedClasses(componentName);
 
-interface IMainProps {
-  className?: string;
+interface IProps {
+  className?: ClassValue;
   style?: CSSProperties;
 };
 
-const Main: GFC<IMainProps> = (props) => {
+const Main: GFC<IProps> = (props) => {
   return (
     <div className={classes(sc(), props.className)} style={props.style}>
       {props.children}

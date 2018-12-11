@@ -1,0 +1,28 @@
+@import "helper";
+@include component(row) { display: flex; flex-wrap: wrap; flex-direction: row;
+  &-alignRight { flex-direction: row-reverse; }
+  &-alignCenter { justify-content: center; }
+  &-alignSpaceBetween { justify-content: space-between; }
+  &-alignSpaceAround { justify-content: space-around; }
+  &-alignLeft, &-alignCenter, &-alignSpaceBetween, &-alignSpaceAround {
+    @include component(col) {
+      @for $i from 1 through 24 {
+        &-offset#{$i} { margin-left: ($i/24) * 100%;; }
+      }
+    }
+  }
+  &-alignRight {
+    @include component(col) {
+      @for $i from 1 through 24 {
+        &-offset#{$i} { margin-right: ($i/24) * 100%;; }
+      }
+    }
+  }
+  &-verticalAlignCenter { align-items: center; }
+  &-verticalAlignBottom { align-items: flex-end; }
+}
+@include component(col) {
+  @for $i from 1 through 24 {
+    &-span#{$i} { width: ($i/24) * 100%; }
+  }
+}

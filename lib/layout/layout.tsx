@@ -6,13 +6,13 @@ import {CSSProperties} from 'react';
 const componentName = 'Layout';
 const sc = createScopedClasses(componentName);
 
-interface ILayoutProps {
-  dir?: string;
-  className?: string;
+interface IProps {
+  dir?: 'horizontal' | 'vertical';
+  className?: ClassValue;
   style?: CSSProperties;
 };
 
-const Layout: GFC<ILayoutProps> = (props) => {
+const Layout: GFC<IProps> = (props) => {
   return (
     <div className={classes(sc('', props.dir), props.className)} style={props.style}>
       {props.children}
@@ -24,8 +24,6 @@ Layout.defaultProps = {
   dir: 'vertical'
 };
 Layout.propTypes = {
-  // dir: PropTypes.oneOf(['horizontal', 'vertical'])
   dir: PropTypes.oneOf(['horizontal', 'vertical']).isRequired,
-  className: PropTypes.string
 };
 export default Layout;

@@ -3,23 +3,23 @@
   min-height: 40vh;
   margin-bottom: 32px;
   .header {
-    background: lighten(map_get($colors, blue), 20%);
+    background: lighten($blue, 20%);
     padding: 10px;
     color: white;
   }
   .aside {
-    background: lighten(map_get($colors, blue), 10%);
+    background: lighten($blue, 10%);
     padding: 10px;
     color: white;
     width: 120px;
   }
   .main {
-    background: map_get($colors, blue);
+    background: $blue;
     padding: 10px;
     color: white;
   }
   .footer {
-    background: lighten(map_get($colors, blue), 20%);
+    background: lighten($blue, 20%);
     padding: 10px;
     color: white;
   }

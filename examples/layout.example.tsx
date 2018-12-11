@@ -20,15 +20,13 @@ function LayoutExample(props: any) {
       </Layout>
       <h2>示例2</h2>
       <p>经典布局</p>
-      <Layout dir="vertical" className="LayoutExample">
-        <Header className="header">
-          header
-        </Header>
-        <Layout dir="horizontal">
+      <Layout dir="horizontal" className="LayoutExample">
+        <Aside className="aside">aside</Aside>
+        <Layout>
+          <Header className="header">header</Header>
           <Main className="main">main</Main>
-          <Aside className="aside">aside</Aside>
+          <Footer className="footer">footer</Footer>
         </Layout>
-        <Footer className="footer">footer</Footer>
       </Layout>
     </div>
   );

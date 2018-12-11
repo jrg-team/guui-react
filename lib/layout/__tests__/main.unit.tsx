@@ -7,6 +7,9 @@ import Main from '../main';
 configure({adapter: new Adapter()});
 
 describe(Main.displayName, () => {
+  it('DisplayName', () => {
+    expect(Main.displayName).toEqual('Main');
+  });
   describe('props: className', () => {
     it('= xxx', () => {
       const tree = renderer

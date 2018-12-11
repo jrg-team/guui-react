@@ -10,9 +10,14 @@ export function lowerFirstLetter(name: string) {
   return name.charAt(0).toLowerCase() + name.slice(1);
 }
 
+export function upperFirstLetter(name: string) {
+  return name.charAt(0).toUpperCase() + name.slice(1);
+}
+
 export function plural(singular: string): string {
   const special: any = {
     quiz: 'quizzes',
+    person: 'people'
   }
   return special[singular] || `${singular}s`
 }

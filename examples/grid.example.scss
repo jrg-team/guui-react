@@ -1,0 +1,15 @@
+@import "helper";
+.GridExample {
+  min-height: 40vh;
+  margin-bottom: 32px;
+  .col {
+    background: $blue;
+    height: 2em;
+    margin: 4px 0;
+  }
+  .noGutter {
+    .col {
+      border: 1px solid lighten($blue, 20%);
+    }
+  }
+}

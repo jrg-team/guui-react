@@ -25,7 +25,7 @@ describe('Layout', () => {
   it('combines Main/Header/Footer/Aside in another way', () => {
     const tree = renderer
       .create(
-        <Layout>
+        <Layout dir="horizontal">
           <Aside></Aside>
           <Layout>
             <Header></Header>

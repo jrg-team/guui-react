@@ -23,5 +23,7 @@ a {text-decoration: none; color: black;}
       li { line-height: 2; }
     }
   }
-  &-main { background: white; margin: 24px 32px; }
+  &-main { background: white; margin: 24px 32px;
+    h2 {margin: 1em 0;}
+  }
 }

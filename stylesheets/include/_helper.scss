@@ -7,6 +7,11 @@ $colors: (
   black: #424242
 );
 
+$blue: map_get($colors, blue);
+$red: map_get($colors, red);
+$green: map_get($colors, green);
+$black: map_get($colors, black);
+
 @mixin component($name) {
   .#{$prefix}-#{$name} {
     @content

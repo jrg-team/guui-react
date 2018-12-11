@@ -6,7 +6,7 @@ import Component from './component'
 export interface IProps {
   title: string;
   name: string;
-  className?: string;
+  className?: ClassValue;
 }
 
 interface IState {

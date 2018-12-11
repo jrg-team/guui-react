@@ -7,6 +7,9 @@ import Footer from '../footer';
 configure({adapter: new Adapter()});
 
 describe(Footer.displayName, () => {
+  it('DisplayName', () => {
+    expect(Footer.displayName).toEqual('Footer');
+  });
   describe('props: className', () => {
     it('= xxx', () => {
       const tree = renderer

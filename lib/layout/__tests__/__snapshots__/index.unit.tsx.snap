@@ -25,7 +25,7 @@ exports[`Layout combines Main/Header/Footer/Aside 1`] = `
 
 exports[`Layout combines Main/Header/Footer/Aside in another way 1`] = `
 <div
-  className="gu-layout gu-layout-vertical "
+  className="gu-layout gu-layout-horizontal "
 >
   <div
     className="gu-aside "

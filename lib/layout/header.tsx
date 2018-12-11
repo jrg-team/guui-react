@@ -5,12 +5,12 @@ import {CSSProperties} from 'react';
 const componentName = 'Header';
 const sc = createScopedClasses(componentName);
 
-interface IHeaderProps {
-  className?: string;
+interface IProps {
+  className?: ClassValue;
   style?: CSSProperties;
 };
 
-const Header: GFC<IHeaderProps> = (props) => {
+const Header: GFC<IProps> = (props) => {
   return (
     <div className={classes(sc(), props.className)} style={props.style}>
       {props.children}

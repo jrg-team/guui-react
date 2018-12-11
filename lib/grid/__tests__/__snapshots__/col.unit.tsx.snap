@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Col className  = xxx 1`] = `
+<div
+  className="gu-col gu-col-span1"
+  style={
+    Object {
+      "padding": undefined,
+    }
+  }
+>
+  <div
+    className="xxx"
+  />
+</div>
+`;
+
+exports[`Col gutter = 16 1`] = `
+<div
+  className="gu-col gu-col-span1"
+  style={
+    Object {
+      "padding": "0 8px",
+    }
+  }
+>
+  <div
+    className=""
+  />
+</div>
+`;
+
+exports[`Col offset  = 1 1`] = `
+<div
+  className="gu-col gu-col-span1 gu-col-offset1"
+  style={
+    Object {
+      "padding": undefined,
+    }
+  }
+>
+  <div
+    className=""
+  />
+</div>
+`;
+
+exports[`Col span  = 2 1`] = `
+<div
+  className="gu-col gu-col-span2"
+  style={
+    Object {
+      "padding": undefined,
+    }
+  }
+>
+  <div
+    className=""
+  />
+</div>
+`;
+
+exports[`Col style  = {color: 'red'} 1`] = `
+<div
+  className="gu-col gu-col-span1"
+  style={
+    Object {
+      "padding": undefined,
+    }
+  }
+>
+  <div
+    className=""
+    style={
+      Object {
+        "color": "red",
+      }
+    }
+  />
+</div>
+`;

@@ -5,12 +5,12 @@ import {CSSProperties} from 'react';
 const componentName = 'Footer';
 const sc = createScopedClasses(componentName);
 
-interface IFooterProps {
-  className?: string;
+interface IProps {
+  className?: ClassValue;
   style?: CSSProperties
 };
 
-const Footer: GFC<IFooterProps> = (props) => {
+const Footer: GFC<IProps> = (props) => {
   return (
     <div className={classes(sc(), props.className)} style={props.style}>
       {props.children}
