@@ -1,20 +1,26 @@
+@import "helper";
 .LayoutExample {
   min-height: 40vh;
   margin-bottom: 32px;
   .header {
-    background: #333;
+    background: lighten(map_get($colors, blue), 20%);
+    padding: 10px;
     color: white;
   }
   .aside {
-    background: green;
+    background: lighten(map_get($colors, blue), 10%);
+    padding: 10px;
     color: white;
+    width: 120px;
   }
   .main {
-    background: red;
+    background: map_get($colors, blue);
+    padding: 10px;
     color: white;
   }
   .footer {
-    background: #666;
+    background: lighten(map_get($colors, blue), 20%);
+    padding: 10px;
     color: white;
   }
 }

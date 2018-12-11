@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout combines Main/Header/Footer/Aside 1`] = `
+<div
+  className="gu-layout gu-layout-vertical "
+>
+  <div
+    className="gu-header "
+  />
+  <div
+    className="gu-layout gu-layout-horizontal "
+  >
+    <div
+      className="gu-aside "
+    />
+    <div
+      className="gu-main "
+    />
+  </div>
+  <div
+    className="gu-footer "
+  />
+</div>
+`;
+
+exports[`Layout combines Main/Header/Footer/Aside in another way 1`] = `
+<div
+  className="gu-layout gu-layout-vertical "
+>
+  <div
+    className="gu-aside "
+  />
+  <div
+    className="gu-layout gu-layout-vertical "
+  >
+    <div
+      className="gu-header "
+    />
+    <div
+      className="gu-main "
+    />
+    <div
+      className="gu-footer "
+    />
+  </div>
+</div>
+`;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {lowerFirstLetter} from './namer';
+import {lowerFirstLetter} from 'utils/namer';
 
 export function scopedClasses(this: any, ...args: ClassValue[]): string {
   const prefix = ['gu', lowerFirstLetter(this.constructor.name)]
@@ -39,6 +39,8 @@ export function classes(this: any, ...args: ClassValue[]): string {
     return result.join(' ');
   }).join(' ');
 }
+
+console.log(React.Component);
 
 export default class Component<P, S> extends React.Component<P, S> {
   scopedClasses = scopedClasses

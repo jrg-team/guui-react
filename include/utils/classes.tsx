@@ -1,4 +1,4 @@
-import {lowerFirstLetter} from '../namer';
+import {lowerFirstLetter} from './namer';
 
 const prefix = 'gu';
 
@@ -15,17 +15,19 @@ function classArray(this: void, ...args: ClassValue[]): string[] {
   })));
 }
 
-export function classes(this: void, ...args: ClassValue[]): string {
+export default function classes(this: void, ...args: ClassValue[]): string {
   return classArray.apply(null, args).join(' ');
 }
 
-export function createScopedClasses(componentName: string): (...args: ClassValue[]) => string {
+function createScopedClasses(componentName: string): (...args: ClassValue[]) => string {
   return (...args) => {
     return classArray.apply(null, args.length === 0 ? [''] : args).map((c: string) => {
       return [prefix, lowerFirstLetter(componentName), c].filter(v => v).join('-');
     }).join(' ');
   };
 }
+
+export {createScopedClasses, classes};
 
 function unique(array: any[]): any[] {
   return Array.from(new Set(array));

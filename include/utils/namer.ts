@@ -10,8 +10,8 @@ export function lowerFirstLetter(name: string) {
   return name.charAt(0).toLowerCase() + name.slice(1);
 }
 
-export function plural(singular: string) {
-  const special = {
+export function plural(singular: string): string {
+  const special: any = {
     quiz: 'quizzes',
   }
   return special[singular] || `${singular}s`

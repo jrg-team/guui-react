@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Layout, Main, Header, Footer, Aside} from 'lib/layout/index';
+import {Layout, Main, Header, Footer, Aside} from '../lib/layout/index';
 import './layout.example.scss';
 
 function LayoutExample(props: any) {

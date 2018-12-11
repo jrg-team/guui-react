@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Aside props: className = xxx 1`] = `
+<div
+  className="gu-aside xxx"
+/>
+`;
+
+exports[`Aside props: style = {color: 'red'} 1`] = `
+<div
+  className="gu-aside "
+  style={
+    Object {
+      "color": "red",
+    }
+  }
+/>
+`;

@@ -1,4 +1,4 @@
-var path = require('path');
+const path = require('path')
 const { CheckerPlugin } = require('awesome-typescript-loader');
 module.exports = {
   entry: { guui: './lib/index.tsx' },
@@ -10,10 +10,10 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
     alias: {
-      lib: path.resolve(__dirname, 'lib'),
       stylesheets: path.resolve(__dirname, 'stylesheets'),
       examples: path.resolve(__dirname, 'examples'),
-    }
+    },
+    modules: [path.resolve(__dirname, 'include'), 'node_modules']
   },
   module: {
     rules: [
@@ -36,8 +36,16 @@ module.exports = {
         loader: 'text-loader',
       },
       {
-        test: /\.s(a|c)ss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
+        test: /\.s([ac])ss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: "sass-loader",
+            options: {
+              includePaths: [path.resolve(__dirname, 'stylesheets', 'include')]
+            }
+          }]
       }
     ],
   },

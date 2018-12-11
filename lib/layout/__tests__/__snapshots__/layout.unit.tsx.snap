@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout props: className = xxx 1`] = `
+<div
+  className="gu-layout gu-layout-vertical xxx"
+/>
+`;
+
+exports[`Layout props: dir = horizontal 1`] = `
+<div
+  className="gu-layout gu-layout-horizontal "
+/>
+`;
+
+exports[`Layout props: dir default = vertical 1`] = `
+<div
+  className="gu-layout gu-layout-vertical "
+/>
+`;
+
+exports[`Layout props: style = {color: 'red'} 1`] = `
+<div
+  className="gu-layout gu-layout-vertical "
+  style={
+    Object {
+      "color": "red",
+    }
+  }
+/>
+`;

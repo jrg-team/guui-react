@@ -1,5 +1,12 @@
 $prefix: gu;
 
+$colors: (
+  red: #f1453d,
+  green: #8cc152,
+  blue: #4a90e2,
+  black: #424242
+);
+
 @mixin component($name) {
   .#{$prefix}-#{$name} {
     @content

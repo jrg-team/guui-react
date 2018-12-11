@@ -2,10 +2,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "lib": ["lib/"],
+      "utils/*": ["include/utils/*"],
       "stylesheets": ["stylesheets/"],
       "examples": ["examples/"]
     },
+    "rootDirs": ["include"],
     "outDir": "build/dist",
     "module": "esnext",
     "target": "es5",
@@ -21,8 +22,7 @@
     "noImplicitAny": true,
     "importHelpers": true,
     "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
-    // "esModuleInterop": true,
+    // "suppressImplicitAnyIndexErrors": true,
     // https://github.com/Microsoft/TypeScript/issues/28762#issuecomment-443406607
     "allowSyntheticDefaultImports": true,
     "noUnusedLocals": true
@@ -30,8 +30,10 @@
   "include": [
     "example.tsx",
     "lib/**/*",
+    "include/**/*",
     "examples/**/*",
-    "types/**/*"
+    "types/**/*",
+    "test/**/*"
   ],
   "exclude": [
     "node_modules",

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header props: className = xxx 1`] = `
+<div
+  className="gu-header xxx"
+/>
+`;
+
+exports[`Header props: style = {color: 'red'} 1`] = `
+<div
+  className="gu-header "
+  style={
+    Object {
+      "color": "red",
+    }
+  }
+/>
+`;

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main props: className = xxx 1`] = `
+<div
+  className="gu-main xxx"
+/>
+`;
+
+exports[`Main props: style = {color: 'red'} 1`] = `
+<div
+  className="gu-main "
+  style={
+    Object {
+      "color": "red",
+    }
+  }
+/>
+`;

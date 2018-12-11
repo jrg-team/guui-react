@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import {HashRouter as Router, Route, Link} from 'react-router-dom';
 import 'examples/global.scss';
 import 'stylesheets/_index.scss';
-import {Layout, Main, Header, Footer, Aside} from 'lib/layout/index';
+import {Layout, Main, Header, Footer, Aside} from './lib/layout/index';
 import LayoutExample from 'examples/layout.example';
 import Home from 'examples/home';
 import logo from 'examples/guui.svg';

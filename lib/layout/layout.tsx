@@ -1,18 +1,20 @@
 import * as React from 'react';
-import {classes, createScopedClasses} from 'lib/shared/classes';
+import {classes, createScopedClasses} from 'utils/classes';
 import * as PropTypes from 'prop-types';
+import {CSSProperties} from 'react';
 
 const componentName = 'Layout';
 const sc = createScopedClasses(componentName);
 
 interface ILayoutProps {
-  dir?: string,
-  className?: string,
+  dir?: string;
+  className?: string;
+  style?: CSSProperties;
 };
 
 const Layout: GFC<ILayoutProps> = (props) => {
   return (
-    <div className={classes(sc('', props.dir), props.className)}>
+    <div className={classes(sc('', props.dir), props.className)} style={props.style}>
       {props.children}
     </div>
   );
