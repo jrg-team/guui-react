@@ -12,6 +12,7 @@ interface IProps extends IStyledProps {
 const Layout: GFC<IProps> = (props) => {
   return (
     <div className={classes(sc('', props.dir), props.className)} style={props.style}>
+
       {props.children}
     </div>
   );
