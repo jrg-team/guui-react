@@ -32,6 +32,9 @@ export default function (props: any) {
       <h2>设置为loading</h2>
       <div style={{padding: '8px 0'}}>
         <Button level="important" loading={true}>加载中按钮</Button>
+        <Button level="important" loading={state.loading}
+          onClick={() => setState({loading: !state.loading})}
+        >点我就会loading</Button>
         <Button level="important" loading={state.loading} icon="alipay"
           onClick={() => setState({loading: !state.loading})}
         >点我就会loading</Button>

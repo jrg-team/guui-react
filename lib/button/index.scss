@@ -1,5 +1,5 @@
 @import "helper";
-#{component(button)} {
+#{component(button)} {transition: all $transition-duration;
   display: inline-flex; vertical-align: middle; justify-content: center; align-items: center; border-radius: $input-border-radius; border: none;
   margin-left: 4px; margin-right: 4px; line-height: 1.2;
   & { height: $input-height; font-size: 14px; padding: 0 16px;
@@ -10,7 +10,7 @@
   &:last-child { margin-right: 0; }
   &:focus {outline: none;}
   &:hover {cursor: pointer;}
-  &:focus, &:hover { transition: all $transition-duration; box-shadow: 0 1px 3px fade_out(black, 0.6); }
+  &:focus, &:hover { box-shadow: 0 1px 3px fade_out(black, 0.6); }
   &#{component(button, ghost)} { background: transparent;
     &:focus, &:hover { box-shadow: none; }
   }
