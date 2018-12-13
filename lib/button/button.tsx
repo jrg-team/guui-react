@@ -69,6 +69,7 @@ const sc = createScopedClasses(componentName);
 export interface IProps extends IStyledProps {
   icon?: string;
   iconPosition?: 'left' | 'right';
+  iconFill?: string;
   size?: 'small' | 'default' | 'large';
   level?: 'default' | 'important' | 'danger';
   ghost?: boolean;
@@ -85,8 +86,8 @@ export interface IProps extends IStyledProps {
 const Button: GFC<IProps> = (props) => {
   const button = (
     <button className={classes(sc('', props.level, {ghost: props.ghost}), props.className)} style={props.style}>
-      <Icon name="alipay"></Icon>
-      {props.children}
+      {props.icon && <Icon name={props.icon} fill={props.iconFill}></Icon>}
+      {typeof props.children === 'string' ? <span>{props.children}</span> : props.children}
     </button>
   );
   const link = <a href="#"></a>;

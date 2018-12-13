@@ -26,11 +26,17 @@ $input-border-radius: 4px;
 
 $transition-duration: 200ms;
 
-
+@keyframes #{$prefix}-keyframes-spin {
+  0% {transform: rotate(0);}
+  100% {transform: rotate(360deg);}
+}
 @mixin component($name) {
   .#{$prefix}-#{$name} {
     @content;
   }
+}
+@mixin spin() {
+  animation: #{$prefix}-keyframes-spin 1s linear infinite;
 }
 @function component($name, $modifier:null) {
   @if $modifier == null {

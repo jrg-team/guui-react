@@ -18,9 +18,9 @@ export default function (props: any) {
       </div>
       <h2>带图标的按钮</h2>
       <div style={{padding: 8}}>
-        <Button icon="alipay">普通按钮</Button>
-        <Button level="important">重要按钮</Button>
-        <Button level="danger">危险按钮</Button>
+        <Button icon="alipay" iconFill="#00AAEE">普通按钮</Button>
+        <Button icon="wechat" iconFill="#3CB034">重要按钮</Button>
+        <Button icon="loading">危险按钮</Button>
       </div>
 
     </div>

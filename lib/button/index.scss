@@ -1,6 +1,13 @@
 @import "helper";
-#{component(button)} { height: $input-height; display: inline-flex; justify-content: center; align-items: center;
-  font-size: 14px; line-height: 20px; padding: 0 16px; border-radius: $input-border-radius; margin: 0 4px; border: none;
+#{component(button)} { height: $input-height; display: inline-flex; vertical-align: middle; justify-content: center;
+  align-items: center; font-size: 14px; line-height: 20px; padding: 0 16px; border-radius: $input-border-radius;
+  margin-left: 4px; margin-right: 4px; border: none;
+  &:first-child {
+    margin-left: 0;
+  }
+  &:last-child {
+    margin-right: 0;
+  }
   &:focus {outline: none;}
   &:hover {cursor: pointer;}
   &:focus, &:hover {
