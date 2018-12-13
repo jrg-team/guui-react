@@ -70,7 +70,7 @@ export interface IProps extends IStyledProps {
   icon?: string;
   iconPosition?: 'left' | 'right';
   iconFill?: string;
-  size?: 'small' | 'default' | 'large';
+  size?: 'small' | 'big';
   level?: 'default' | 'important' | 'danger';
   ghost?: boolean;
   badge?: number;
@@ -84,9 +84,20 @@ export interface IProps extends IStyledProps {
 };
 
 const Button: GFC<IProps> = (props) => {
+  const disabled = props.loading || props.disabled;
+  const buttonClass = classes(sc('', props.level, props.size, {
+    ghost: props.ghost,
+    disabled: props.disabled
+  }), props.className);
+  const icon = props.icon && <Icon name={props.icon} fill={props.iconFill}/>;
+  const loadingIcon = <Icon name="loading"/>;
+  const onClick = (e: React.MouseEvent) => {
+    props.onClick && props.onClick.call(e.target, e);
+  };
   const button = (
-    <button className={classes(sc('', props.level, {ghost: props.ghost}), props.className)} style={props.style}>
-      {props.icon && <Icon name={props.icon} fill={props.iconFill}></Icon>}
+    <button className={buttonClass} style={props.style} onClick={onClick}
+      disabled={disabled}>
+      {props.loading ? loadingIcon : icon}
       {typeof props.children === 'string' ? <span>{props.children}</span> : props.children}
     </button>
   );
@@ -96,7 +107,6 @@ const Button: GFC<IProps> = (props) => {
 };
 Button.displayName = componentName;
 Button.defaultProps = {
-  size: 'default',
   level: 'default',
   ghost: false,
   iconPosition: 'left',

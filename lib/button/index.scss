@@ -1,63 +1,45 @@
 @import "helper";
-#{component(button)} { height: $input-height; display: inline-flex; vertical-align: middle; justify-content: center;
-  align-items: center; font-size: 14px; line-height: 20px; padding: 0 16px; border-radius: $input-border-radius;
-  margin-left: 4px; margin-right: 4px; border: none;
-  &:first-child {
-    margin-left: 0;
+#{component(button)} {
+  display: inline-flex; vertical-align: middle; justify-content: center; align-items: center; border-radius: $input-border-radius; border: none;
+  margin-left: 4px; margin-right: 4px; line-height: 1.2;
+  & { height: $input-height; font-size: 14px; padding: 0 16px;
+    &-big { height: $input-height-big; font-size: 20px; padding: 0 24px; }
+    &-small { height: $input-height-small; font-size: 12px; padding: 0 12px; }
   }
-  &:last-child {
-    margin-right: 0;
-  }
+  &:first-child { margin-left: 0; }
+  &:last-child { margin-right: 0; }
   &:focus {outline: none;}
   &:hover {cursor: pointer;}
-  &:focus, &:hover {
-    transition: all $transition-duration;
-    box-shadow: 0 1px 3px fade_out(black, 0.6);
+  &:focus, &:hover { transition: all $transition-duration; box-shadow: 0 1px 3px fade_out(black, 0.6); }
+  &#{component(button, ghost)} { background: transparent;
+    &:focus, &:hover { box-shadow: none; }
   }
-  &#{component(button, ghost)} {
-    background: transparent;
-    &:focus, &:hover {
-      box-shadow: none;
+  &-default { border: 1px solid $input-border-color; color: $text-color;
+    &:focus, &:hover { color: $main-color; border-color: $main-color; }
+    &#{component(button, ghost)} { color: $white; border-color: $white;
+      &:focus, &:hover { color: $main-color; border-color: $main-color; }
+    }
+    &#{component(button, disabled)} {
+      &, &:hover { border-color: #ccc; color: #ccc; box-shadow: none; cursor: not-allowed; }
     }
   }
-  &-default {
-    border: 1px solid $input-border-color;
-    color: $text-color;
-    &#{component(button, ghost)} {
-      color: $white;
-      border-color: $white;
+  @mixin colored-button($color) {
+    border: 1px solid darken($color, 5%); background: darken($color, 5%); color: $white;
+    &:focus, &:hover { background: $color; }
+    &#{component(button, ghost)} { color: darken($color, 5%);
+      &:focus, &:hover { color: $white; }
     }
-    &:focus, &:hover {
-      color: $main-color;
-      border-color: $main-color;
+    &#{component(button, disabled)} {
+      &, &:hover { background: lighten($color, 25%); border-color: lighten($color, 25%); box-shadow: none; cursor: not-allowed; }
+    }
+    &#{component(button, ghost)}#{component(button, disabled)} {
+      background: transparent; color: desaturate($color, 50%); border-color: desaturate($color, 50%);
     }
   }
   &-important {
-    border: 1px solid darken($main-color, 5%);
-    background: darken($main-color, 5%);
-    color: $white;
-    &#{component(button, ghost)} {
-      color: darken($main-color, 5%);
-      &:focus, &:hover {
-        color: $white;
-      }
-    }
-    &:focus, &:hover {
-      background: $main-color;
-    }
+    @include colored-button($main-color);
   }
   &-danger {
-    border: 1px solid darken($red, 5%);
-    background: darken($red, 5%);
-    color: $white;
-    &#{component(button, ghost)} {
-      color: darken($red, 5%);
-      &:focus, &:hover {
-        color: $white;
-      }
-    }
-    &:focus, &:hover {
-      background: $red;
-    }
+    @include colored-button($red);
   }
 }
