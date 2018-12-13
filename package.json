@@ -15,13 +15,15 @@
   },
   "peerDependencies": {},
   "scripts": {
-    "start": "webpack-dev-server --config webpack.config.dev.js",
-    "build": "webpack -p --config webpack.config.prod.js",
-    "docs": "webpack -p --config webpack.config.docs.js",
-    "test": "jest --config=jest.config.js",
-    "ci": "JEST_JUNIT_OUTPUT=./test-results/jest/results.xml jest --config=jest.config.ci.js"
+    "start": "NODE_ENV=development webpack-dev-server --config webpack.config.dev.js",
+    "build": "NODE_ENV=production webpack -p --config webpack.config.prod.js",
+    "docs": "NODE_ENV=production webpack -p --config webpack.config.docs.js",
+    "test": "NODE_ENV=test jest --config=jest.config.js",
+    "ci": "NODE_ENV=test JEST_JUNIT_OUTPUT=./test-results/jest/results.xml jest --config=jest.config.ci.js"
   },
   "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
     "@reach/router": "^1.2.1",
     "@types/enzyme": "^3.1.14",
     "@types/enzyme-adapter-react-16": "^1.0.3",
@@ -35,6 +37,8 @@
     "@types/react-test-renderer": "^16.0.3",
     "@types/webpack-env": "^1.13.6",
     "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.0.4",
+    "babel-preset-react-app": "^6.1.0",
     "css-loader": "^1.0.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
