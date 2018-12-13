@@ -62,6 +62,7 @@
 import * as React from 'react';
 import {classes, createScopedClasses} from 'utils/classes';
 import Icon from '../icon/icon';
+import {Fragment} from 'react';
 
 const componentName = 'Button';
 const sc = createScopedClasses(componentName);
@@ -92,18 +93,29 @@ const Button: GFC<IProps> = (props) => {
   const icon = props.icon && <Icon name={props.icon} fill={props.iconFill}/>;
   const loadingIcon = <Icon name="loading"/>;
   const onClick = (e: React.MouseEvent) => {
+    if (props.disabled) {return e.preventDefault(); }
     props.onClick && props.onClick.call(e.target, e);
   };
-  const button = (
-    <button className={buttonClass} style={props.style} onClick={onClick}
-      disabled={disabled}>
+  const inner = (
+    <Fragment>
       {props.loading ? loadingIcon : icon}
       {typeof props.children === 'string' ? <span>{props.children}</span> : props.children}
-    </button>
+    </Fragment>
   );
-  const link = <a href="#"></a>;
+  const button = props.href === undefined ?
+    (
+      <button className={buttonClass} style={props.style} onClick={onClick} disabled={disabled}>
+        {inner}
+      </button>
+    ) :
+    (
+      <a href={props.href} target={props.target} className={buttonClass} style={props.style} onClick={onClick} tabIndex={props.disabled ? -1 : undefined}>
+        {inner}
+      </a>
+    )
+  ;
 
-  return props.href ? link : button;
+  return button;
 };
 Button.displayName = componentName;
 Button.defaultProps = {
