@@ -61,11 +61,12 @@
 
 import * as React from 'react';
 import {classes, createScopedClasses} from 'utils/classes';
+import Icon from '../icon/icon';
 
 const componentName = 'Button';
 const sc = createScopedClasses(componentName);
 
-interface IProps extends IStyledProps {
+export interface IProps extends IStyledProps {
   icon?: string;
   iconPosition?: 'left' | 'right';
   size?: 'small' | 'default' | 'large';
@@ -84,6 +85,7 @@ interface IProps extends IStyledProps {
 const Button: GFC<IProps> = (props) => {
   const button = (
     <button className={classes(sc('', props.level, {ghost: props.ghost}), props.className)} style={props.style}>
+      <Icon name="alipay"></Icon>
       {props.children}
     </button>
   );

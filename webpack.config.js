@@ -28,7 +28,7 @@ module.exports = {
         loader: 'svg-sprite-loader',
       },
       {
-        test: /\.svg$/,
+        test: /guui\.svg$/,
         loader: 'file-loader',
       },
       {

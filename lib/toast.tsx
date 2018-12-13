@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {scopedClasses} from './component'
-import Icon from './icon'
+import Icon from './icon/icon'
 
 interface IProps {
   type: 'info' | 'success' | 'error' | 'warn';

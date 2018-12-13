@@ -4,7 +4,7 @@ import Button from '../lib/button/button';
 export default function (props: any) {
   return (
     <div className="ButtonExample">
-      <h2>普通</h2>
+      <h2>普通按钮</h2>
       <div style={{padding: 8}}>
         <Button>普通按钮</Button>
         <Button level="important">重要按钮</Button>
@@ -16,6 +16,13 @@ export default function (props: any) {
         <Button ghost={true} level="important">重要按钮</Button>
         <Button ghost={true} level="danger">危险按钮</Button>
       </div>
+      <h2>带图标的按钮</h2>
+      <div style={{padding: 8}}>
+        <Button icon="alipay">普通按钮</Button>
+        <Button level="important">重要按钮</Button>
+        <Button level="danger">危险按钮</Button>
+      </div>
+
     </div>
   );
 }
