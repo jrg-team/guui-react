@@ -42,4 +42,15 @@
   &-danger {
     @include colored-button($red);
   }
+  &-loadingIcon {
+    &-animationStart {
+      margin-left: -16px !important;
+      opacity: 0;
+    }
+    &-animationEnd {
+      margin-left: 0 !important;
+      opacity: 1;
+      transition: margin-left 200ms, opacity 200ms;
+    }
+  }
 }

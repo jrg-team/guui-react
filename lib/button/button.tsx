@@ -1,68 +1,7 @@
-// import * as PropTypes from 'prop-types';
-// import * as React from 'react';
-// import Icon from './icon'
-// import Component from './component'
-//
-// export interface IProps {
-//   icon?: string;
-//   iconPosition?: 'left' | 'right';
-//   size: 'small' | 'default' | 'large';
-//   color: 'blue' | 'green' | 'red' | 'white';
-//   ghost: boolean;
-//   badge?: number;
-//   href?: string;
-//   target?: string;
-//   disabled?: boolean;
-//   loading?: boolean;
-//   type?: 'button' | 'submit';
-//   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-//   onTouch?: React.TouchEventHandler<HTMLButtonElement>;
-// }
-//
-// interface IState {
-//   x: string
-// }
-//
-// export class Button extends Component<IProps, IState> {
-//   static propTypes = {
-//     icon: PropTypes.string,
-//   }
-//
-//   public static defaultProps: Partial<IProps> = {
-//     iconPosition: 'left',
-//     size: 'default',
-//     type: 'button',
-//     color: 'white',
-//     ghost: false
-//   };
-//   constructor(props: IProps) {
-//     super(props)
-//     this.state = {
-//       x: '1'
-//     }
-//   }
-//
-//   onClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-//     this.setState({
-//       x: '2'
-//     })
-//     this.props.onClick && this.props.onClick(e)
-//   }
-//   render() {
-//     return (
-//       <button onClick={this.onClick} className={this.sc()} disabled={this.props.disabled}>
-//         {this.props.children}
-//         <Icon name="alipay"></Icon>
-//         <div className={this.sc('icon', 'active')}></div>
-//       </button>
-//     );
-//   }
-// }
-
 import * as React from 'react';
 import {classes, createScopedClasses} from 'utils/classes';
 import Icon from '../icon/icon';
-import {Fragment} from 'react';
+import {Fragment, useState} from 'react';
 
 const componentName = 'Button';
 const sc = createScopedClasses(componentName);
@@ -85,13 +24,29 @@ export interface IProps extends IStyledProps {
 };
 
 const Button: GFC<IProps> = (props) => {
+  const [state] = useState({
+    hideLoadingAtFirst: props.loading !== true && !props.icon
+  });
+  const afterLoadingIconMount = (el: Element) => {
+    if (!state.hideLoadingAtFirst) {return;}
+    el.classList.add('gu-button-loadingIcon-animationStart');
+    el.getBoundingClientRect();
+    el.classList.add('gu-button-loadingIcon-animationEnd');
+    el.addEventListener('transitionend', () => {
+      el.classList.remove('gu-button-loadingIcon-animationStart');
+      el.classList.remove('gu-button-loadingIcon-animationEnd');
+    });
+  };
   const disabled = props.loading || props.disabled;
   const buttonClass = classes(sc('', props.level, props.size, {
     ghost: props.ghost,
     disabled: props.disabled
   }), props.className);
-  const icon = props.icon && <Icon name={props.icon} fill={props.iconFill}/>;
-  const loadingIcon = <Icon name="loading"/>;
+  const icon = props.icon && <Icon key="notLoadingIcon" name={props.icon} fill={props.iconFill}/>;
+  const loadingIcon = (
+    <Icon key="loadingIcon" afterMount={afterLoadingIconMount} name="loading"
+      className={sc('loadingIcon')}/>
+  );
   const onClick = (e: React.MouseEvent) => {
     if (props.disabled) {return e.preventDefault(); }
     props.onClick && props.onClick.call(e.target, e);
