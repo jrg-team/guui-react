@@ -8,3 +8,10 @@
 2. 所有组件不得将容器的样式（尤其是宽高和zIndex）写死，必须可以接受外部 CSS 的覆盖。
 3. 必须先写测试，再实现功能。分支覆盖率不得低于 90%。
 4. 除了 react、react-dom 和 prop-types，不得有其他外部依赖
+
+## 如何开发
+
+1. `cd guui-react`
+2. `yarn start`, 打开 http://localhost:8080
+3. 创建组件 `yarn task create component 组件名` 
+4. 打开 example.tsx 添加路由和组件的展示代码 
