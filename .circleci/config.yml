@@ -12,7 +12,7 @@ jobs:
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
-      - run: npm install
+      - run: yarn install
       - save_cache:
           paths:
             - node_modules
@@ -27,7 +27,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
-      - run: npm run build
+      - run: yarn build
       - persist_to_workspace:
           root: .
           paths:
@@ -38,7 +38,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
-      - run: npm run test
+      - run: yarn test
       - store_test_results:
           path: test-results
 
