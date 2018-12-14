@@ -1,18 +1,18 @@
 import * as React from 'react';
 import {createScopedClasses} from 'utils/classes';
 
-const componentName = '{{upperName}}';
+const componentName = 'Popover';
 const sc = createScopedClasses(componentName);
 
 export interface IProps extends IStyledProps {
 };
 
-const {{upperName}}: GFC<IProps> = (props) => {
+const Popover: GFC<IProps> = (props) => {
   return (
     <div className={sc()}>TO DO</div>
   );
 };
-{{upperName}}.displayName = componentName;
-{{upperName}}.defaultProps = {};
-{{upperName}}.propTypes = {};
-export default {{upperName}};
+Popover.displayName = componentName;
+Popover.defaultProps = {};
+Popover.propTypes = {};
+export default Popover;

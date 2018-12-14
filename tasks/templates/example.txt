@@ -1,0 +1,13 @@
+import * as React from 'react';
+import {{upperName}} from '../lib/{{name}}';
+
+export default function (props: any) {
+  return (
+    <div className="{{upperName}}Example">
+      <h2>普通按钮</h2>
+      <div>
+        <{{upperName}}/>
+      </div>
+    </div>
+  );
+}

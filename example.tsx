@@ -4,11 +4,16 @@ import {HashRouter as Router, Route, Link} from 'react-router-dom';
 import 'examples/global.scss';
 import 'stylesheets/_index.scss';
 import {Layout, Main, Header, Footer, Aside} from './lib/layout/index';
+import Home from 'examples/home';
+import logo from 'examples/guui.svg';
+
 import LayoutExample from 'examples/layout.example';
 import GridExample from 'examples/grid.example';
 import ButtonExample from 'examples/button.example';
-import Home from 'examples/home';
-import logo from 'examples/guui.svg';
+import InputExample from 'examples/input.example';
+import PopoverExample from 'examples/popover.example';
+
+void 'examples 不要改动这一行代码！'; // tslint:disable-line
 
 ReactDOM.render(
   <div>
@@ -38,6 +43,9 @@ ReactDOM.render(
               <li><Link to="/layout">Layout</Link></li>
               <li><Link to="/grid">Grid</Link></li>
               <li><Link to="/button">Button</Link></li>
+              <li><Link to="/input">Input</Link></li>
+              <li><Link to="/popover">Popover</Link></li>
+              {void 'links 不要改动这一行代码！' /* tslint:disable-line */}
             </ol>
           </Aside>
           <Main className="site-main">
@@ -45,6 +53,9 @@ ReactDOM.render(
             <Route path="/layout" component={LayoutExample}/>
             <Route path="/grid" component={GridExample}/>
             <Route path="/button" component={ButtonExample}/>
+            <Route path="/input" component={InputExample}/>
+            <Route path="/popover" component={PopoverExample}/>
+            {void 'routes 不要改动这一行代码！' /* tslint:disable-line */}
           </Main>
         </Layout>
         <Footer className="site-footer">footer</Footer>

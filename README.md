@@ -13,5 +13,5 @@
 
 1. `cd guui-react`
 2. `yarn start`, 打开 http://localhost:8080
-3. 创建组件 `yarn task create component 组件名` 
+3. 创建组件 `yarn task create component 组件名` （component 可简写为 `c`）
 4. 打开 example.tsx 添加路由和组件的展示代码 
