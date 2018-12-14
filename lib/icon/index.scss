@@ -1,0 +1,16 @@
+@import "helper";
+#{component(icon)}{
+  width: 1.1em;
+  height: 1.1em;
+  color: inherit;
+  margin: 0 .2em;
+  &:first-child{
+    margin-left: 0;
+  }
+  &:last-child{
+    margin-right: 0;
+  }
+  &-loading{
+    @include spin;
+  }
+}
