@@ -13,7 +13,10 @@
   "dependencies": {
     "prop-types": "^15.5.6"
   },
-  "peerDependencies": {},
+  "peerDependencies": {
+    "react": "^16.7.0-alpha.2",
+    "react-dom": "^16.7.0-alpha.2"
+  },
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --config webpack.config.dev.js",
     "build": "NODE_ENV=production webpack -p --config webpack.config.prod.js",
