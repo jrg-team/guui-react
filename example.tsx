@@ -11,6 +11,7 @@ import LayoutExample from 'examples/layout.example';
 import GridExample from 'examples/grid.example';
 import ButtonExample from 'examples/button.example';
 import InputExample from 'examples/input.example';
+import FontExample from 'examples/font.example';
 import PopoverExample from 'examples/popover.example';
 
 void 'examples 不要改动这一行代码！'; // tslint:disable-line
@@ -38,6 +39,10 @@ ReactDOM.render(
               <li><Link to="/">安装</Link></li>
               <li><Link to="/">配置</Link></li>
             </ol>
+            <h2>样式</h2>
+            <ol>
+              <li><Link to="/font">字体</Link></li>
+            </ol>
             <h2>组件</h2>
             <ol>
               <li><Link to="/layout">Layout</Link></li>
@@ -55,6 +60,7 @@ ReactDOM.render(
             <Route path="/button" component={ButtonExample}/>
             <Route path="/input" component={InputExample}/>
             <Route path="/popover" component={PopoverExample}/>
+            <Route path="/font" component={FontExample}/>
             {void 'routes 不要改动这一行代码！' /* tslint:disable-line */}
           </Main>
         </Layout>
