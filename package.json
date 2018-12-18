@@ -1,7 +1,7 @@
 {
   "name": "guui-react",
   "version": "0.0.1",
-  "main": "dist/index.js",
+  "main": "dist/guui.js",
   "files": [
     "dist",
     "README.md"
