@@ -1,6 +1,6 @@
 {
   "name": "guui-react",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "dist/lib/index.js",
   "types": "dist/lib/index",
   "files": [
@@ -16,7 +16,11 @@
   },
   "peerDependencies": {
     "react": "^16.7.0-alpha.2",
-    "react-dom": "^16.7.0-alpha.2"
+    "react-dom": "^16.7.0-alpha.2",
+    "prop-types": "^15.5.6",
+    "@types/react": "^16.7.13",
+    "@types/react-dom": "^16.0.11",
+    "@types/prop-types": "^15.5.6"
   },
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --config webpack.config.dev.js",
