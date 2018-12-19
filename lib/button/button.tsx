@@ -2,6 +2,7 @@ import * as React from 'react';
 import {classes, createScopedClasses} from 'utils/classes';
 import Icon from '../icon/icon';
 import {Fragment, useState} from 'react';
+import './index.scss'
 
 const componentName = 'Button';
 const sc = createScopedClasses(componentName);

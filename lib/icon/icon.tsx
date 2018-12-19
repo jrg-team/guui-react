@@ -3,6 +3,7 @@ import * as React from 'react';
 import {createScopedClasses, classes} from 'utils/classes';
 import './importAllIcons';
 import * as ReactDOM from 'react-dom';
+import './index.scss';
 
 const componentName = 'Icon';
 const sc = createScopedClasses(componentName);

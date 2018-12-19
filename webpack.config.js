@@ -1,7 +1,13 @@
 const path = require('path')
-const { CheckerPlugin } = require('awesome-typescript-loader');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const {CheckerPlugin} = require('awesome-typescript-loader')
+
+const devMode = process.env.NODE_ENV !== 'production'
+
 module.exports = {
-  entry: { guui: './lib/index.tsx' },
+  entry: {
+    guui: './lib/index.tsx'
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     library: 'Gu',
@@ -27,11 +33,11 @@ module.exports = {
           }
         }
       },
-      { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
+      {test: /\.tsx?$/, loader: 'awesome-typescript-loader'},
       {
         test: /\.tsx?$/,
         enforce: 'pre',
-        use: [{ loader: 'tslint-loader' }],
+        use: [{loader: 'tslint-loader'}],
       },
       {
         test: /icons\/.+\.svg$/,
@@ -48,7 +54,12 @@ module.exports = {
       {
         test: /\.s([ac])ss$/,
         use: [
-          'style-loader',
+          devMode ? 'style-loader' : {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              // publicPath: '../'
+            }
+          },
           'css-loader',
           {
             loader: "sass-loader",
@@ -59,11 +70,17 @@ module.exports = {
       }
     ],
   },
-  plugins: [new CheckerPlugin()],
+  plugins: [
+    new CheckerPlugin(),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    })
+  ],
   resolveLoader: {
     modules: [
       'node_modules',
       path.resolve(__dirname, 'loaders')
     ]
   }
-};
+}
