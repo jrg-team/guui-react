@@ -6,10 +6,10 @@ const devMode = process.env.NODE_ENV !== 'production'
 
 module.exports = {
   entry: {
-    guui: './lib/index.tsx'
+    index: './lib/index.tsx'
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist/lib'),
     library: 'Gu',
     libraryTarget: 'umd',
   },
