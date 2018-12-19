@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "declaration": true,
     "baseUrl": ".",
     "paths": {
       "utils/*": ["include/utils/*"],
@@ -7,12 +8,11 @@
       "examples": ["examples/"]
     },
     "rootDirs": ["include"],
-    "outDir": "build/dist",
+    "outDir": "dist",
     "module": "esnext",
     "target": "es5",
     "lib": ["es6", "dom"],
     "sourceMap": true,
-    "allowJs": true,
     "jsx": "react",
     "moduleResolution": "node",
     "rootDir": ".",

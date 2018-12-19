@@ -2,6 +2,7 @@
   "name": "guui-react",
   "version": "0.0.4",
   "main": "dist/guui.js",
+  "types": "dist/lib/index.d.ts",
   "files": [
     "dist",
     "README.md"
