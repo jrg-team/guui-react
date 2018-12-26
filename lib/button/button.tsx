@@ -2,7 +2,7 @@ import * as React from 'react';
 import {classes, createScopedClasses} from 'utils/classes';
 import Icon from '../icon/icon';
 import {Fragment, useState} from 'react';
-import './index.scss'
+import './index.scss';
 
 const componentName = 'Button';
 const sc = createScopedClasses(componentName);
@@ -14,14 +14,13 @@ export interface IProps extends IStyledProps {
   size?: 'small' | 'big';
   level?: 'default' | 'important' | 'danger';
   ghost?: boolean;
-  badge?: number;
+  badge?: number | string;
   href?: string;
   target?: string;
   disabled?: boolean;
   loading?: boolean;
   type?: 'button' | 'submit';
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  onTouch?: React.TouchEventHandler<HTMLButtonElement>;
 };
 
 const Button: GFC<IProps> = (props) => {
@@ -33,10 +32,10 @@ const Button: GFC<IProps> = (props) => {
     el.classList.add('gu-button-loadingIcon-animationStart');
     el.getBoundingClientRect();
     el.classList.add('gu-button-loadingIcon-animationEnd');
-    el.addEventListener('transitionend', () => {
-      el.classList.remove('gu-button-loadingIcon-animationStart');
-      el.classList.remove('gu-button-loadingIcon-animationEnd');
-    });
+    el.addEventListener('transitionend', afterTransition.bind(null, el));
+  };
+  const afterTransition = (el: Element) => {
+    el.classList.remove('gu-button-loadingIcon-animationStart', 'gu-button-loadingIcon-animationEnd');
   };
   const disabled = props.loading || props.disabled;
   const buttonClass = classes(sc('', props.level, props.size, {
@@ -52,15 +51,18 @@ const Button: GFC<IProps> = (props) => {
     if (props.disabled) {return e.preventDefault(); }
     props.onClick && props.onClick.call(e.target, e);
   };
+  const iconWrapper = props.loading ? loadingIcon : icon;
+  const content = typeof props.children === 'string' ? <span>{props.children}</span> : props.children;
+  const elBadge = props.badge && <div className={sc('badge')}><span>{props.badge}</span></div>;
   const inner = (
-    <Fragment>
-      {props.loading ? loadingIcon : icon}
-      {typeof props.children === 'string' ? <span>{props.children}</span> : props.children}
-    </Fragment>
+    props.iconPosition === 'left' ?
+      <Fragment> {iconWrapper} {content} {elBadge} </Fragment>
+      :
+      <Fragment> {content} {iconWrapper} {elBadge} </Fragment>
   );
   const button = props.href === undefined ?
     (
-      <button className={buttonClass} style={props.style} onClick={onClick} disabled={disabled}>
+      <button className={buttonClass} style={props.style} onClick={onClick} disabled={disabled} type={props.type}>
         {inner}
       </button>
     ) :

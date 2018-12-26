@@ -1,4 +1,4 @@
-import {lowerFirstLetter, kebabToCamel} from './namer';
+import {lowerFirstLetter} from './namer';
 
 const prefix = 'gu';
 

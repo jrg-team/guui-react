@@ -12,26 +12,25 @@
     "url": "git@github.com:jrg-team/guui-react.git"
   },
   "dependencies": {
-    "prop-types": "^15.5.6"
   },
   "peerDependencies": {
-    "react": "^16.7.0-alpha.2",
-    "react-dom": "^16.7.0-alpha.2",
-    "prop-types": "^15.5.6",
+    "@types/prop-types": "^15.5.6",
     "@types/react": "^16.7.13",
     "@types/react-dom": "^16.0.11",
-    "@types/prop-types": "^15.5.6"
+    "prop-types": "^15.5.6",
+    "react": "16.7.0-alpha.2",
+    "react-dom": "16.7.0-alpha.2"
   },
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --config webpack.config.dev.js",
     "build": "NODE_ENV=production webpack -p --config webpack.config.prod.js",
     "docs": "NODE_ENV=production webpack -p --config webpack.config.docs.js",
-    "test": "NODE_ENV=test jest --config=jest.config.js",
+    "test": "NODE_ENV=test jest --config=jest.config.js --runInBand",
     "ci": "NODE_ENV=test JEST_JUNIT_OUTPUT=./test-results/jest/results.xml jest --config=jest.config.ci.js",
     "task": "./tasks/index.js"
   },
   "devDependencies": {
-    "@babel/core": "^7.2.0",
+    "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.0",
     "@reach/router": "^1.2.1",
     "@types/enzyme": "^3.1.14",
@@ -46,6 +45,8 @@
     "@types/react-test-renderer": "^16.0.3",
     "@types/webpack-env": "^1.13.6",
     "awesome-typescript-loader": "^5.2.1",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
     "babel-preset-react-app": "^6.1.0",
     "css-loader": "^1.0.0",
@@ -59,11 +60,12 @@
     "mini-css-extract-plugin": "^0.5.0",
     "mustache": "^3.0.1",
     "node-sass": "^4.9.4",
-    "react": "^16.7.0-alpha.2",
-    "react-dom": "^16.7.0-alpha.2",
+    "prop-types": "^15.5.6",
+    "react": "16.7.0-alpha.2",
+    "react-dom": "16.7.0-alpha.2",
     "react-markdown": "^4.0.4",
     "react-router-dom": "^4.3.1",
-    "react-test-renderer": "^16.7.0-alpha.2",
+    "react-test-renderer": "16.7.0-alpha.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "svg-sprite-loader": "^4.1.2",

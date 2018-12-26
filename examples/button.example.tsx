@@ -23,6 +23,11 @@ export default function (props: any) {
         <Button icon="wechat" iconFill="#3CB034">重要按钮</Button>
         <Button icon="loading">危险按钮</Button>
       </div>
+      <div style={{padding: '8px 0'}}>
+        <Button icon="alipay" iconPosition="right" iconFill="#00AAEE">普通按钮</Button>
+        <Button icon="wechat" iconPosition="right" iconFill="#3CB034">重要按钮</Button>
+        <Button icon="loading" iconPosition="right">危险按钮</Button>
+      </div>
       <h2>可大可小</h2>
       <div style={{padding: '8px 0'}}>
         <Button size="big" level="important">大按钮</Button>
@@ -45,6 +50,12 @@ export default function (props: any) {
         <Button level="important" href="http://baidu.com" target="_blank">新窗口打开百度</Button>
         <Button level="important" href="http://baidu.com" disabled={true}>禁用</Button>
       </div>
+      <h2>带交标</h2>
+      <div style={{padding: '8px 0'}}>
+        <Button badge={42} size="big">按钮</Button>
+        <Button badge={42}>按钮</Button>
+        <Button badge="42" size="small">按钮</Button>
+      </div>
       <h2>虚空按钮</h2>
       <div style={{padding: 8, background: '#000'}}>
         <Button ghost={true}>普通按钮</Button>
@@ -56,6 +67,7 @@ export default function (props: any) {
         <Button ghost={true} level="important" disabled={true}>重要按钮</Button>
         <Button ghost={true} level="danger" disabled={true}>危险按钮</Button>
       </div>
+
     </div>
   );
 }

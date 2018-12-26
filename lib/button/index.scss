@@ -1,7 +1,9 @@
 @import "helper";
+
 #{component(button)} {transition: all $transition-duration;
   display: inline-flex; vertical-align: middle; justify-content: center; align-items: center; border-radius: $input-border-radius; border: none;
   margin-left: 4px; margin-right: 4px; line-height: 1.2;
+  position: relative;
   & { height: $input-height; font-size: 14px; padding: 0 16px;
     &-big { height: $input-height-big; font-size: 20px; padding: 0 24px; }
     &-small { height: $input-height-small; font-size: 12px; padding: 0 12px; }
@@ -53,4 +55,25 @@
       transition: margin-left 200ms, opacity 200ms;
     }
   }
+  @mixin badge($height) {
+    text-align: center; border-radius: 50%; height: $height; min-width: $height; line-height: $height;
+    right: 0; top: 0; font-size: $height / 1.6;
+    transform: translate(50%, -50%);
+  }
+  &-badge { background: $red; color: $white;position: absolute;
+    @include badge(20px);
+  }
+  &-big &-badge {
+    @include badge(24px);
+  }
+  &-small &-badge {
+    @include badge(16px);
+    font-size: 12px;
+    > span {
+      display: inline-block;
+      $scale: 10 / 12;
+      transform: scale($scale);
+    }
+  }
+  &::-moz-focus-inner { border: 0; }
 }

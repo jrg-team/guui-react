@@ -1,0 +1,276 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button prop badge = 42 1`] = `
+<button
+  className="gu-button gu-button-default "
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+   
+   
+  <span>
+    Click Me
+  </span>
+   
+  <div
+    className="gu-button-badge"
+  >
+    <span>
+      42
+    </span>
+  </div>
+   
+</button>
+`;
+
+exports[`Button prop ghost = true 1`] = `
+<button
+  className="gu-button gu-button-default gu-button-ghost "
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+   
+   
+  <span>
+    Click Me
+  </span>
+   
+   
+</button>
+`;
+
+exports[`Button prop href = http://qq.com 1`] = `
+<a
+  className="gu-button gu-button-default "
+  href="http://qq.com"
+  onClick={[Function]}
+>
+   
+   
+  <span>
+    Click Me
+  </span>
+   
+   
+</a>
+`;
+
+exports[`Button prop icon = alipay 1`] = `
+<button
+  className="gu-button gu-button-default "
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+   
+  <svg
+    className="gu-icon gu-icon-alipay "
+  >
+    <use
+      style={
+        Object {
+          "fill": "currentColor",
+        }
+      }
+      xlinkHref="#alipay"
+    />
+  </svg>
+   
+  <span>
+    Click Me
+  </span>
+   
+   
+</button>
+`;
+
+exports[`Button prop iconFill = red 1`] = `
+<button
+  className="gu-button gu-button-default "
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+   
+  <svg
+    className="gu-icon gu-icon-alipay "
+  >
+    <use
+      style={
+        Object {
+          "fill": "red",
+        }
+      }
+      xlinkHref="#alipay"
+    />
+  </svg>
+   
+  <span>
+    Click Me
+  </span>
+   
+   
+</button>
+`;
+
+exports[`Button prop iconPosition = right 1`] = `
+<button
+  className="gu-button gu-button-default "
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+   
+  <span>
+    Click Me
+  </span>
+   
+  <svg
+    className="gu-icon gu-icon-alipay "
+  >
+    <use
+      style={
+        Object {
+          "fill": "currentColor",
+        }
+      }
+      xlinkHref="#alipay"
+    />
+  </svg>
+   
+   
+</button>
+`;
+
+exports[`Button prop level = danger 1`] = `
+<button
+  className="gu-button gu-button-danger "
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+   
+   
+  <span>
+    Click Me
+  </span>
+   
+   
+</button>
+`;
+
+exports[`Button prop level = import 1`] = `
+<button
+  className="gu-button gu-button-important "
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+   
+   
+  <span>
+    Click Me
+  </span>
+   
+   
+</button>
+`;
+
+exports[`Button prop loading = true 1`] = `
+<button
+  className="gu-button gu-button-default "
+  disabled={true}
+  onClick={[Function]}
+  type="button"
+>
+   
+  <svg
+    className="gu-icon gu-icon-loading gu-button-loadingIcon"
+  >
+    <use
+      style={
+        Object {
+          "fill": "currentColor",
+        }
+      }
+      xlinkHref="#loading"
+    />
+  </svg>
+   
+  <span>
+    Click Me
+  </span>
+   
+   
+</button>
+`;
+
+exports[`Button prop size = big 1`] = `
+<button
+  className="gu-button gu-button-default gu-button-big "
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+   
+   
+  <span>
+    Click Me
+  </span>
+   
+   
+</button>
+`;
+
+exports[`Button prop size = small 1`] = `
+<button
+  className="gu-button gu-button-default gu-button-small "
+  disabled={false}
+  onClick={[Function]}
+  type="button"
+>
+   
+   
+  <span>
+    Click Me
+  </span>
+   
+   
+</button>
+`;
+
+exports[`Button prop target = x 1`] = `
+<a
+  className="gu-button gu-button-default "
+  href="http://qq.com"
+  onClick={[Function]}
+  target="x"
+>
+   
+   
+  <span>
+    Click Me
+  </span>
+   
+   
+</a>
+`;
+
+exports[`Button prop type = submit 1`] = `
+<button
+  className="gu-button gu-button-default "
+  disabled={false}
+  onClick={[Function]}
+  type="submit"
+>
+   
+   
+  <span>
+    Click Me
+  </span>
+   
+   
+</button>
+`;
