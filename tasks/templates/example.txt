@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {{upperName}} from '../lib/{{name}}';
+import {{upperName}} from '../lib/index';
 
 export default function (props: any) {
   return (

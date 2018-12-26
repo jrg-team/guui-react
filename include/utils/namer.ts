@@ -1,9 +1,13 @@
 export function camelToKebab(camel: string) {
-  let result = camel.replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`)
+  let result = camel.replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`);
   if (result.indexOf('-') === 0) {
-    result = result.substring(1)
+    result = result.substring(1);
   }
-  return result
+  return result;
+}
+
+export function kebabToCamel(kebab: string) {
+  return kebab.replace(/-(\w)/g, (match, c1) => c1.toUpperCase());
 }
 
 export function lowerFirstLetter(name: string) {
@@ -18,6 +22,6 @@ export function plural(singular: string): string {
   const special: any = {
     quiz: 'quizzes',
     person: 'people'
-  }
-  return special[singular] || `${singular}s`
+  };
+  return special[singular] || `${singular}s`;
 }

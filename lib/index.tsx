@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {CSSProperties} from 'react';
+import 'stylesheets/reset.scss';
 
 declare global {
   interface GuuiFunctionComponent<P = {}> extends React.FunctionComponent<P> {
@@ -20,12 +21,12 @@ declare global {
 
   type GFC<P = {}> = GuuiFunctionComponent<P>
 
-  type ClassValue = string | string[] | { [K: string]: boolean | undefined } | undefined | false | null
+  type ClassValue = string | string[] | { [k: string]: any } | undefined | false | null
 }
 
-import Button from './button/button';
-import Icon from './icon/icon';
-import {Layout, Footer, Aside, Main, Header} from './layout/index';
-import {Col, Row} from './grid/index';
+export {default as Button} from './button/button';
+export {default as Input} from './input/input';
+export {default as Icon} from './icon/icon';
+export {Layout, Footer, Aside, Main, Header} from './layout/index';
+export {Col, Row} from './grid/index';
 
-export {Button, Icon, Layout, Footer, Aside, Main, Header, Col, Row};

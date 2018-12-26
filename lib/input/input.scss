@@ -1,21 +1,33 @@
 @import "helper";
+
 #{component(input)} {
   $border-radius: $input-border-radius;
   $border-color: $input-border-color;
   height: $input-height; border-radius: $border-radius; border: 1px solid $border-color; color: inherit; padding: 0 8px;
-  box-shadow: inset 0 1px 2px fade_out($black, 0.9);
-  font-size: 14px;
-  font-family: inherit;
-  &:focus {outline: none;
-    border-color: darken($border-color, 20%); box-shadow: inset 0 1px 2px fade_out(darken($blue, 40%), 0.5);
+  box-shadow: inset 0 1px 2px fade_out($black, 0.9); font-family: inherit;
+  &:focus {
+    outline: none; border-color: darken($border-color, 20%); box-shadow: inset 0 1px 2px fade_out(darken($blue, 40%), 0.5);
   }
-  &[disabled] {
-    background: #ddd;
-    color: #666;
-    cursor: not-allowed;
-  }
-
-  &-wrapper { display: inline-block; vertical-align: top;
+  &[disabled] { background: #ddd; color: #666; cursor: not-allowed; }
+  &-label, &-error {height: $input-height; line-height: $input-height; display: inline-block; }
+  &-label { margin-right: .5em; }
+  &-error { margin-left: .5em; color: $red;}
+  &-wrapper { display: inline-flex; vertical-align: top;
+    font-size: 14px;
+    &#{component(input, labelTop)} {
+      display: block;
+      #{component(input, label)} {display: block; width: 100%;margin-right: 0;}
+    }
     & + & { margin-left: 8px; }
+  }
+  &-inputAndError {
+    display: inline-block;
+    &#{component(input, errorBottom)} {
+      #{component(input, error)} {display: inline-block; width: 100%;margin-left: 0;}
+    }
+  }
+  &-hasError {
+    border-color: $red;
+    &:focus {border-color: $red;}
   }
 }

@@ -20,3 +20,5 @@ type RequireOnlyOne<T, Keys extends keyof T = keyof T> =
   Required<Pick<T, K>>
   & Partial<Record<Exclude<Keys, K>, undefined>>
 }[Keys]
+
+type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
