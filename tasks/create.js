@@ -2,6 +2,7 @@ const p = require('path')
 const fs = require('fs')
 const M = require('mustache')
 const render = M.render.bind(M)
+const customTags = [ '{%', '%}' ];
 const sourceRoot = p.join(__dirname, '../lib/')
 const exampleRoot = p.join(__dirname, '../examples/')
 const templateRoot = p.join(__dirname, './templates/')
@@ -20,7 +21,7 @@ exports.run = function ({params, options}) {
   }
 
   function write (path, data) {
-    fs.writeFileSync(path, render(data.toString(), {name, upperName}))
+    fs.writeFileSync(path, render(data.toString(), {name, upperName}, {}, customTags))
   }
 
   function ensureNotFound (path) {

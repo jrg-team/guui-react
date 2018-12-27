@@ -1,12 +1,12 @@
 import * as React from 'react';
-import {{{upperName}}} from '../lib/index';
+import {{%upperName%}} from '../lib/index';
 
 export default function (props: any) {
   return (
-    <div className="{{upperName}}Example">
+    <div className="{%upperName%}Example">
       <h2>普通按钮</h2>
       <div>
-        <{{upperName}}/>
+        <{%upperName%}/>
       </div>
     </div>
   );
