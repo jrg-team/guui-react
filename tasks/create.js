@@ -16,10 +16,11 @@ exports.run = function ({params, options}) {
     write(filePath, fs.readFileSync(p.join(templateRoot, `component.txt`)))
     write(examplePath, fs.readFileSync(p.join(templateRoot, `example.txt`)))
     addRoute()
+    addExport()
   }
 
   function write (path, data) {
-    fs.writeFileSync(path, render(data.toString(), {name, upperName: upperFirst(name)}))
+    fs.writeFileSync(path, render(data.toString(), {name, upperName}))
   }
 
   function ensureNotFound (path) {
@@ -28,6 +29,11 @@ exports.run = function ({params, options}) {
       console.error(`Error: file exists! ${path}`)
       process.exit(1)
     }
+  }
+
+  function addExport () {
+    const path = p.join(__dirname, '../lib/index.tsx')
+    fs.appendFileSync(path, '\n' + `export {default as ${upperName}} from './${name}';` + '\n', 'utf8')
   }
 
   function addRoute () {
