@@ -29,4 +29,3 @@ export {default as Input} from './input/input';
 export {default as Icon} from './icon/icon';
 export {Layout, Footer, Aside, Main, Header} from './layout/index';
 export {Col, Row} from './grid/index';
-

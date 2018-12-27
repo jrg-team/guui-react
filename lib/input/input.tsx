@@ -19,7 +19,7 @@ const Input: GFC<IProps> = (props) => {
   const {
     length, size, className, style, onEnter, label, labelPosition, error, errorPosition, ...restProps
   } = props;
-  const width = length ? `${length}em` : undefined;
+  const width = length ? `calc(${length}em + 18px)` : undefined;
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.keyCode === 13) { onEnter && onEnter.call(null, e); }
     props.onKeyDown && props.onKeyDown.call(null, e);
@@ -30,7 +30,7 @@ const Input: GFC<IProps> = (props) => {
     <div className={sc('wrapper', c1)}>
       {label && <label className={sc('label')}>{label}</label>}
       <div className={sc('inputAndError', c2)}>
-        <input className={classes(sc('', {hasError: error}), className)} style={{width, ...style}}
+        <input className={classes(sc('', size, {hasError: error}), className)} style={{width, ...style}}
           {...restProps}
           onKeyDown={onKeyDown}
         />
@@ -41,6 +41,8 @@ const Input: GFC<IProps> = (props) => {
 };
 
 Input.displayName = componentName;
-Input.defaultProps = {};
+Input.defaultProps = {
+  spellCheck: false
+};
 Input.propTypes = {};
 export default Input;

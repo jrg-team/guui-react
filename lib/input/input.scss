@@ -30,4 +30,12 @@
     border-color: $red;
     &:focus {border-color: $red;}
   }
+  &-big {
+    height: $input-height-big;
+    font-size: 20px;
+  }
+  &-small {
+    height: $input-height-small;
+    font-size: 12px;
+  }
 }

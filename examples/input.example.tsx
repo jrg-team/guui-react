@@ -31,6 +31,12 @@ export default function (props: any) {
           <Input value={value} onChange={onChange} label="姓名" labelPosition="top" error="错误提示" errorPosition="bottom"/>
         </div>
       </div>
+      <h2>可大可小</h2>
+      <div style={{padding: '8px 0'}}>
+        <Input size="big"/>
+        <Input/>
+        <Input size="small" length={5}/>
+      </div>
     </div>
   );
 }

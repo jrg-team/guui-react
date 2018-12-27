@@ -1,0 +1,190 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input prop error = wrong 1`] = `
+<div
+  className="gu-input-wrapper"
+>
+  <div
+    className="gu-input-inputAndError"
+  >
+    <input
+      className="gu-input gu-input-hasError "
+      onKeyDown={[Function]}
+      spellCheck={false}
+      style={
+        Object {
+          "width": undefined,
+        }
+      }
+    />
+    <span
+      className="gu-input-error"
+    >
+      wrong
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Input prop errorPosition = bottom 1`] = `
+<div
+  className="gu-input-wrapper"
+>
+  <div
+    className="gu-input-inputAndError gu-input-errorBottom"
+  >
+    <input
+      className="gu-input gu-input-hasError "
+      onKeyDown={[Function]}
+      spellCheck={false}
+      style={
+        Object {
+          "width": undefined,
+        }
+      }
+    />
+    <span
+      className="gu-input-error"
+    >
+      wrong
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Input prop label = hello 1`] = `
+<div
+  className="gu-input-wrapper"
+>
+  <label
+    className="gu-input-label"
+  >
+    hello
+  </label>
+  <div
+    className="gu-input-inputAndError"
+  >
+    <input
+      className="gu-input "
+      onKeyDown={[Function]}
+      spellCheck={false}
+      style={
+        Object {
+          "width": undefined,
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`Input prop labelPosition = top 1`] = `
+<div
+  className="gu-input-wrapper gu-input-labelTop"
+>
+  <label
+    className="gu-input-label"
+  >
+    hello
+  </label>
+  <div
+    className="gu-input-inputAndError"
+  >
+    <input
+      className="gu-input "
+      onKeyDown={[Function]}
+      spellCheck={false}
+      style={
+        Object {
+          "width": undefined,
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`Input prop length = 10 1`] = `
+<div
+  className="gu-input-wrapper"
+>
+  <div
+    className="gu-input-inputAndError"
+  >
+    <input
+      className="gu-input "
+      onKeyDown={[Function]}
+      spellCheck={false}
+      style={
+        Object {
+          "width": "calc(10em + 18px)",
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`Input prop size = big 1`] = `
+<div
+  className="gu-input-wrapper"
+>
+  <div
+    className="gu-input-inputAndError"
+  >
+    <input
+      className="gu-input gu-input-big "
+      onKeyDown={[Function]}
+      spellCheck={false}
+      style={
+        Object {
+          "width": undefined,
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`Input prop size = small 1`] = `
+<div
+  className="gu-input-wrapper"
+>
+  <div
+    className="gu-input-inputAndError"
+  >
+    <input
+      className="gu-input gu-input-small "
+      onKeyDown={[Function]}
+      spellCheck={false}
+      style={
+        Object {
+          "width": undefined,
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`Input prop value = 123 1`] = `
+<div
+  className="gu-input-wrapper"
+>
+  <div
+    className="gu-input-inputAndError"
+  >
+    <input
+      className="gu-input "
+      onKeyDown={[Function]}
+      spellCheck={false}
+      style={
+        Object {
+          "width": undefined,
+        }
+      }
+      value="123"
+    />
+  </div>
+</div>
+`;
