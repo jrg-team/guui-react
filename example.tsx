@@ -17,6 +17,9 @@ import RadioExample from 'examples/radio.example';
 import IconExample from 'examples/icon.example';
 import BreadcrumbExample from 'examples/breadcrumb.example';
 import DatepickerExample from 'examples/datepicker.example';
+import TableExample from 'examples/table.example';
+import PagerExample from 'examples/pager.example';
+import ListExample from 'examples/list.example';
 
 void 'examples 不要改动这一行代码！'; // tslint:disable-line
 
@@ -62,6 +65,9 @@ ReactDOM.render(
               <li><Link to="/radio">Radio</Link></li>
               <li><Link to="/breadcrumb">Breadcrumb</Link></li>
               <li><Link to="/datepicker">Datepicker</Link></li>
+              <li><Link to="/table">Table</Link></li>
+              <li><Link to="/pager">Pager</Link></li>
+              <li><Link to="/list">List</Link></li>
               {void 'links 不要改动这一行代码！' /* tslint:disable-line */}
             </ol>
           </Aside>
@@ -78,6 +84,9 @@ ReactDOM.render(
             <Route path="/icon" component={IconExample}/>
             <Route path="/breadcrumb" component={BreadcrumbExample}/>
             <Route path="/datepicker" component={DatepickerExample}/>
+            <Route path="/table" component={TableExample}/>
+            <Route path="/pager" component={PagerExample}/>
+            <Route path="/list" component={ListExample}/>
             {void 'routes 不要改动这一行代码！' /* tslint:disable-line */}
           </Main>
         </Layout>
