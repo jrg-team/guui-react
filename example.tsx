@@ -12,6 +12,7 @@ import ButtonExample from 'examples/button.example';
 import InputExample from 'examples/input.example';
 import FontExample from 'examples/font.example';
 import PopoverExample from 'examples/popover.example';
+import CheckExample from 'examples/check.example';
 
 void 'examples 不要改动这一行代码！'; // tslint:disable-line
 
@@ -49,6 +50,7 @@ ReactDOM.render(
               <li><Link to="/button">Button</Link></li>
               <li><Link to="/input">Input</Link></li>
               <li><Link to="/popover">Popover</Link></li>
+              <li><Link to="/check">Check</Link></li>
               {void 'links 不要改动这一行代码！' /* tslint:disable-line */}
             </ol>
           </Aside>
@@ -60,6 +62,7 @@ ReactDOM.render(
             <Route path="/input" component={InputExample}/>
             <Route path="/popover" component={PopoverExample}/>
             <Route path="/font" component={FontExample}/>
+            <Route path="/check" component={CheckExample}/>
             {void 'routes 不要改动这一行代码！' /* tslint:disable-line */}
           </Main>
         </Layout>

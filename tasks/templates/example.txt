@@ -4,7 +4,7 @@ import {{%upperName%}} from '../lib/index';
 export default function (props: any) {
   return (
     <div className="{%upperName%}Example">
-      <h2>普通按钮</h2>
+      <h2>普通示例</h2>
       <div>
         <{%upperName%}/>
       </div>
