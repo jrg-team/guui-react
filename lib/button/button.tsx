@@ -19,7 +19,7 @@ export interface IProps extends IStyledProps {
   target?: string;
   disabled?: boolean;
   loading?: boolean;
-  type?: 'button' | 'submit';
+  type?: 'button' | 'submit' | 'reset';
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 

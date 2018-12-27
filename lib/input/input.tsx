@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import classes, {createScopedClasses} from 'utils/classes';
 import './input.scss';
 
@@ -13,6 +14,7 @@ export interface IProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>
   errorPosition?: 'right' | 'bottom';
   size?: 'big' | 'small';
   length?: number | string;
+  type?: 'text' | 'number' | 'password' | 'email' | 'date' | 'datetime' | 'datetime-local' | 'search' | 'tel' | 'time' | 'url';
 };
 
 const Input: GFC<IProps> = (props) => {
@@ -42,7 +44,11 @@ const Input: GFC<IProps> = (props) => {
 
 Input.displayName = componentName;
 Input.defaultProps = {
-  spellCheck: false
+  spellCheck: false,
+  type: 'text'
 };
-Input.propTypes = {};
+Input.propTypes = {
+  type: PropTypes.oneOf(['text', 'number', 'password', 'email', 'date', 'datetime', 'datetime-local', 'search',
+    'tel', 'time', 'url'])
+};
 export default Input;

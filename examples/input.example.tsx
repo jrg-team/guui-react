@@ -37,6 +37,20 @@ export default function (props: any) {
         <Input/>
         <Input size="small" length={5}/>
       </div>
+      <h2>各种 type</h2>
+      <div style={{padding: '8px 0'}}>
+        <div><Input type="date" placeholder="date"/></div>
+        <div><Input type="datetime" placeholder="datetime"/></div>
+        <div><Input type="datetime-local" placeholder="datetime-local"/></div>
+        <div><Input type="email" placeholder="email"/></div>
+        <div><Input type="number" placeholder="number"/></div>
+        <div><Input type="password" placeholder="password"/></div>
+        <div><Input type="search" placeholder="search"/></div>
+        <div><Input type="tel" placeholder="tel"/></div>
+        <div><Input type="text" placeholder="text"/></div>
+        <div><Input type="time" placeholder="time"/></div>
+        <div><Input type="url" placeholder="url"/></div>
+      </div>
     </div>
   );
 }
