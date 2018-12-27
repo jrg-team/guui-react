@@ -7,7 +7,8 @@ export default function (props: any) {
     {text: '宝贝列表', link: '/goods'},
     {text: '宝贝详情', link: '/goods/123'},
   ];
-  const renderer: Renderer = (item, index: number, items) => <span style={{border: '1px solid'}}>{item.text}</span>;
+  const renderer: Renderer = (item, index: number, items) =>
+    <span style={{border: '1px solid'}} key={item.link}>{item.text}</span>;
   return (
     <div className="BreadcrumbExample">
       <h2>面包屑</h2>
