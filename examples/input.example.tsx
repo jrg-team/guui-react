@@ -11,20 +11,20 @@ export default function (props: any) {
     console.log('enter');
   };
   return (
-    <div className="ButtonExample">
-      <h2>普通按钮</h2>
+    <div className="InputExample">
+      <h2>普通输入框</h2>
       <div style={{padding: '8px 0'}}>
         <Input length={10} maxLength={20} value={value} onChange={onChange} onEnter={onError}/>
         <Input length={20} placeholder="placeholder"/>
         <Input length={6} type="password" placeholder="密码"/>
         <Input length={10} disabled={true} value={value}/>
       </div>
-      <h2>带 label 的按钮</h2>
+      <h2>带 label 的输入框</h2>
       <div style={{padding: '8px 0'}}>
         <div><Input value={value} onChange={onChange} label="姓名"/></div>
         <div><Input value={value} onChange={onChange} label="姓名" labelPosition="top"/></div>
       </div>
-      <h2>带 error 的按钮</h2>
+      <h2>带 error 的输入框</h2>
       <div style={{padding: '8px 0'}}>
         <div><Input value={value} onChange={onChange} label="姓名" error="错误提示"/></div>
         <div>
