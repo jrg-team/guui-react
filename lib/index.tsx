@@ -35,3 +35,5 @@ export {default as Check} from './check/check';
 export {default as Radio} from './radio/radio';
 
 export {default as Breadcrumb, IBreadcrumbItem, BI, Renderer} from './breadcrumb/breadcrumb';
+
+export {default as Datepicker} from './datepicker/datepicker';
