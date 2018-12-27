@@ -15,6 +15,7 @@ import PopoverExample from 'examples/popover.example';
 import CheckExample from 'examples/check.example';
 import RadioExample from 'examples/radio.example';
 import IconExample from 'examples/icon.example';
+import BreadcrumbExample from 'examples/breadcrumb.example';
 
 void 'examples 不要改动这一行代码！'; // tslint:disable-line
 
@@ -58,6 +59,7 @@ ReactDOM.render(
               <li><Link to="/popover">Popover</Link></li>
               <li><Link to="/check">Check</Link></li>
               <li><Link to="/radio">Radio</Link></li>
+              <li><Link to="/breadcrumb">Breadcrumb</Link></li>
               {void 'links 不要改动这一行代码！' /* tslint:disable-line */}
             </ol>
           </Aside>
@@ -72,6 +74,7 @@ ReactDOM.render(
             <Route path="/check" component={CheckExample}/>
             <Route path="/radio" component={RadioExample}/>
             <Route path="/icon" component={IconExample}/>
+            <Route path="/breadcrumb" component={BreadcrumbExample}/>
             {void 'routes 不要改动这一行代码！' /* tslint:disable-line */}
           </Main>
         </Layout>

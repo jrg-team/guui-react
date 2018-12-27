@@ -1,0 +1,16 @@
+@import "helper";
+
+#{component(breadcrumb)} {
+  font-size: $font-size;
+  margin: 8px 0;
+  &-link {
+    color: $blue;
+  }
+  &-item {
+
+  }
+  &-separator {
+    margin: 0 .3em;
+  }
+
+}

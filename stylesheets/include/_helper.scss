@@ -24,6 +24,10 @@ $input-height-big: 48px;
 $input-border-color: lighten($text-color, 40%);
 $input-border-radius: 4px;
 
+$font-size: 14px;
+$font-size-small: 12px;
+$font-size-big: 20px;
+
 $transition-duration: 200ms;
 
 @mixin component($name) {
