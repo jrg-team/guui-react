@@ -31,3 +31,5 @@ export {Layout, Footer, Aside, Main, Header} from './layout/index';
 export {Col, Row} from './grid/index';
 
 export {default as Check} from './check/check';
+
+export {default as Radio} from './radio/radio';
