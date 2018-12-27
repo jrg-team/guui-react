@@ -14,6 +14,7 @@ import FontExample from 'examples/font.example';
 import PopoverExample from 'examples/popover.example';
 import CheckExample from 'examples/check.example';
 import RadioExample from 'examples/radio.example';
+import IconExample from 'examples/icon.example';
 
 void 'examples 不要改动这一行代码！'; // tslint:disable-line
 
@@ -44,10 +45,14 @@ ReactDOM.render(
             <ol>
               <li><Link to="/font">字体</Link></li>
             </ol>
-            <h2>组件</h2>
+            <h2>布局</h2>
             <ol>
               <li><Link to="/layout">Layout</Link></li>
               <li><Link to="/grid">Grid</Link></li>
+            </ol>
+            <h2>组件</h2>
+            <ol>
+              <li><Link to="/icon">Icon</Link></li>
               <li><Link to="/button">Button</Link></li>
               <li><Link to="/input">Input</Link></li>
               <li><Link to="/popover">Popover</Link></li>
@@ -66,6 +71,7 @@ ReactDOM.render(
             <Route path="/font" component={FontExample}/>
             <Route path="/check" component={CheckExample}/>
             <Route path="/radio" component={RadioExample}/>
+            <Route path="/icon" component={IconExample}/>
             {void 'routes 不要改动这一行代码！' /* tslint:disable-line */}
           </Main>
         </Layout>

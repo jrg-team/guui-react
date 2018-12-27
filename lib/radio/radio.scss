@@ -3,10 +3,13 @@
 #{component(radio)} {
   $width: 14px; width: $width; height: $width; border: 1px solid $input-border-color; position: relative;
   display: inline-flex; justify-content: center; align-items: center; vertical-align: middle;
-  border-radius: 50%;
+  border-radius: 50%; font-size: 14px;
   &-input { position: absolute; width: 100%; height: 100%; z-index: 1; opacity: 0; }
   &-checked { border-color: $blue;
     &::before { $delta: 6px; content: ''; width: $width - $delta; height: $width - $delta; background: $blue;
       border-radius: 50%;}
   }
+  &-wrapper { display: inline-flex; align-items: center; vertical-align: top; }
+  &-wrapper + &-wrapper { margin-left: 1em; }
+  &-label { margin-left: .2em; }
 }

@@ -13,12 +13,14 @@ export default function (props: any) {
   };
   return (
     <div className="CheckExample">
-      <h2>Checkbox</h2>
+      <h2>Check</h2>
       <div>
-        <Check checked={checked} value="v1" onChange={onChange}/>
-      </div>
-      <div>
-        <Check checked={checked2} value="v1" onChange={onChange2}/>
+        <Check checked={checked} value="v1" onChange={onChange}>
+          文字
+        </Check>
+        <Check checked={checked2} value="v1" onChange={onChange2}>
+          文字
+        </Check>
       </div>
     </div>
   );

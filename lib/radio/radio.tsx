@@ -11,15 +11,18 @@ export interface IProps extends InputHTMLAttributes<HTMLInputElement> {
 };
 
 const Radio: GFC<IProps> = (props) => {
-  const {className, ...restProps} = props;
+  const {className, children, ...restProps} = props;
   return (
-    <span className={classes(sc('', {checked: props.checked}), className)}>
-      <input
-        {...restProps}
-        className={sc('input')}
-        type="radio"
-      />
-    </span>
+    <label className={sc('wrapper')}>
+      <span className={classes(sc('', {checked: props.checked}), className)}>
+          <input
+            {...restProps}
+            className={sc('input')}
+            type="radio"
+          />
+      </span>
+      <span className={sc('label')}>{children}</span>
+    </label>
   );
 };
 Radio.displayName = componentName;
