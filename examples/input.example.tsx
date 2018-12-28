@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {Input} from '../lib/index';
 import {useState} from 'react';
+import Icon from '../lib/icon/icon';
 
 export default function (props: any) {
   const [value, setValue] = useState('文本输入框');
@@ -18,6 +19,22 @@ export default function (props: any) {
         <Input length={20} placeholder="placeholder"/>
         <Input length={6} type="password" placeholder="密码"/>
         <Input length={10} disabled={true} value={value}/>
+      </div>
+      <h2>before & after</h2>
+
+      <div style={{padding: '8px 0'}}>
+        <div style={{padding: '8px 0'}}>
+          <Input size="big" before={'https://'} after={'.com'}/>
+          <Input size="big" before={<Icon name="alipay"/>} after={'元'}/>
+        </div>
+        <div style={{padding: '8px 0'}}>
+          <Input before={'https://'} after={'.com'}/>
+          <Input before={<Icon name="alipay"/>} after={'元'}/>
+        </div>
+        <div style={{padding: '8px 0'}}>
+          <Input size="small" before={'https://'} after={'.com'}/>
+          <Input size="small" before={<Icon name="alipay"/>} after={'元'}/>
+        </div>
       </div>
       <h2>带 label 的输入框</h2>
       <div style={{padding: '8px 0'}}>

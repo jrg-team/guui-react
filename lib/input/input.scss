@@ -12,30 +12,44 @@
   &-label, &-error {height: $input-height; line-height: $input-height; display: inline-block; }
   &-label { margin-right: .5em; }
   &-error { margin-left: .5em; color: $red;}
-  &-wrapper { display: inline-flex; vertical-align: top;
-    font-size: 14px;
-    &#{component(input, labelTop)} {
-      display: block;
+  &-wrapper { display: inline-flex; vertical-align: top; font-size: 14px;
+    &#{component(input, labelTop)} { display: block;
       #{component(input, label)} {display: block; width: 100%;margin-right: 0;}
     }
     & + & { margin-left: 8px; }
+    &-big {
+      #{component(input)} {
+        &, &-before, &-after {
+          height: $input-height-big; line-height: $input-height-big; font-size: 20px;
+        }
+      }
+    }
+    &-small {
+      #{component(input)} {
+        &, &-before, &-after {
+          height: $input-height-small; line-height: $input-height-small; font-size: 12px;
+        }
+      }
+    }
   }
-  &-inputAndError {
-    display: inline-block;
+  &-inputAndError { display: inline-block;
     &#{component(input, errorBottom)} {
       #{component(input, error)} {display: inline-block; width: 100%;margin-left: 0;}
     }
   }
-  &-hasError {
-    border-color: $red;
+  &-container { display: inline-block;vertical-align: top; position: relative;
+    &-hasAddon {
+      #{component(input)} {
+        &:not(:first-child) { border-top-left-radius: 0; border-bottom-left-radius: 0; }
+        &:not(:last-child) { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+      }
+    }
+  }
+  &-hasError { border-color: $red;
     &:focus {border-color: $red;}
   }
-  &-big {
-    height: $input-height-big;
-    font-size: 20px;
-  }
-  &-small {
-    height: $input-height-small;
-    font-size: 12px;
-  }
+  &-before, &-after { display: inline-flex; justify-content: center; align-items: center; vertical-align: top;
+    height: $input-height; line-height: $input-height; padding: 0 .5em; border: 1px solid $input-border-color; }
+  &-before { border-right: none; border-top-left-radius: $border-radius; border-bottom-left-radius: $border-radius; }
+  &-after { border-left: none; border-top-right-radius: $border-radius; border-bottom-right-radius: $border-radius; }
 }
