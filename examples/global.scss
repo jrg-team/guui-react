@@ -39,5 +39,8 @@ a {text-decoration: none; color: black;}
 .demo {
   &-row {
     padding: 8px 0;
+    &.bordered {
+      border: 1px solid grey;
+    }
   }
 }

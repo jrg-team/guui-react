@@ -43,3 +43,5 @@ export {default as Table} from './table/table';
 export {default as Pager} from './pager/pager';
 
 export {default as List} from './list/list';
+
+export {default as ClickOutside} from './clickOutside/clickOutside';
