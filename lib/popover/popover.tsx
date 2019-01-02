@@ -15,7 +15,7 @@ export interface IProps extends IStyledProps {
   open?: boolean;
   trigger?: 'click' | 'hover' | 'manual';
   block?: boolean;
-  position?: 'top' | 'bottom' | 'left' | 'right';
+  position?: 'top' | 'bottom' | 'left' | 'right' | 'topLeft' | 'bottomLeft' | 'topRight' | 'bottomRight';
   container?: RefObject<Element>
 };
 
@@ -39,7 +39,7 @@ class Popover extends PureComponent<IProps, IState> {
   };
   static propTypes = {
     content: PropTypes.node.isRequired,
-    position: PropTypes.oneOf(['top', 'bottom', 'left', 'right'])
+    position: PropTypes.oneOf(['top', 'bottom', 'left', 'right', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight'])
   };
   private readonly refContent: React.RefObject<HTMLDivElement>;
   private readonly refTrigger: React.RefObject<HTMLDivElement>;
@@ -58,11 +58,15 @@ class Popover extends PureComponent<IProps, IState> {
     return props.trigger === 'manual' ? props.open : state.open;
   }
 
+  private contentHandlers: Partial<ITriggers> | null = this.props.trigger === 'hover' ? {
+    onMouseEnter: () => this.doOpen(),
+    onMouseLeave: () => this.close(this.closeDelay)
+  } : null;
+
   get content() {
-    const x: Partial<ITriggers> = {onMouseEnter: () => this.doOpen(), onMouseLeave: () => this.close(this.closeDelay)};
     const content = (
       <div ref={this.refContent} className={sc('content', `content-${this.props.position}`)}
-        {...x}>
+        {...this.contentHandlers}>
         {typeof this.props.content === 'string' ?
           <span className={sc('content-stringWrapper')}>{this.props.content}</span> :
           this.props.content}
@@ -93,6 +97,22 @@ class Popover extends PureComponent<IProps, IState> {
       case 'right':
         content!.style.top = top - containerTop + (height / 2) - (contentHeight / 2) + 'px';
         content!.style.left = left - containerLeft + width + 8 + 'px';
+        break;
+      case 'topLeft':
+        content!.style.top = top - containerTop - contentHeight - 8 + 'px';
+        content!.style.left = left - containerLeft + 'px';
+        break;
+      case 'topRight':
+        content!.style.top = top - containerTop - contentHeight - 8 + 'px';
+        content!.style.left = left - containerLeft + width - contentWidth + 'px';
+        break;
+      case 'bottomLeft':
+        content!.style.top = top - containerTop + height + 8 + 'px';
+        content!.style.left = left - containerLeft + 'px';
+        break;
+      case 'bottomRight':
+        content!.style.top = top - containerTop + height + 8 + 'px';
+        content!.style.left = left - containerLeft + width - contentWidth + 'px';
         break;
     }
   };

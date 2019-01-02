@@ -36,6 +36,26 @@ export default function (props: any) {
           <Button>向右弹出</Button>
         </Popover>
       </div>
+      <div className="demo-row">
+        <Popover content="弹出内容" position="topLeft">
+          <Button>向左上弹出</Button>
+        </Popover>
+      </div>
+      <div className="demo-row">
+        <Popover content="弹出内容" position="bottomLeft">
+          <Button>向左下弹出</Button>
+        </Popover>
+      </div>
+      <div className="demo-row">
+        <Popover content="弹出内容" position="topRight">
+          <Button>向右上弹出</Button>
+        </Popover>
+      </div>
+      <div className="demo-row">
+        <Popover content="弹出内容" position="bottomRight">
+          <Button>向右下弹出</Button>
+        </Popover>
+      </div>
       <h2>移入按钮弹出内容</h2>
       <div className="demo-row">
         <Popover content="弹出内容" trigger="hover">
