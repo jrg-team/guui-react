@@ -2,8 +2,11 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import {HTMLAttributes, PureComponent} from 'react';
 import {RefObject} from 'react';
+import './clickOutside.scss';
+import {createScopedClasses} from 'utils/classes';
 
 const componentName = 'ClickOutside';
+const sc = createScopedClasses(componentName);
 
 export interface IProps extends HTMLAttributes<HTMLDivElement> {
   handler?: (e: React.MouseEvent) => void;
@@ -47,7 +50,7 @@ class ClickOutside extends PureComponent<IProps> {
   render() {
     const {handler, exclude, children, ...restProps} = this.props;
     return (
-      <div ref={this.myRef} {...restProps}>{children}</div>
+      <div className={sc()} ref={this.myRef} {...restProps}>{children}</div>
     );
   }
 };

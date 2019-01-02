@@ -3,7 +3,7 @@ import * as PropTypes from 'prop-types';
 import {createScopedClasses} from 'utils/classes';
 import {MouseEventHandler, PureComponent, ReactChild, ReactElement, RefObject} from 'react';
 import * as ReactDOM from 'react-dom';
-import ClickOutside from '../clickOutside';
+import ClickOutside from '../clickOutside/clickOutside';
 import './popover.scss';
 
 const componentName = 'Popover';
@@ -33,6 +33,7 @@ interface IState {
 class Popover extends PureComponent<IProps, IState> {
   static displayName = componentName;
   static defaultProps = {
+    trigger: 'click',
     block: false,
     position: 'top'
   };
@@ -42,6 +43,8 @@ class Popover extends PureComponent<IProps, IState> {
   };
   private readonly refContent: React.RefObject<HTMLDivElement>;
   private readonly refTrigger: React.RefObject<HTMLDivElement>;
+  private timer?: number;
+  private closeDelay = 200;
 
   constructor(props: IProps) {
     super(props);
@@ -56,33 +59,78 @@ class Popover extends PureComponent<IProps, IState> {
   }
 
   get content() {
-    const content = <div ref={this.refContent} className={sc('content')}> {this.props.content} </div>;
+    const x: Partial<ITriggers> = {onMouseEnter: () => this.doOpen(), onMouseLeave: () => this.close(this.closeDelay)};
+    const content = (
+      <div ref={this.refContent} className={sc('content', `content-${this.props.position}`)}
+        {...x}>
+        {typeof this.props.content === 'string' ?
+          <span className={sc('content-stringWrapper')}>{this.props.content}</span> :
+          this.props.content}
+      </div>
+    );
     return this.open && content;
   }
-
-  private onClick: MouseEventHandler = (e) => {
-    this.setState((prev, props) => {
-      return {open: !prev.open};
-    });
-  };
-  private onClickOutside = () => {
-    if (this.props.trigger === 'click' && this.state.open === true) {
-      this.setState((prev, props) => {
-        return {open: false};
-      });
-    }
-  };
 
   private positionContent = () => {
     const content = this.refContent.current;
     const trigger = this.refTrigger.current;
-    const {left, top, width} = trigger!.getBoundingClientRect();
+    const {left, top, width, height} = trigger!.getBoundingClientRect();
     const {width: contentWidth, height: contentHeight} = content!.getBoundingClientRect();
     const {left: containerLeft, top: containerTop} = this.container.getBoundingClientRect();
-    content!.style.top = top - containerTop - contentHeight - 8 + 'px';
-    content!.style.left = left - containerLeft + (width / 2) - (contentWidth / 2) + 'px';
-
+    switch (this.props.position) {
+      case 'top':
+        content!.style.top = top - containerTop - contentHeight - 8 + 'px';
+        content!.style.left = left - containerLeft + (width / 2) - (contentWidth / 2) + 'px';
+        break;
+      case 'bottom':
+        content!.style.top = top - containerTop + height + 8 + 'px';
+        content!.style.left = left - containerLeft + (width / 2) - (contentWidth / 2) + 'px';
+        break;
+      case 'left':
+        content!.style.top = top - containerTop + (height / 2) - (contentHeight / 2) + 'px';
+        content!.style.left = left - containerLeft - contentWidth - 8 + 'px';
+        break;
+      case 'right':
+        content!.style.top = top - containerTop + (height / 2) - (contentHeight / 2) + 'px';
+        content!.style.left = left - containerLeft + width + 8 + 'px';
+        break;
+    }
   };
+
+  private nowOrLater(action: () => void, delay?: number) {
+    if (this.timer) { window.clearTimeout(this.timer); }
+    if (delay) {
+      this.timer = window.setTimeout(action, delay);
+    } else {
+      action();
+    }
+  }
+
+  close(delay?: number) {
+    this.nowOrLater(() => {
+      if (this.state.open) {
+        this.setState((prev, props) => ({open: false}));
+      }
+    }, delay);
+  }
+
+  doOpen(delay?: number) {
+    this.nowOrLater(() => {
+      if (!this.state.open) {
+        this.setState((prev, props) => ({open: true}));
+      }
+    }, delay);
+  }
+
+  toggle(delay?: number) {
+    this.nowOrLater(() => {
+      if (this.state.open) {
+        this.close();
+      } else {
+        this.doOpen();
+      }
+    }, delay);
+  }
 
   componentDidUpdate(prevProps: Readonly<IProps>, prevState: Readonly<IState>, snapshot?: any): void {
     if (this.props.trigger !== 'manual') {
@@ -101,22 +149,33 @@ class Popover extends PureComponent<IProps, IState> {
   }
 
   render() {
-    const {props} = this;
-    if (props.trigger === 'click') {
-      return this.renderComponent(!!this.state.open, {onClick: this.onClick, onClickOutside: this.onClickOutside});
-    } else {
-      return this.renderComponent(!!props.open, {});
+    const {props, state} = this;
+    switch (props.trigger) {
+      case 'manual':
+        return this.renderComponent(!!props.open, {});
+        break;
+      case 'click':
+        return this.renderComponent(!!state.open, {
+          onClick: () => this.toggle(), onClickOutside: () => this.close()
+        });
+        break;
+      case 'hover':
+        return this.renderComponent(!!state.open, {
+          onMouseEnter: () => this.doOpen(), onMouseLeave: () => this.close(this.closeDelay)
+        });
+        break;
+      default:
+        return new Error('invalid trigger');
     }
   }
 
   renderComponent(open: boolean, handlers: ITriggers) {
-    const {props} = this;
+    const {props, refContent, refTrigger} = this;
     const {onClickOutside, ...restHandlers} = handlers;
     return (
       <ClickOutside className={sc('', {block: props.block})} handler={onClickOutside}
-        exclude={this.refContent}
-      >
-        <div className={sc('trigger')} {...restHandlers} ref={this.refTrigger}>
+        exclude={refContent}>
+        <div className={sc('trigger')} {...restHandlers} ref={refTrigger}>
           {props.children}
         </div>
         {ReactDOM.createPortal(this.content, this.container)}

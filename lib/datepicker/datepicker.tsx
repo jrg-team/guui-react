@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {createScopedClasses} from 'utils/classes';
 import Input from '../input/input';
-import ClickOutside from '../clickOutside';
+import ClickOutside from '../clickOutside/clickOutside';
 
 const componentName = 'Datepicker';
 const sc = createScopedClasses(componentName);
