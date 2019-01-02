@@ -1,18 +1,19 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import {HTMLAttributes} from 'react';
+import {HTMLAttributes, PureComponent} from 'react';
 import {RefObject} from 'react';
 
 const componentName = 'ClickOutside';
 
 export interface IProps extends HTMLAttributes<HTMLDivElement> {
-  handler: (e: React.MouseEvent) => void;
+  handler?: (e: React.MouseEvent) => void;
+  exclude?: RefObject<Element>;
 };
 
-class ClickOutside extends React.PureComponent<IProps> {
+class ClickOutside extends PureComponent<IProps> {
   static displayName = componentName;
   static propTypes = {
-    handler: PropTypes.func.isRequired
+    handler: PropTypes.func
   };
   private readonly myRef: RefObject<HTMLDivElement>;
 
@@ -23,23 +24,30 @@ class ClickOutside extends React.PureComponent<IProps> {
 
   handler = (e: MouseEvent | TouchEvent) => {
     if (this.myRef.current === null) {return;}
+    if (this.props.exclude &&
+      this.props.exclude.current &&
+      this.props.exclude.current.contains(e.target as Node)) { return; }
     if (!this.myRef.current.contains(e.target as Node)) {
-      this.props.handler.call(e.target, e);
+      this.props.handler && this.props.handler.call(e.target, e);
     }
   };
 
   componentDidMount(): void {
-    document.addEventListener('click', this.handler);
+    if (this.props.handler) {
+      document.addEventListener('click', this.handler);
+    }
   }
 
   componentWillUnmount(): void {
-    document.removeEventListener('click', this.handler);
+    if (this.props.handler) {
+      document.removeEventListener('click', this.handler);
+    }
   }
 
   render() {
-    const {handler, children, ...restProps} = this.props;
+    const {handler, exclude, children, ...restProps} = this.props;
     return (
-      <div style={{border: '1px solid red'}} ref={this.myRef} {...restProps}>{children}</div>
+      <div ref={this.myRef} {...restProps}>{children}</div>
     );
   }
 };

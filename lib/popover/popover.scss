@@ -1,0 +1,15 @@
+@import "helper";
+
+#{component(popover)} {
+  &, &-trigger {
+    display: inline-block;vertical-align: top;
+  }
+  &-block, &-block &-trigger {
+    display: block;
+  }
+  &-content {
+    position: absolute; top: 0;left: 0; border: 1px solid $input-border-color; border-radius: $input-border-radius;
+    padding: 4px 8px; background: $white;
+    white-space: nowrap;
+  }
+}

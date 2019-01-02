@@ -1,7 +1,6 @@
 {
   "extends": ["tslint:recommended", "tslint-react"],
   "rules": {
-    "no-consecutive-blank-lines": false,
     "no-console": [false, "log", "error"],
     "whitespace": false,
     "no-empty-interface": false,

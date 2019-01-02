@@ -1,10 +1,17 @@
 @import "helper";
+
 body { margin: 0; line-height: 1.5; font-size: 16px; }
+
 * {margin: 0;padding: 0;}
+
 ul, ol { list-style: none;}
+
 img {max-width: 100%;}
+
 h1, h2, h3, h4, h5, h6 {font-weight: normal;}
+
 a {text-decoration: none; color: black;}
+
 .site {
   &-wrapper { min-height: 100vh; }
   &-header { display: flex; padding: 0 48px; align-items: center; border-bottom: 1px solid $main-color;
@@ -26,5 +33,11 @@ a {text-decoration: none; color: black;}
   }
   &-main { background: white; margin: 24px 32px;
     h2 {margin: 1em 0;}
+  }
+}
+
+.demo {
+  &-row {
+    padding: 8px 0;
   }
 }
