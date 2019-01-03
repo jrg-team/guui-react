@@ -1,16 +1,16 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import Component from '../component'
+import Component from '../component';
 import IUploadFile from './IUploadFile';
 import {ChangeEvent} from 'react';
 import Http from '../http';
 
 interface IState {
-  x: string
+  x: string;
 }
 
 interface IFile {
-  url: string
+  url: string;
 }
 
 export interface IProps {
@@ -23,8 +23,8 @@ export interface IProps {
   fileLengthLimit?: number;
   disabled?: boolean;
   responseParser: (responseText: string) => string;
-  fileList: IUploadFile[],
-  onUploaded: (error: Error | null, file?: IFile) => void,
+  fileList: IUploadFile[];
+  onUploaded: (error: Error | null, file?: IFile) => void;
 }
 
 export default class Uploader extends Component<IProps, IState> {
@@ -47,28 +47,28 @@ export default class Uploader extends Component<IProps, IState> {
   };
 
   onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const formData = new FormData()
-    const files = Array.from(e.target.files!)
+    const formData = new FormData();
+    const files = Array.from(e.target.files!);
     files.map((file) => {
-      formData.append(this.props.name, file)
-    })
+      formData.append(this.props.name, file);
+    });
     const promise = Http.ajax({
       method: this.props.method,
       data: formData,
       url: this.props.url
-    })
+    });
     promise.then((xhr: XMLHttpRequest) => {
-      const url = this.props.responseParser(xhr.responseText)
-      this.props.onUploaded(null, {url})
+      const url = this.props.responseParser(xhr.responseText);
+      this.props.onUploaded(null, {url});
     }, (xhr) => {
-      this.props.onUploaded(new Error())
+      this.props.onUploaded(new Error());
       console.log('error');
-    })
+    });
 
   }
 
   constructor(props: IProps) {
-    super(props)
+    super(props);
   }
 
   render() {

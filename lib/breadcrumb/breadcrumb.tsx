@@ -13,13 +13,13 @@ export interface IBreadcrumbItem {
 
 export type BI = IBreadcrumbItem;
 
-export type Renderer = (item: BI, index: number, items: BI[]) => ReactChild
+export type Renderer = (item: BI, index: number, items: BI[]) => ReactChild;
 
 export interface IProps extends IStyledProps {
   routes?: BI[];
   separator?: ReactChild;
   renderer?: Renderer;
-};
+}
 
 const renderItem: Renderer = (item, index, array) =>
   index === array.length - 1 ?

@@ -7,7 +7,7 @@ const sc = createScopedClasses(componentName);
 
 interface IProps extends IStyledProps {
   dir?: 'horizontal' | 'vertical';
-};
+}
 
 const Layout: GFC<IProps> = (props) => {
   return (

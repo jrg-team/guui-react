@@ -8,7 +8,7 @@ const sc = createScopedClasses(componentName);
 
 export interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   defaultChecked?: boolean;
-};
+}
 
 const Radio: GFC<IProps> = (props) => {
   const {className, children, ...restProps} = props;

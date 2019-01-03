@@ -1,46 +1,46 @@
-type HttpMethod = 'POST' | 'GET' | 'PUT' | 'PATCH' | 'DELETE'
+type HttpMethod = 'POST' | 'GET' | 'PUT' | 'PATCH' | 'DELETE';
 
 interface IAjaxOptions {
-  method: HttpMethod,
-  url: string,
-  query?: Map<string, string>,
-  headers?: Map<string, string>,
-  data: FormData | string
+  method: HttpMethod;
+  url: string;
+  query?: Map<string, string>;
+  headers?: Map<string, string>;
+  data: FormData | string;
 }
 
 class Http {
   static ajax = (options: IAjaxOptions) => {
     return new Promise((resolve, reject) => {
-      const {url, method} = options
-      const xhr = new XMLHttpRequest()
-      xhr.open(method, url)
+      const {url, method} = options;
+      const xhr = new XMLHttpRequest();
+      xhr.open(method, url);
       xhr.onreadystatechange = () => {
         if (xhr.readyState >= 4) {
           if ((xhr.response as Response).status >= 200 && (xhr.response as Response).status < 300) {
-            resolve(xhr)
+            resolve(xhr);
           } else {
-            reject(xhr)
+            reject(xhr);
           }
         }
-      }
-      xhr.send(options.data)
-    })
-  }
+      };
+      xhr.send(options.data);
+    });
+  };
   static get = (options: IAjaxOptions) => {
-    Http.ajax({...options, method: 'GET'})
-  }
+    return Http.ajax({...options, method: 'GET'});
+  };
   static post = (options: IAjaxOptions) => {
-    Http.ajax({...options, method: 'POST'})
-  }
+    return Http.ajax({...options, method: 'POST'});
+  };
   static patch = (options: IAjaxOptions) => {
-    Http.ajax({...options, method: 'PATCH'})
-  }
+    return Http.ajax({...options, method: 'PATCH'});
+  };
   static delete = (options: IAjaxOptions) => {
-    Http.ajax({...options, method: 'DELETE'})
-  }
+    return Http.ajax({...options, method: 'DELETE'});
+  };
   static put = (options: IAjaxOptions) => {
-    Http.ajax({...options, method: 'PUT'})
-  }
+    return Http.ajax({...options, method: 'PUT'});
+  };
 }
 
-export default Http
+export default Http;

@@ -18,7 +18,7 @@ export interface IProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>
   type?: 'text' | 'number' | 'password' | 'email' | 'date' | 'datetime' | 'datetime-local' | 'search' | 'tel' | 'time' | 'url';
   before?: ReactChild;
   after?: ReactChild;
-};
+}
 
 const Input: GFC<IProps> = (props) => {
   const {

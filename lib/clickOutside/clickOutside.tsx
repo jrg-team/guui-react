@@ -11,7 +11,7 @@ const sc = createScopedClasses(componentName);
 export interface IProps extends HTMLAttributes<HTMLDivElement> {
   handler?: (e: React.MouseEvent) => void;
   exclude?: RefObject<Element>;
-};
+}
 
 class ClickOutside extends PureComponent<IProps> {
   static displayName = componentName;
@@ -33,7 +33,7 @@ class ClickOutside extends PureComponent<IProps> {
     if (!this.myRef.current.contains(e.target as Node)) {
       this.props.handler && this.props.handler.call(e.target, e);
     }
-  };
+  }
 
   componentDidMount(): void {
     if (this.props.handler) {
@@ -53,5 +53,5 @@ class ClickOutside extends PureComponent<IProps> {
       <div className={sc()} ref={this.myRef} {...restProps}>{children}</div>
     );
   }
-};
+}
 export default ClickOutside;

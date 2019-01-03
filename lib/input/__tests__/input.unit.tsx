@@ -4,7 +4,6 @@ import * as renderer from 'react-test-renderer';
 import Input from '../input';
 import {mount} from 'enzyme';
 
-
 describe(Input.displayName, () => {
   it('DisplayName', () => {
     expect(Input.displayName).toEqual('Input');

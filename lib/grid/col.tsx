@@ -8,7 +8,7 @@ interface IProps extends IStyledProps {
   span?: number;
   offset?: number;
   gutter?: number;
-};
+}
 
 const Col: GFC<IProps> = (props) => {
   const spanClass = props.span ? `span${props.span}` : undefined;

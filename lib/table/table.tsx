@@ -5,7 +5,7 @@ const componentName = 'Table';
 const sc = createScopedClasses(componentName);
 
 export interface IProps extends IStyledProps {
-};
+}
 
 const Table: GFC<IProps> = (props) => {
   return (

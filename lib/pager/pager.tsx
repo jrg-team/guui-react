@@ -5,7 +5,7 @@ const componentName = 'Pager';
 const sc = createScopedClasses(componentName);
 
 export interface IProps extends IStyledProps {
-};
+}
 
 const Pager: GFC<IProps> = (props) => {
   return (

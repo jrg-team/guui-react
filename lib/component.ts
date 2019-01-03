@@ -2,26 +2,26 @@ import * as React from 'react';
 import {lowerFirstLetter} from 'utils/namer';
 
 export function scopedClasses(this: any, ...args: ClassValue[]): string {
-  const prefix = ['gu', lowerFirstLetter(this.constructor.name)]
+  const prefix = ['gu', lowerFirstLetter(this.constructor.name)];
   if (args.length === 0) {
-    return prefix.join('-')
+    return prefix.join('-');
   }
   return args.map((c: ClassValue) => {
-    const result = []
+    const result = [];
     if (!c) {
-      return prefix.join('-')
+      return prefix.join('-');
     } else if (typeof c === 'string') {
-      result.push(c)
+      result.push(c);
     } else if (Array.isArray(c)) {
-      result.push(...c)
+      result.push(...c);
     } else {
       for (const key in c) {
         if (c[key]) {
-          result.push(key)
+          result.push(key);
         }
       }
     }
-    return result.map(k => [...prefix, k].join('-')).join(' ')
+    return result.map(k => [...prefix, k].join('-')).join(' ');
   }).join(' ');
 }
 
@@ -43,8 +43,8 @@ export function classes(this: any, ...args: ClassValue[]): string {
 console.log(React.Component);
 
 export default class Component<P, S> extends React.Component<P, S> {
-  scopedClasses = scopedClasses
-  sc = this.scopedClasses
-  classes = classes
-  c = this.classes
+  scopedClasses = scopedClasses;
+  sc = this.scopedClasses;
+  classes = classes;
+  c = this.classes;
 }

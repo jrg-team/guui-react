@@ -5,7 +5,7 @@ const componentName = 'List';
 const sc = createScopedClasses(componentName);
 
 export interface IProps extends IStyledProps {
-};
+}
 
 const List: GFC<IProps> = (props) => {
   return (

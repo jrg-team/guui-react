@@ -1,8 +1,8 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import '../stylesheets/tabs.sass'
-import Component from './component'
-import {IProps as CollapseItemProps} from './collapseItem'
+import '../stylesheets/tabs.sass';
+import Component from './component';
+import {IProps as CollapseItemProps} from './collapseItem';
 
 interface IProps {
   selectedItems: string[];
@@ -12,7 +12,7 @@ interface IProps {
 }
 
 interface IState {
-  x: string
+  x: string;
 }
 
 class Collapse extends Component<IProps, IState> {
@@ -26,15 +26,15 @@ class Collapse extends Component<IProps, IState> {
   };
 
   constructor(props: IProps) {
-    super(props)
+    super(props);
   }
 
   onClickItem = (name: string, e: React.MouseEvent<HTMLDivElement>) => {
-    this.props.onChange && this.props.onChange(name)
+    this.props.onChange && this.props.onChange(name);
   }
 
   render() {
-    const {children} = this.props
+    const {children} = this.props;
     return (
       <div className={this.sc()}>
         {children}

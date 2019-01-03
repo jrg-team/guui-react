@@ -7,7 +7,7 @@ const componentName = 'Check';
 const sc = createScopedClasses(componentName);
 
 export interface IProps extends InputHTMLAttributes<HTMLInputElement> {
-};
+}
 
 const Check: GFC<IProps> = (props) => {
   const {className, checked, children, ...restProps} = props;

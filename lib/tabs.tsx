@@ -1,18 +1,18 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import '../stylesheets/tabs.sass'
-import Component from './component'
-import {IProps as TabProps} from './tab'
+import '../stylesheets/tabs.sass';
+import Component from './component';
+import {IProps as TabProps} from './tab';
 
 interface IProps {
   selected: string;
   onChange?: (name: string) => void;
   children?: Array<React.ReactElement<TabProps>>;
-  autoChange?: boolean
+  autoChange?: boolean;
 }
 
 interface IState {
-  x: string
+  x: string;
 }
 
 class Tabs extends Component<IProps, IState> {
@@ -25,18 +25,18 @@ class Tabs extends Component<IProps, IState> {
   };
 
   constructor(props: IProps) {
-    super(props)
+    super(props);
   }
 
   onClickTitle = (name: string, e: React.MouseEvent<HTMLSpanElement>) => {
-    this.props.onChange && this.props.onChange(name)
+    this.props.onChange && this.props.onChange(name);
   }
 
   render() {
-    const {children} = this.props
+    const {children} = this.props;
     const items = children && children.map((x, index) => {
-      return <span onClick={this.onClickTitle.bind(null, x.props.name)} key={index} data-name={x.props.name}>{x.props.title}</span>
-    })
+      return <span onClick={this.onClickTitle.bind(null, x.props.name)} key={index} data-name={x.props.name}>{x.props.title}</span>;
+    });
     return (
       <div className={this.sc()}>
         {items}

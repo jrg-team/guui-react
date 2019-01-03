@@ -16,8 +16,8 @@ export interface IProps extends IStyledProps {
   trigger?: 'click' | 'hover' | 'manual';
   block?: boolean;
   position?: 'top' | 'bottom' | 'left' | 'right' | 'topLeft' | 'bottomLeft' | 'topRight' | 'bottomRight';
-  container?: RefObject<Element>
-};
+  container?: RefObject<Element>;
+}
 
 interface ITriggers {
   onClick?: MouseEventHandler;
@@ -115,7 +115,7 @@ class Popover extends PureComponent<IProps, IState> {
         content!.style.left = left - containerLeft + width - contentWidth + 'px';
         break;
     }
-  };
+  }
 
   private nowOrLater(action: () => void, delay?: number) {
     if (this.timer) { window.clearTimeout(this.timer); }

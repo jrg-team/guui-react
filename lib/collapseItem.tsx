@@ -1,6 +1,6 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import Component from './component'
+import Component from './component';
 
 export interface IProps {
   title: string;
@@ -8,7 +8,7 @@ export interface IProps {
 }
 
 interface IState {
-  active: boolean
+  active: boolean;
 }
 
 class CollapseItem extends Component<IProps, IState> {
@@ -17,20 +17,20 @@ class CollapseItem extends Component<IProps, IState> {
   };
 
   constructor(props: IProps) {
-    super(props)
+    super(props);
     this.state = {
       active: false
-    }
+    };
   }
 
   setActive(bool: boolean) {
     this.setState({
       active: bool
-    })
+    });
   }
 
   onClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    console.log('todo')
+    console.log('todo');
   }
 
   render() {

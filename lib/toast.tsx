@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import {scopedClasses} from './component'
-import Icon from './icon/icon'
+import {scopedClasses} from './component';
+import Icon from './icon/icon';
 
 interface IProps {
   type: 'info' | 'success' | 'error' | 'warn';
@@ -19,13 +19,13 @@ export type ToastFunc = (props: IProps) => {
 };
 
 const Alter = (props: IProps) => {
-  const type = props.type
-  const title = props.title
-  const showIcon = props.showIcon
-  const iconType = props.iconType || 'info'
-  const closable = props.closable || false
-  const closeText = props.closeText
-  const description = props.description
+  const type = props.type;
+  const title = props.title;
+  const showIcon = props.showIcon;
+  const iconType = props.iconType || 'info';
+  const closable = props.closable || false;
+  const closeText = props.closeText;
+  const description = props.description;
 
   function renderIcon() {
     if (showIcon) {
@@ -33,9 +33,9 @@ const Alter = (props: IProps) => {
         <div className="icon-wrapper">
           <Icon name={iconType}></Icon>
         </div>
-      )
+      );
     } else {
-      return ''
+      return '';
     }
   }
 
@@ -45,9 +45,9 @@ const Alter = (props: IProps) => {
         <div className="close-wrapper">
           {closeText || <Icon name="close"></Icon>}
         </div>
-      )
+      );
     } else {
-      return ''
+      return '';
     }
   }
 
@@ -60,13 +60,13 @@ const Alter = (props: IProps) => {
       </div>
       {renderCloseIcon()}
     </div>
-  )
-}
+  );
+};
 
 const appendAlert = (config: IProps) => {
   const div = document.createElement('div');
   document.body.appendChild(div);
-  let currentConfig = {...config}
+  let currentConfig = {...config};
 
   function render(props: IProps) {
     ReactDOM.render(<Alter {...props} />, div);
@@ -79,7 +79,7 @@ const appendAlert = (config: IProps) => {
     }
   }
 
-  function update(newConfig: IProps){
+  function update(newConfig: IProps) {
     currentConfig = {
       ...currentConfig,
       ...newConfig,
@@ -87,13 +87,13 @@ const appendAlert = (config: IProps) => {
     render(currentConfig);
   }
 
-  render(currentConfig)
+  render(currentConfig);
 
   return {
     destroy,
     update,
-  }
-}
+  };
+};
 
 class Toast {
   static info: ToastFunc;
@@ -110,31 +110,31 @@ Toast.info = (props: IProps) => {
     type: 'info',
     ...props,
   };
-  return appendAlert(config)
-}
+  return appendAlert(config);
+};
 
 Toast.success = (props: IProps) => {
   const config = {
     type: 'success',
     ...props,
   };
-  return appendAlert(config)
-}
+  return appendAlert(config);
+};
 
 Toast.error = (props: IProps) => {
   const config = {
     type: 'error',
     ...props,
   };
-  return appendAlert(config)
-}
+  return appendAlert(config);
+};
 
 Toast.warn = Toast.warning = (props: IProps) => {
   const config = {
     type: 'warn',
     ...props,
   };
-  return appendAlert(config)
-}
+  return appendAlert(config);
+};
 
 export default Toast;

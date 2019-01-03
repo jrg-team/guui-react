@@ -21,7 +21,7 @@ export interface IProps extends IStyledProps {
   loading?: boolean;
   type?: 'button' | 'submit' | 'reset';
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-};
+}
 
 const Button: GFC<IProps> = (props) => {
   const [state] = useState({

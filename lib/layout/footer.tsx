@@ -5,7 +5,7 @@ const componentName = 'Footer';
 const sc = createScopedClasses(componentName);
 
 interface IProps extends IStyledProps {
-};
+}
 
 const Footer: GFC<IProps> = (props) => {
   return (

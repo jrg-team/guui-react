@@ -1,6 +1,6 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import Component from './component'
+import Component from './component';
 
 export interface IProps {
   totalPage: number;
@@ -9,7 +9,7 @@ export interface IProps {
 }
 
 interface IState {
-  x: string
+  x: string;
 }
 
 class Pagination extends Component<IProps, IState> {
@@ -19,29 +19,29 @@ class Pagination extends Component<IProps, IState> {
   };
 
   constructor(props: IProps) {
-    super(props)
+    super(props);
   }
 
   onClickPage = (currentPage: number, e: React.MouseEvent<HTMLSpanElement>) => {
-    this.props.onChange && this.props.onChange(currentPage)
+    this.props.onChange && this.props.onChange(currentPage);
   }
 
   render() {
-    const items = []
+    const items = [];
     for (let i = 0; i < this.props.totalPage; i++) {
       items.push(
         <span onClick={this.onClickPage.bind(null, i + 1)} key={i}
-              className={this.sc('item', i + 1 === this.props.currentPage ? 'active' : '')}
-              data-name={i + 1}>{i}</span>
-      )
+          className={this.sc('item', i + 1 === this.props.currentPage ? 'active' : '')}
+          data-name={i + 1}>{i}</span>
+      );
     }
     return (
       <div className={this.sc()}>
         <span className={this.sc('prev')}
-              onClick={this.onClickPage.bind(null, this.props.currentPage - 1)}></span>
+          onClick={this.onClickPage.bind(null, this.props.currentPage - 1)}></span>
         {items}
         <span className={this.sc('next')}
-              onClick={this.onClickPage.bind(null, this.props.currentPage + 1)}></span>
+          onClick={this.onClickPage.bind(null, this.props.currentPage + 1)}></span>
       </div>
     )
       ;

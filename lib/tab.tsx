@@ -1,7 +1,7 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import '../stylesheets/tab.sass'
-import Component from './component'
+import '../stylesheets/tab.sass';
+import Component from './component';
 
 export interface IProps {
   title: string;
@@ -10,7 +10,7 @@ export interface IProps {
 }
 
 interface IState {
-  x: string
+  x: string;
 }
 
 class Tab extends Component<IProps, IState> {
@@ -20,7 +20,7 @@ class Tab extends Component<IProps, IState> {
   };
 
   constructor(props: IProps) {
-    super(props)
+    super(props);
   }
 
   render() {

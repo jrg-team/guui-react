@@ -1,7 +1,7 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import Component from './component'
+import Component from './component';
 import {default as Button, IProps as ButtonProps} from './button/button';
 
 interface IProps {
@@ -13,14 +13,14 @@ interface IProps {
   okButtonProps?: ButtonProps;
   cancelText?: string;
   cancelButtonProps?: ButtonProps;
-  width?: string|number;
+  width?: string | number;
   children: React.ReactElement<any>;
   onCancel?: React.MouseEventHandler<HTMLButtonElement | HTMLSpanElement>;
   onConfirm?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 interface IState {
-  x: string
+  x: string;
 }
 
 class Dialog extends Component<IProps, IState> {
@@ -34,7 +34,7 @@ class Dialog extends Component<IProps, IState> {
     okButtonProps: PropTypes.object,
     cancelButtonProps: PropTypes.object,
     visible: PropTypes.bool
-  }
+  };
 
   public static defaultProps: Partial<IProps> = {
     width: 500,
@@ -44,46 +44,46 @@ class Dialog extends Component<IProps, IState> {
   };
 
   constructor(props: IProps) {
-    super(props)
+    super(props);
   }
 
   onCancel = (e: React.MouseEvent<HTMLButtonElement | HTMLSpanElement>) => {
-    this.props.onCancel && this.props.onCancel(e)
+    this.props.onCancel && this.props.onCancel(e);
   }
 
   onConfirm = (e: React.MouseEvent<HTMLButtonElement>) => {
-    this.props.onConfirm && this.props.onConfirm(e)
+    this.props.onConfirm && this.props.onConfirm(e);
   }
 
   render() {
-    const {children, title, closable, footer} = this.props
+    const {children, title, closable, footer} = this.props;
 
     const renderTitle = () => {
-      let titleHtml
+      let titleHtml;
       if (title) {
-        titleHtml = <span className={this.sc('title')}>{title}</span>
+        titleHtml = <span className={this.sc('title')}>{title}</span>;
       }
-      return titleHtml
-    }
+      return titleHtml;
+    };
 
     const renderFooter = () => {
       if (footer === null) {
-        return ''
+        return '';
       } else if (footer === undefined) {
         return (
           <div className={this.sc('footer')}>
             <Button {...this.props.cancelButtonProps} onClick={this.onCancel}>{this.props.cancelText}</Button>
             <Button {...this.props.okButtonProps} onClick={this.onConfirm}>{this.props.okText}</Button>
           </div>
-        )
+        );
       } else {
         return (
           <div className={this.sc('footer')}>
             {footer}
           </div>
-        )
+        );
       }
-    }
+    };
     if (this.props.visible) {
       return (
         <div className={this.sc()}>
@@ -98,7 +98,7 @@ class Dialog extends Component<IProps, IState> {
         </div>
       );
     } else {
-      return ''
+      return '';
     }
   }
 }

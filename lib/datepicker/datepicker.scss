@@ -1,0 +1,12 @@
+@import "helper";
+
+#{component(datepicker)} {
+  &-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &-yearAndMonth {
+    margin: 0 auto;
+  }
+}

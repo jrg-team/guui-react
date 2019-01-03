@@ -5,7 +5,7 @@ const componentName = 'Aside';
 const sc = createScopedClasses(componentName);
 
 interface IProps extends IStyledProps {
-};
+}
 
 const Aside: GFC<IProps> = (props) => {
   return (

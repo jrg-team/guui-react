@@ -11,8 +11,8 @@ const sc = createScopedClasses(componentName);
 interface IProps extends IStyledProps {
   name: string;
   fill?: string;
-  beforeMount?: (el: Element | null | Text) => void
-  afterMount?: (el: Element | null | Text) => void
+  beforeMount?: (el: Element | null | Text) => void;
+  afterMount?: (el: Element | null | Text) => void;
 }
 
 class Icon extends React.Component<IProps> {

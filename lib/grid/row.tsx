@@ -11,8 +11,8 @@ const sc = createScopedClasses(componentName);
 interface IProps extends IStyledProps {
   gutter?: number;
   align?: 'left' | 'right' | 'center' | 'spaceBetween' | 'spaceAround';
-  verticalAlign?: 'top' | 'bottom' | 'center'
-};
+  verticalAlign?: 'top' | 'bottom' | 'center';
+}
 
 const Row: GFC<IProps> = (props) => {
   const margin = props.gutter ? `0 -${props.gutter / 2}px` : undefined;
