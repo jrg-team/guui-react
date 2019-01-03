@@ -21,7 +21,6 @@ import TableExample from 'examples/table.example';
 import PagerExample from 'examples/pager.example';
 import ListExample from 'examples/list.example';
 import ClickOutsideExample from 'examples/clickOutside.example';
-import clickOutside
 
 void 'examples 不要改动这一行代码！'; // tslint:disable-line
 
