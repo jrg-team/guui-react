@@ -3,7 +3,7 @@ import * as React from 'react';
 import {createScopedClasses, classes} from 'utils/classes';
 import './importAllIcons';
 import * as ReactDOM from 'react-dom';
-import './index.scss';
+import './icon.scss';
 
 const componentName = 'Icon';
 const sc = createScopedClasses(componentName);
@@ -18,7 +18,6 @@ interface IProps extends IStyledProps {
 class Icon extends React.Component<IProps> {
   static displayName = componentName;
   static defaultProps = {
-    fill: 'currentColor'
   };
   static propTypes = {
     name: PropTypes.string.isRequired,
@@ -35,8 +34,9 @@ class Icon extends React.Component<IProps> {
 
   render() {
     return (
-      <svg className={classes(sc('', this.props.name), this.props.className)} style={this.props.style}>
-        <use xlinkHref={`#${this.props.name}`} style={{fill: this.props.fill}}/>
+      <svg className={classes(sc('', this.props.name), this.props.className)}
+        style={{fill: this.props.fill, ...this.props.style}}>
+        <use xlinkHref={`#${this.props.name}`}/>
       </svg>
     );
   }

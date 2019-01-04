@@ -1,6 +1,7 @@
 @import "helper";
 
 #{component(datepicker)} {
+  color: $text-color;
   &-nav {
     display: flex;
     justify-content: space-between;

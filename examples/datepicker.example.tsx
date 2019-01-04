@@ -6,7 +6,7 @@ export default function (props: any) {
     <div className="DatepickerExample">
       <h2>普通示例</h2>
       <div>
-        <Datepicker/>
+        <Datepicker value={new Date()}/>
       </div>
     </div>
   );

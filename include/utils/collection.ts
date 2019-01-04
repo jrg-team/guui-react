@@ -11,4 +11,12 @@ function contains<T>(array: T[], item: T) {
   return array.indexOf(item) >= 0;
 }
 
-export {pick, contains};
+function range(start: number, end: number): number[] {
+  const result: number[] = [];
+  for (let i = start; i <= end; i++) {
+    result.push(i);
+  }
+  return result;
+}
+
+export {pick, contains, range};

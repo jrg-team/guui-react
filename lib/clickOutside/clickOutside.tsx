@@ -33,7 +33,7 @@ class ClickOutside extends PureComponent<IProps> {
     if (!this.myRef.current.contains(e.target as Node)) {
       this.props.handler && this.props.handler.call(e.target, e);
     }
-  }
+  };
 
   componentDidMount(): void {
     if (this.props.handler) {
