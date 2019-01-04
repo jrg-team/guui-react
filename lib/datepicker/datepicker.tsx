@@ -6,7 +6,7 @@ import {useRef, useState} from 'react';
 import ClickOutside from '../clickOutside/clickOutside';
 import Icon from '../icon/icon';
 import './datepicker.scss';
-import Date2 from 'utils/date';
+import Date2, {pad} from 'utils/date';
 import PropTypes from 'prop-types';
 import {range} from 'utils/collection';
 
@@ -16,10 +16,11 @@ const sc = createScopedClasses(componentName);
 export interface IProps extends IStyledProps {
   value?: Date | string;
   firstDayOfWeek?: 0 | 1;
+  onChange?: (date: Date2) => void;
 }
 
 const Datepicker: GFC<IProps> = (props) => {
-  const {value} = props;
+  const {value, onChange} = props;
   const date2Value = new Date2(value);
   const formattedValue = date2Value.toDateString();
   const div = useRef(null);
@@ -38,7 +39,7 @@ const Datepicker: GFC<IProps> = (props) => {
         <Icon name="left"/>
       </span>
       <span className={sc('yearAndMonth', 'cell', 'cell-span3')}>
-        {display[0]}年 {display[1]}月
+        {display[0]}年 {pad(display[1])}月
         </span>
       <span className={sc('cell')}>
         <Icon name="right"/>
@@ -55,6 +56,9 @@ const Datepicker: GFC<IProps> = (props) => {
       return n;
     }
   };
+  const onClickDay = (day: Date2) => {
+    onChange && onChange.call(null, day.date);
+  };
   const weekdayNames = ['日', '一', '二', '三', '四', '五', '六'];
   const Days = () => {
     const date2 = new Date2(display[0], display[1], 1);
@@ -65,7 +69,7 @@ const Datepicker: GFC<IProps> = (props) => {
       <div key={first.clone.addDay(row * 7).timestamp}>
         {range(0, 6).map(col => {
           const d = first.clone.addDay(row * 7 + col);
-          return <span className={sc('cell')} key={d.timestamp}>{d.day}</span>;
+          return <span className={sc('cell')} onClick={e => onClickDay(d)} key={d.timestamp}>{d.day}</span>;
         })}
       </div>
     ));
