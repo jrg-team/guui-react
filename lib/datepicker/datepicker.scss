@@ -10,4 +10,17 @@
   &-yearAndMonth {
     margin: 0 auto;
   }
+  &-cell {
+    width: $input-height;
+    height: $input-height;
+    text-align: center;
+    line-height: $input-height;
+    display: inline-flex;
+    vertical-align: top;
+    justify-content: center;
+    align-items: center;
+    &-span3 {
+      width: $input-height * 3;
+    }
+  }
 }

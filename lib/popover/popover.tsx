@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import {createScopedClasses} from 'utils/classes';
-import {MouseEventHandler, PureComponent, ReactChild, ReactElement, RefObject} from 'react';
+import {MouseEventHandler, PureComponent, ReactChild, ReactElement, RefObject, Fragment} from 'react';
 import * as ReactDOM from 'react-dom';
 import ClickOutside from '../clickOutside/clickOutside';
 import './popover.scss';
@@ -115,7 +115,7 @@ class Popover extends PureComponent<IProps, IState> {
         content!.style.left = left - containerLeft + width - contentWidth + 'px';
         break;
     }
-  }
+  };
 
   private nowOrLater(action: () => void, delay?: number) {
     if (this.timer) { window.clearTimeout(this.timer); }
@@ -189,18 +189,36 @@ class Popover extends PureComponent<IProps, IState> {
     }
   }
 
-  renderComponent(open: boolean, handlers: ITriggers) {
-    const {props, refContent, refTrigger} = this;
-    const {onClickOutside, ...restHandlers} = handlers;
+  wrapInDiv(inner: ReactChild) {
+    const {props} = this;
+    return (
+      <div className={sc('', {block: props.block})}>
+        {inner}
+      </div>
+    );
+  }
+  wrapInClickOutside(inner: ReactChild, handlers: Partial<ITriggers>) {
+    const {props, refContent} = this;
+    const {onClickOutside} = handlers;
     return (
       <ClickOutside className={sc('', {block: props.block})} handler={onClickOutside}
         exclude={refContent}>
+        {inner}
+      </ClickOutside>);
+  }
+
+  renderComponent(open: boolean, handlers: ITriggers) {
+    const {props, refTrigger} = this;
+    const {onClickOutside, ...restHandlers} = handlers;
+    const inner = (
+      <Fragment>
         <div className={sc('trigger')} {...restHandlers} ref={refTrigger}>
           {props.children}
         </div>
         {ReactDOM.createPortal(this.content, this.container)}
-      </ClickOutside>
+      </Fragment>
     );
+    return this.props.trigger === 'click' ? this.wrapInClickOutside(inner, handlers) : this.wrapInDiv(inner);
   }
 
 }

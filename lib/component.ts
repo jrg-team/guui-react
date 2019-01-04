@@ -40,8 +40,6 @@ export function classes(this: any, ...args: ClassValue[]): string {
   }).join(' ');
 }
 
-console.log(React.Component);
-
 export default class Component<P, S> extends React.Component<P, S> {
   scopedClasses = scopedClasses;
   sc = this.scopedClasses;

@@ -9,6 +9,10 @@
 3. 必须先写测试，再实现功能。分支覆盖率不得低于 90%。
 4. 除了 react、react-dom 和 prop-types，不得有其他外部依赖
 
+## 命名
+
+1. 禁止用 2 表示 to，如 string2Date 必须写成 stringToDate
+
 ## 如何开发
 
 1. `cd guui-react`

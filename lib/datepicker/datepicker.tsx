@@ -6,7 +6,7 @@ import {useRef, useState} from 'react';
 import ClickOutside from '../clickOutside/clickOutside';
 import Icon from '../icon/icon';
 import './datepicker.scss';
-import Date2, {dateToString, getYMD, stringToDate} from 'utils/date';
+import Date2 from 'utils/date';
 import PropTypes from 'prop-types';
 import {range} from 'utils/collection';
 
@@ -20,24 +20,32 @@ export interface IProps extends IStyledProps {
 
 const Datepicker: GFC<IProps> = (props) => {
   const {value} = props;
-  const dateValue = typeof value === 'string' ? stringToDate(value) : value;
-  const formattedValue = dateToString(dateValue);
+  const date2Value = new Date2(value);
+  const formattedValue = date2Value.toDateString();
   const div = useRef(null);
   const onFocusInput = () => {
     setOpen(true);
   };
   const [open, setOpen] = useState<boolean>(false);
-  const [year, month] = getYMD(dateValue || new Date());
-  const [display, setDisplay] = useState<[number, number]>([year, month]);
+  const [year, month] = date2Value.parts;
+  const [display] = useState<[number, number]>([year, month]);
   const Nav = () => (
     <div className={sc('nav')}>
-      <Icon name="double-left"/>
-      <Icon name="left"/>
-      <span className={sc('yearAndMonth')}>
-        {display[0]}年 {display[1] + 1}月
+      <span className={sc('cell')}>
+        <Icon name="double-left"/>
+      </span>
+      <span className={sc('cell')}>
+        <Icon name="left"/>
+      </span>
+      <span className={sc('yearAndMonth', 'cell', 'cell-span3')}>
+        {display[0]}年 {display[1]}月
         </span>
-      <Icon name="right"/>
-      <Icon name="double-right"/>
+      <span className={sc('cell')}>
+        <Icon name="right"/>
+      </span>
+      <span className={sc('cell')}>
+        <Icon name="double-right"/>
+      </span>
     </div>
   );
   const normalize = (n: number, base: number): number => {
@@ -57,7 +65,7 @@ const Datepicker: GFC<IProps> = (props) => {
       <div key={first.clone.addDay(row * 7).timestamp}>
         {range(0, 6).map(col => {
           const d = first.clone.addDay(row * 7 + col);
-          return <span key={d.timestamp}>{d.day}</span>;
+          return <span className={sc('cell')} key={d.timestamp}>{d.day}</span>;
         })}
       </div>
     ));
@@ -70,7 +78,7 @@ const Datepicker: GFC<IProps> = (props) => {
   const Picker = () => (
     <div className={sc('picker')}>
       <div className={sc('weekdays')}>
-        {weekdayNames.map((name, i) => <span key={i}>{name}</span>)}
+        {weekdayNames.map((name, i) => <span className={sc('cell')} key={i}>{name}</span>)}
       </div>
       <Days/>
     </div>
@@ -85,14 +93,11 @@ const Datepicker: GFC<IProps> = (props) => {
       <Actions/>
     </div>
   );
-  const popover = (
-    <Popover content={datepicker} trigger="manual" open={open} position="bottomLeft">
-      <Input onFocus={onFocusInput} value={formattedValue} readOnly={true}/>
-    </Popover>
-  );
   return (
     <ClickOutside handler={() => (console.log('hi'), setOpen(false))} exclude={div}>
-      {popover}
+      <Popover content={datepicker} trigger="manual" open={open} position="bottomLeft">
+        <Input onFocus={onFocusInput} value={formattedValue} readOnly={true}/>
+      </Popover>
     </ClickOutside>
   );
 };

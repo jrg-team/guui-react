@@ -1,42 +1,61 @@
 import callNew from './callNew';
 
-const regex = /^(\d{4})[-\/](\d{1,2})[-\/](\d{1,2})/;
-
-function stringToDate(str: string) {
-  const matches = str.match(regex);
-  if (matches) {
-    const [, year, month, day]: RegExpMatchArray = matches;
-    return new Date(parseInt(year, 10), parseInt(month, 10) - 1, parseInt(day, 10));
-  } else {
-    throw new Error('invalid date');
-    return undefined;
-  }
-}
-
-type YearMonthDay = [number, number, number];
-type YMD = YearMonthDay;
-
-function getYMD(date: Date): YMD {
-  const year = date.getFullYear();
-  const month = date.getMonth();
-  const day = date.getDate();
-  return [year, month, day];
-}
-
-function dateToString(date?: Date) {
-  if (!date) { return date; }
-  const [year, month, day] = getYMD(date);
-  return `${year}-${pad(month + 1)}-${pad(day)}`;
-}
-
 function pad(n: number) {
   return (n < 10 ? '0' : '') + n;
 }
 
 class Date2 {
   private readonly value: Date;
+  static stringFormat = 'yyyy-MM-dd HH:mm:ss';
+  static dateStringFormat = 'yyyy-MM-dd';
+  constructor(value?: number | string | Date);
+  constructor(year: number, month: number, day?: number, hours?: number, minutes?: number, seconds?: number, ms?: number);
+  constructor(...args: any) {
+    if (args.length === 1 && args[0] instanceof Date2) {
+      this.value = new Date((args[0] as Date2).timestamp);
+    } else {
+      this.value = callNew(Date, args);
+    }
+  }
 
-  toString(format?: string) { return 'todo'; }
+  // see https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings#custom-date-and-time-format-strings
+  // supported
+  /**
+   * 格式化字符串
+   * @param format - supported format: yyyy MM M dd d HH H hh h mm m ss s tt
+   */
+  toString(format = Date2.stringFormat): string {
+    return format.replace(/yyyy|MM|M|dd|d|HH|H|mm|m|ss|s/g, (match) => {
+      if (match === 'yyyy') {
+        return this.year.toString();
+      } else if (match === 'MM') {
+        return pad(this.month).toString();
+      } else if (match === 'M') {
+        return this.month.toString();
+      } else if (match === 'dd') {
+        return pad(this.day).toString();
+      } else if (match === 'd') {
+        return this.day.toString();
+      } else if (match === 'HH') {
+        return pad(this.hours).toString();
+      } else if (match === 'H') {
+        return this.hours.toString();
+      } else if (match === 'mm') {
+        return pad(this.minutes).toString();
+      } else if (match === 'm') {
+        return this.minutes.toString();
+      } else if (match === 'ss') {
+        return pad(this.seconds).toString();
+      } else if (match === 's') {
+        return this.seconds.toString();
+      } else {
+        return match;
+      }
+    });
+  }
+  toDateString() {
+    return this.toString(Date2.dateStringFormat);
+  }
   valueOf() { return this.timestamp; }
   get clone() { return new Date2(this.value); }
   get parts() { return [this.year, this.month, this.day, this.hours, this.minutes, this.seconds, this.ms]; }
@@ -66,19 +85,6 @@ class Date2 {
   set ms(value) { this.value.setMilliseconds(value); }
   get date() { return this.value; }
   toISOString() {return this.value.toISOString();}
-  constructor(value?: number | string | Date);
-  constructor(year: number, month: number, day?: number, hours?: number, minutes?: number, seconds?: number, ms?: number);
-  constructor(...args: any) {
-    if (args.length === 1) {
-      if (args[0] instanceof Date2) {
-        this.value = new Date((args[0] as Date2).timestamp);
-      } else {
-        this.value = new Date(args[0]);
-      }
-    } else {
-      this.value = callNew(Date, args);
-    }
-  }
   static fromString(s: string, format?: string): Date2 {
     return new Date2(s);
   }
@@ -88,9 +94,3 @@ class Date2 {
 }
 
 export default Date2;
-
-export {
-  stringToDate,
-  dateToString,
-  getYMD,
-};

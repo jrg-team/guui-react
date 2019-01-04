@@ -9,7 +9,6 @@ export default function (props: any) {
     setValue((e.target as HTMLInputElement).value);
   };
   const onError = () => {
-    console.log('enter');
   };
   return (
     <div className="InputExample">
