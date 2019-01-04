@@ -86,7 +86,15 @@ class Datepicker extends PureComponent<IProps, IState> {
       <div key={first.clone.addDay(row * 7).timestamp}>
         {range(0, 6).map(col => {
           const d = first.clone.addDay(row * 7 + col);
-          return <span className={sc('cell', 'day')} onClick={e => this.onClickDay(d)} key={d.timestamp}>{d.day}</span>;
+          return (
+            <span
+              className={sc('cell', 'day', {
+                'day-currentMonth': d.month === display[1],
+                'day-selected': d.isSameDayAs(this.date2Value)
+              })}
+              onClick={e => this.onClickDay(d)}
+              key={d.timestamp}>{d.day}</span>
+          );
         })}
       </div>
     ));
@@ -101,7 +109,7 @@ class Datepicker extends PureComponent<IProps, IState> {
       <div className={sc('picker', `picker-${this.props.firstDayOfWeek}`)}>
         <div className={sc('weekdays')}>
           {this.weekdayNames.map((name, i) =>
-            <span className={sc('cell')} key={i}>{name}</span>)}
+            <span className={sc('cell', 'dayOfWeek')} key={i}>{name}</span>)}
         </div>
         {this.renderDays()}
       </div>

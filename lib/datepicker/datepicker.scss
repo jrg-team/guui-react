@@ -31,16 +31,25 @@
       width: $input-height * 3;
     }
   }
+  &-day {
+    color: $grey;
+    &-currentMonth {
+      color: $black;
+    }
+    &-selected {
+      color: $blue;
+    }
+  }
   &-picker {
     &-0 {
-      #{component(datepicker, day)} {
+      #{component(datepicker, dayOfWeek)} {
         &:first-child, &:last-child {
           color: $red;
         }
       }
     }
     &-1 {
-      #{component(datepicker, day)} {
+      #{component(datepicker, dayOfWeek)} {
         &:nth-child(6), &:last-child {
           color: $red;
         }

@@ -6,6 +6,7 @@ $colors: (
   blue: #0086e6,
   black: #424242,
   white: #fff,
+  grey: #ababab,
 );
 
 $blue: map_get($colors, blue);
@@ -13,6 +14,7 @@ $red: map_get($colors, red);
 $green: map_get($colors, green);
 $black: map_get($colors, black);
 $white: map_get($colors, white);
+$grey: map_get($colors, grey);
 
 $main-color: $blue;
 
@@ -35,6 +37,7 @@ $transition-duration: 200ms;
     @content;
   }
 }
+
 @function component($name, $modifier:null) {
   @if $modifier == null {
     @return ".#{$prefix}-#{$name}"

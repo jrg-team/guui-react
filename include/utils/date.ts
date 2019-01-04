@@ -8,7 +8,7 @@ class Date2 {
   private readonly value: Date;
   static stringFormat = 'yyyy-MM-dd HH:mm:ss';
   static dateStringFormat = 'yyyy-MM-dd';
-  constructor(value?: number | string | Date);
+  constructor(value?: number | string | Date | Date2);
   constructor(year: number, month: number, day?: number, hours?: number, minutes?: number, seconds?: number, ms?: number);
   constructor(...args: any) {
     if (args.length === 1 && args[0] instanceof Date2) {
@@ -87,6 +87,9 @@ class Date2 {
   set ms(value) { this.value.setMilliseconds(value); }
   toDate() { return this.value; }
   toISOString() {return this.value.toISOString();}
+  isSameDayAs(date: Date2 | Date) {
+    return this.toDateString() === new Date2(date).toDateString();
+  }
   static fromString(s: string, format?: string): Date2 {
     return new Date2(s);
   }
