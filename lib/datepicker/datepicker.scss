@@ -2,10 +2,18 @@
 
 #{component(datepicker)} {
   color: $text-color;
+  padding: 4px;
+  cursor: default;
   &-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    svg {
+      &:hover {
+        fill: $blue;
+        cursor: pointer;
+      }
+    }
   }
   &-yearAndMonth {
     margin: 0 auto;
@@ -21,6 +29,30 @@
     align-items: center;
     &-span3 {
       width: $input-height * 3;
+    }
+  }
+  &-picker {
+    &-0 {
+      #{component(datepicker, day)} {
+        &:first-child, &:last-child {
+          color: $red;
+        }
+      }
+    }
+    &-1 {
+      #{component(datepicker, day)} {
+        &:nth-child(6), &:last-child {
+          color: $red;
+        }
+      }
+    }
+    #{component(datepicker, day)} {
+      &:hover {
+        background: $blue;
+        color: $white;
+        cursor: pointer;
+        border-radius: $input-border-radius;
+      }
     }
   }
 }

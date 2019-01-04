@@ -13,6 +13,8 @@ class Date2 {
   constructor(...args: any) {
     if (args.length === 1 && args[0] instanceof Date2) {
       this.value = new Date((args[0] as Date2).timestamp);
+    } else if (args.length > 1) {
+      this.value = callNew(Date, args.map((n: number, i: number) => i === 1 ? n - 1 : n));
     } else {
       this.value = callNew(Date, args);
     }
@@ -83,7 +85,7 @@ class Date2 {
   set seconds(value) { this.value.setSeconds(value); }
   get ms() { return this.value.getMilliseconds(); }
   set ms(value) { this.value.setMilliseconds(value); }
-  get date() { return this.value; }
+  toDate() { return this.value; }
   toISOString() {return this.value.toISOString();}
   static fromString(s: string, format?: string): Date2 {
     return new Date2(s);
