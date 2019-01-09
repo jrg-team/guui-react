@@ -13,7 +13,7 @@
 
 1. 普通变量只能用名词，如 let user = {...} 对，let getUser = {...} 错
     1. 不允许添加 info、data 后缀，如 userInfo 错，userData 错
-2. 布尔变量只能有三种形式
+2. 布尔变量只能有下面几种形式
     1. 形容词，如 active
     2. be 动词接名词，如 isAdmin
     3. 动词的完成态（也就是动词的ed形态），如 created, destroyed, broken 
