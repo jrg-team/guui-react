@@ -7,16 +7,21 @@ exports[`Input prop error = wrong 1`] = `
   <div
     className="gu-input-inputAndError"
   >
-    <input
-      className="gu-input gu-input-hasError "
-      onKeyDown={[Function]}
-      spellCheck={false}
-      style={
-        Object {
-          "width": undefined,
+    <div
+      className="gu-input-container"
+    >
+      <input
+        className="gu-input gu-input-hasError "
+        onKeyDown={[Function]}
+        spellCheck={false}
+        style={
+          Object {
+            "width": undefined,
+          }
         }
-      }
-    />
+        type="text"
+      />
+    </div>
     <span
       className="gu-input-error"
     >
@@ -33,16 +38,21 @@ exports[`Input prop errorPosition = bottom 1`] = `
   <div
     className="gu-input-inputAndError gu-input-errorBottom"
   >
-    <input
-      className="gu-input gu-input-hasError "
-      onKeyDown={[Function]}
-      spellCheck={false}
-      style={
-        Object {
-          "width": undefined,
+    <div
+      className="gu-input-container"
+    >
+      <input
+        className="gu-input gu-input-hasError "
+        onKeyDown={[Function]}
+        spellCheck={false}
+        style={
+          Object {
+            "width": undefined,
+          }
         }
-      }
-    />
+        type="text"
+      />
+    </div>
     <span
       className="gu-input-error"
     >
@@ -64,16 +74,21 @@ exports[`Input prop label = hello 1`] = `
   <div
     className="gu-input-inputAndError"
   >
-    <input
-      className="gu-input "
-      onKeyDown={[Function]}
-      spellCheck={false}
-      style={
-        Object {
-          "width": undefined,
+    <div
+      className="gu-input-container"
+    >
+      <input
+        className="gu-input "
+        onKeyDown={[Function]}
+        spellCheck={false}
+        style={
+          Object {
+            "width": undefined,
+          }
         }
-      }
-    />
+        type="text"
+      />
+    </div>
   </div>
 </div>
 `;
@@ -90,16 +105,21 @@ exports[`Input prop labelPosition = top 1`] = `
   <div
     className="gu-input-inputAndError"
   >
-    <input
-      className="gu-input "
-      onKeyDown={[Function]}
-      spellCheck={false}
-      style={
-        Object {
-          "width": undefined,
+    <div
+      className="gu-input-container"
+    >
+      <input
+        className="gu-input "
+        onKeyDown={[Function]}
+        spellCheck={false}
+        style={
+          Object {
+            "width": undefined,
+          }
         }
-      }
-    />
+        type="text"
+      />
+    </div>
   </div>
 </div>
 `;
@@ -111,58 +131,73 @@ exports[`Input prop length = 10 1`] = `
   <div
     className="gu-input-inputAndError"
   >
-    <input
-      className="gu-input "
-      onKeyDown={[Function]}
-      spellCheck={false}
-      style={
-        Object {
-          "width": "calc(10em + 18px)",
+    <div
+      className="gu-input-container"
+    >
+      <input
+        className="gu-input "
+        onKeyDown={[Function]}
+        spellCheck={false}
+        style={
+          Object {
+            "width": "calc(10em + 18px)",
+          }
         }
-      }
-    />
+        type="text"
+      />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Input prop size = big 1`] = `
 <div
-  className="gu-input-wrapper"
+  className="gu-input-wrapper gu-input-wrapper-big"
 >
   <div
     className="gu-input-inputAndError"
   >
-    <input
-      className="gu-input gu-input-big "
-      onKeyDown={[Function]}
-      spellCheck={false}
-      style={
-        Object {
-          "width": undefined,
+    <div
+      className="gu-input-container"
+    >
+      <input
+        className="gu-input "
+        onKeyDown={[Function]}
+        spellCheck={false}
+        style={
+          Object {
+            "width": undefined,
+          }
         }
-      }
-    />
+        type="text"
+      />
+    </div>
   </div>
 </div>
 `;
 
 exports[`Input prop size = small 1`] = `
 <div
-  className="gu-input-wrapper"
+  className="gu-input-wrapper gu-input-wrapper-small"
 >
   <div
     className="gu-input-inputAndError"
   >
-    <input
-      className="gu-input gu-input-small "
-      onKeyDown={[Function]}
-      spellCheck={false}
-      style={
-        Object {
-          "width": undefined,
+    <div
+      className="gu-input-container"
+    >
+      <input
+        className="gu-input "
+        onKeyDown={[Function]}
+        spellCheck={false}
+        style={
+          Object {
+            "width": undefined,
+          }
         }
-      }
-    />
+        type="text"
+      />
+    </div>
   </div>
 </div>
 `;
@@ -174,17 +209,22 @@ exports[`Input prop value = 123 1`] = `
   <div
     className="gu-input-inputAndError"
   >
-    <input
-      className="gu-input "
-      onKeyDown={[Function]}
-      spellCheck={false}
-      style={
-        Object {
-          "width": undefined,
+    <div
+      className="gu-input-container"
+    >
+      <input
+        className="gu-input "
+        onKeyDown={[Function]}
+        spellCheck={false}
+        style={
+          Object {
+            "width": undefined,
+          }
         }
-      }
-      value="123"
-    />
+        type="text"
+        value="123"
+      />
+    </div>
   </div>
 </div>
 `;

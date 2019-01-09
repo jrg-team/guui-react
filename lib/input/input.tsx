@@ -1,5 +1,5 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 import classes, {createScopedClasses} from 'utils/classes';
 import './input.scss';
 import {ReactChild} from 'react';
