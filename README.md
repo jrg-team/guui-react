@@ -30,7 +30,7 @@
     1. 禁止任何缩写，如 cnt 错，cls 错，btn 错，str 错
     2. 如果某个缩写是行业共识，则可以使用，如 html、dom
         1. 但是如果这些缩写需要大写，请只大写第一个字母，如 renderHtml 对，renderHTML 错
-0. 禁止用 2 表示 to，如 string2Date 必须写成 stringToDate
+    0. 禁止用 2 表示 to，如 string2Date 必须写成 stringToDate
 
 ## 如何开发
 
