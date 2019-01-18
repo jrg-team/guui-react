@@ -30,7 +30,7 @@ class ClickOutside extends PureComponent<IProps> {
     if (this.props.exclude &&
       this.props.exclude.current &&
       this.props.exclude.current.contains(e.target as Node)) { return; }
-    if (!document.contains(e.target as Node)) { return console.log('die'); }
+    if (!document.contains(e.target as Node)) { return; }
     if (!this.myRef.current.contains(e.target as Node)) {
       this.props.handler && this.props.handler.call(e.target, e);
     }

@@ -7,6 +7,7 @@
     "no-empty-interface": false,
     "space-before-function-paren": false,
     "no-namespace": false,
+    "label-position": false,
     "quotemark": [true, "single", "jsx-double"],
     "member-access": false,
     "semicolon": [true, "always", "ignore-bound-class-methods"],

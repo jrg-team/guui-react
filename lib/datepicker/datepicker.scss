@@ -1,67 +1,43 @@
 @import "helper";
-
-#{component(datepicker)} {
-  color: $text-color;
-  padding: 4px;
-  cursor: default;
-  &-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+#{component(datepicker)} { color: $text-color; padding: 4px; cursor: default; user-select: none;
+  &-nav { display: flex; justify-content: space-between; align-items: center;
     svg {
-      &:hover {
-        fill: $blue;
-        cursor: pointer;
-      }
+      &:hover { fill: $blue; cursor: pointer; }
     }
   }
-  &-yearAndMonth {
-    margin: 0 auto;
-  }
-  &-cell {
-    width: $input-height;
-    height: $input-height;
-    text-align: center;
-    line-height: $input-height;
-    display: inline-flex;
-    vertical-align: top;
-    justify-content: center;
-    align-items: center;
-    &-span3 {
-      width: $input-height * 3;
+  &-yearAndMonth { margin: 0 auto; }
+  &-year,
+  &-month {
+    margin: 0 2px;
+    cursor: pointer;
+    line-height: 1.2;
+    padding: 2px;
+    border-radius: $input-border-radius;
+    &:hover {
+      background: $grey;
     }
   }
-  &-day {
-    color: $grey;
-    &-currentMonth {
-      color: $black;
-    }
-    &-selected {
-      color: $blue;
-    }
+  &-cell { width: $input-height; height: $input-height; text-align: center; line-height: $input-height; display: inline-flex; vertical-align: top; justify-content: center; align-items: center;
+  }
+  &-span3 { width: $input-height * 3; }
+  &-span7 { width: $input-height * 7; }
+  &-day { color: $grey;
+    &-currentMonth { color: $black; }
+    &-selected { color: $blue; }
   }
   &-picker {
     &-0 {
       #{component(datepicker, dayOfWeek)} {
-        &:first-child, &:last-child {
-          color: $red;
-        }
+        &:first-child, &:last-child { color: $red; }
       }
     }
     &-1 {
       #{component(datepicker, dayOfWeek)} {
-        &:nth-child(6), &:last-child {
-          color: $red;
-        }
+        &:nth-child(6), &:last-child { color: $red; }
       }
     }
     #{component(datepicker, day)} {
-      &:hover {
-        background: $blue;
-        color: $white;
-        cursor: pointer;
-        border-radius: $input-border-radius;
-      }
+      &:hover { background: $blue; color: $white; cursor: pointer; border-radius: $input-border-radius; }
     }
   }
 }
