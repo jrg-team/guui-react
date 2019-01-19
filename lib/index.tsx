@@ -45,3 +45,5 @@ export {default as Pager} from './pager/pager';
 export {default as List} from './list/list';
 
 export {default as ClickOutside} from './clickOutside/clickOutside';
+
+export {default as Scroll} from './scroll/scroll';

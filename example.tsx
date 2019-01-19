@@ -21,6 +21,7 @@ import TableExample from 'examples/table.example';
 import PagerExample from 'examples/pager.example';
 import ListExample from 'examples/list.example';
 import ClickOutsideExample from 'examples/clickOutside.example';
+import ScrollExample from 'examples/scroll.example';
 
 void 'examples 不要改动这一行代码！'; // tslint:disable-line
 
@@ -70,6 +71,7 @@ ReactDOM.render(
               <li><Link to="/pager">Pager</Link></li>
               <li><Link to="/list">List</Link></li>
               <li><Link to="/clickOutside">ClickOutside</Link></li>
+              <li><Link to="/scroll">Scroll</Link></li>
               {void 'links 不要改动这一行代码！' /* tslint:disable-line */}
             </ol>
           </Aside>
@@ -90,6 +92,7 @@ ReactDOM.render(
             <Route path="/pager" component={PagerExample}/>
             <Route path="/list" component={ListExample}/>
             <Route path="/clickOutside" component={ClickOutsideExample}/>
+            <Route path="/scroll" component={ScrollExample}/>
             {void 'routes 不要改动这一行代码！' /* tslint:disable-line */}
           </Main>
         </Layout>
