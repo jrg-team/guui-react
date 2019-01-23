@@ -9,7 +9,16 @@ const templateRoot = p.join(__dirname, './templates/')
 exports.run = function ({params, options}) {
   const [category, name] = params
   const upperName = upperFirst(name)
-  if (category === 'component' || category === 'c') {
+  if (category === 'fc') {
+    ensureDirSync(p.join(sourceRoot, `${name}/`))
+    const filePath = p.join(sourceRoot, `${name}/${name}.tsx`)
+    const examplePath = p.join(exampleRoot, `${name}.example.tsx`)
+    ensureNotFound(filePath, examplePath)
+    write(filePath, fs.readFileSync(p.join(templateRoot, `f-component.txt`)))
+    write(examplePath, fs.readFileSync(p.join(templateRoot, `example.txt`)))
+    addRoute()
+    addExport()
+  } else if (category === 'c') {
     ensureDirSync(p.join(sourceRoot, `${name}/`))
     const filePath = p.join(sourceRoot, `${name}/${name}.tsx`)
     const examplePath = p.join(exampleRoot, `${name}.example.tsx`)
@@ -20,11 +29,11 @@ exports.run = function ({params, options}) {
     addExport()
   }
 
-  function write (path, data) {
+  function write(path, data) {
     fs.writeFileSync(path, render(data.toString(), {name, upperName}, {}, customTags))
   }
 
-  function ensureNotFound (...paths) {
+  function ensureNotFound(...paths) {
     paths.map(path => {
       const exist = fs.existsSync(path)
       if (exist) {
@@ -34,12 +43,12 @@ exports.run = function ({params, options}) {
     })
   }
 
-  function addExport () {
+  function addExport() {
     const path = p.join(__dirname, '../lib/index.tsx')
     fs.appendFileSync(path, '\n' + `export {default as ${upperName}} from './${name}/${name}';` + '\n', 'utf8')
   }
 
-  function addRoute () {
+  function addRoute() {
     const path = p.join(__dirname, '../example.tsx')
     let exampleFile = fs.readFileSync(path).toString()
     exampleFile = exampleFile.replace(/\n(\s*)(void 'examples 不要改动这一行代码！)/, (match, c1, c2) => {
@@ -59,11 +68,13 @@ exports.run = function ({params, options}) {
 }
 
 
-function upperFirst (string) {
+function upperFirst(string) {
   return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
-function ensureDirSync (path) {
-  if (fs.existsSync(path)) { return }
+function ensureDirSync(path) {
+  if (fs.existsSync(path)) {
+    return
+  }
   fs.mkdirSync(path)
 }

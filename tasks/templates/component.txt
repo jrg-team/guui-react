@@ -7,12 +7,23 @@ const sc = createScopedClasses(componentName);
 export interface IProps extends IStyledProps {
 }
 
-const {%upperName%}: GFC<IProps> = (props) => {
-  return (
-    <div className={sc()}>TO DO</div>
-  );
-};
-{%upperName%}.displayName = componentName;
-{%upperName%}.defaultProps = {};
-{%upperName%}.propTypes = {};
+export interface IState {
+}
+
+class {%upperName%} extends React.Component<IProps, IState> {
+  static displayName = componentName;
+  static defaultProps = {};
+  static propTypes = {};
+
+  constructor(props: IProps) {
+    super(props)
+  }
+
+  render() {
+    return (
+      <div className={sc()}>TO DO</div>
+    );
+  }
+}
+
 export default {%upperName%};
