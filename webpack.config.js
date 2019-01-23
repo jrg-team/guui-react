@@ -40,7 +40,7 @@ module.exports = {
         use: [{loader: 'tslint-loader'}],
       },
       {
-        test: /icons\/.+\.svg$/,
+        test: /icons.+\.svg$/,
         loader: 'svg-sprite-loader',
       },
       {

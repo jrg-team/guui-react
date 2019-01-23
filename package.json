@@ -11,8 +11,7 @@
     "type": "git",
     "url": "git@github.com:jrg-team/guui-react.git"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "peerDependencies": {
     "@types/prop-types": "^15.5.6",
     "@types/react": "^16.7.13",
@@ -22,11 +21,11 @@
     "react-dom": "16.7.0-alpha.2"
   },
   "scripts": {
-    "start": "NODE_ENV=development webpack-dev-server --config webpack.config.dev.js",
-    "build": "NODE_ENV=production webpack -p --config webpack.config.prod.js",
-    "docs": "NODE_ENV=production webpack -p --config webpack.config.docs.js",
-    "test": "NODE_ENV=test jest --config=jest.config.js --runInBand",
-    "ci": "NODE_ENV=test JEST_JUNIT_OUTPUT=./test-results/jest/results.xml jest --config=jest.config.ci.js",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.dev.js",
+    "build": "cross-env NODE_ENV=production webpack -p --config webpack.config.prod.js",
+    "docs": "cross-env NODE_ENV=production webpack -p --config webpack.config.docs.js",
+    "test": "cross-env NODE_ENV=test jest --config=jest.config.js --runInBand",
+    "ci": "cross-env NODE_ENV=test JEST_JUNIT_OUTPUT=./test-results/jest/results.xml jest --config=jest.config.ci.js",
     "task": "./tasks/index.js"
   },
   "devDependencies": {
@@ -49,6 +48,7 @@
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
     "babel-preset-react-app": "^6.1.0",
+    "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.6.0",
