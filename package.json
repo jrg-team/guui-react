@@ -26,7 +26,7 @@
     "docs": "cross-env NODE_ENV=production webpack -p --config webpack.config.docs.js",
     "test": "cross-env NODE_ENV=test jest --config=jest.config.js --runInBand",
     "ci": "cross-env NODE_ENV=test JEST_JUNIT_OUTPUT=./test-results/jest/results.xml jest --config=jest.config.ci.js",
-    "task": "./tasks/index.js"
+    "task": "node ./tasks/index.js"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",

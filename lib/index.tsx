@@ -47,3 +47,5 @@ export {default as List} from './list/list';
 export {default as ClickOutside} from './clickOutside/clickOutside';
 
 export {default as Scroll} from './scroll/scroll';
+
+export {default as Vmenu} from './vmenu/vmenu';
