@@ -1,0 +1,17 @@
+@import "helper";
+
+#{component(vmenu)} {
+  border: 1px solid red;
+
+  #{component(menuItem)} {
+    &-selected {
+      background: red;
+    }
+  }
+
+  #{component(menuDir)} {
+    &-title {
+      background: gray;
+    }
+  }
+}

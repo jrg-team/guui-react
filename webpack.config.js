@@ -18,6 +18,7 @@ module.exports = {
     alias: {
       stylesheets: path.resolve(__dirname, 'stylesheets'),
       examples: path.resolve(__dirname, 'examples'),
+      lib: path.resolve(__dirname, 'lib'),
     },
     modules: [path.resolve(__dirname, 'include'), 'node_modules']
   },

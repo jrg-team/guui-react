@@ -15,7 +15,7 @@ declare global {
   }
 
   interface IStyledProps {
-    className?: ClassValue;
+    className?: string;
     style?: CSSProperties;
   }
 

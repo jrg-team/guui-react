@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {HashRouter as Router, Route, Link} from 'react-router-dom';
 import 'examples/global.scss';
-import {Layout, Main, Header, Footer, Aside} from './lib/layout/index';
+import {Layout, Main, Header, Footer, Aside} from 'lib/layout/index';
 import Home from 'examples/home';
 import logo from 'examples/guui.svg';
 
@@ -21,8 +21,9 @@ import TableExample from 'examples/table.example';
 import PagerExample from 'examples/pager.example';
 import ListExample from 'examples/list.example';
 import ClickOutsideExample from 'examples/clickOutside.example';
-import ScrollExample from 'examples/scroll.example';
-import VmenuExample from 'examples/vmenu.example';
+import ScrollExample from 'examples/scroll.example';
+
+import VmenuExample from 'lib/vmenu/vmenu.example';
 
 void 'examples 不要改动这一行代码！'; // tslint:disable-line
 
