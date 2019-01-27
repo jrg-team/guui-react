@@ -17,7 +17,6 @@ export interface IProps extends IStyledProps {
   defaultUnfolded?: string[];
   initFolding?: 'unfoldAll' | 'foldAll';
   unfoldLimit?: 1;
-  children: JSX.Element[];
 }
 
 export interface IState {
