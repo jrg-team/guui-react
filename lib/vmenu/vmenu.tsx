@@ -21,7 +21,7 @@ export interface IProps extends IStyledProps {
 
 export interface IState {
   selected?: string;
-  unfolded?: string[];
+  unfolded: string[];
 }
 
 class Vmenu extends React.Component<IProps, IState> {
@@ -44,7 +44,7 @@ class Vmenu extends React.Component<IProps, IState> {
     super(props);
     this.state = {
       selected: 'defaultSelected' in props ? this.props.defaultSelected : undefined,
-      unfolded: this.props.defaultUnfolded
+      unfolded: this.props.defaultUnfolded || []
     };
   }
 
@@ -66,15 +66,31 @@ class Vmenu extends React.Component<IProps, IState> {
   }
 
   get children() {
-    if (!this.props.children) {
-      return this.props.children;
-    } else if (!('map' in (this.props.children as any))) {
-      return this.props.children;
-    } else {
-      const children = this.props.children as any[];
-      return children.map(a => a);
-    }
+    const children = this.props.children as any[];
+    if (!children.map) { return children; }
+    return children.map(child => {
+      if (child.type.displayName === 'MenuDir' || child.type.displayName === 'MenuItem') {
+        return {...child, props: {...child.props, innerLevel: 1}};
+      } else {
+        return child;
+      }
+    });
   }
+
+  onUnfold = (id: string) => {
+    this.setState({
+      unfolded: this.state.unfolded.concat([id])
+    });
+  };
+  onFold = (id: string) => {
+    const index = this.state.unfolded.indexOf(id);
+    this.setState({
+      unfolded: [
+        ...this.state.unfolded.slice(0, index),
+        ...this.state.unfolded.slice(index + 1)
+      ]
+    });
+  };
 
   render() {
 
@@ -83,6 +99,10 @@ class Vmenu extends React.Component<IProps, IState> {
         <MenuContext.Provider value={{
           selected: this.selected,
           setSelected: this.onSelect,
+          initFolding: this.props.initFolding,
+          unfolded: this.state.unfolded,
+          unfold: this.onUnfold,
+          fold: this.onFold,
         }}>
           {this.children}
         </MenuContext.Provider>

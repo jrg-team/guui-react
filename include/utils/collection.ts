@@ -19,4 +19,8 @@ function range(start: number, end: number): number[] {
   return result;
 }
 
-export {pick, contains, range};
+function includes(array: any[], item: any) {
+  return array.indexOf(item) >= 0;
+}
+
+export {pick, contains, range, includes};

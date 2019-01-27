@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {createScopedClasses} from 'utils/classes';
 import MenuItemBase, {IMenuItemBaseProps} from './menuItemBase';
+import {includes} from 'utils/collection';
 
 const componentName = 'MenuDir';
 const sc = createScopedClasses(componentName);
@@ -21,13 +22,36 @@ class MenuDir extends MenuItemBase<IProps, IState> {
     super(props);
   }
 
+  get folded() {
+    if (includes(this.context.unfolded, this.props.id)) {
+      return false;
+    } else {
+      return this.context.initFolding === 'foldAll';
+    }
+  }
+
+  get unfolded() {
+    return !this.folded;
+  }
+
+  toggle = () => {
+    if (this.folded) {
+      this.context.unfold(this.props.id);
+    } else {
+      this.context.fold(this.props.id);
+    }
+  };
+
   render() {
     return (
-      <div className={sc()}>
-        <div className={sc('title')}>{this.props.title}</div>
-        <div className={sc('children')}>
-          {this.props.children}
-        </div>
+      <div className={sc('', this.classes)}>
+        <div className={sc('title')} onClick={this.toggle}>{this.props.title}</div>
+        {
+          this.unfolded &&
+          <div className={sc('children')}>
+            {this.children}
+          </div>
+        }
       </div>
     );
   }

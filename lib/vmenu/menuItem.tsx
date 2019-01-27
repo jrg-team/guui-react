@@ -23,7 +23,7 @@ class MenuItem extends MenuItemBase<IProps, IState> {
   render() {
     return (
       <div className={sc('', this.classes)} onClick={() => this.context.setSelected(this.props.id)}>
-        {this.props.children}
+        {this.children}
       </div>
     );
   }

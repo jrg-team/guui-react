@@ -8,7 +8,8 @@ export default function (props: any) {
     <div className="VmenuExample">
       <h2>selected & onSelect</h2>
       <div>
-        <Vmenu selected={selected} onSelect={(selected: string) => setSelected(selected)}>
+        <Vmenu selected={selected} onSelect={(selected: string) => setSelected(selected)}
+               initFolding="foldAll">
           <Vmenu.Item id="hi">hi</Vmenu.Item>
           <Vmenu.Dir id="group" title="group">
             <Vmenu.Item id="ho">ho</Vmenu.Item>
@@ -26,6 +27,9 @@ export default function (props: any) {
       <div>
         <Vmenu defaultSelected="hi">
           <Vmenu.Item id="hi">hi</Vmenu.Item>
+          <Vmenu.Item id="hi2">hi2</Vmenu.Item>
+          <Vmenu.Item id="hi3">hi3</Vmenu.Item>
+          <Vmenu.Item id="hi4">hi4</Vmenu.Item>
           <Vmenu.Dir id="group" title="group">
             <Vmenu.Item id="ho">ho</Vmenu.Item>
             <Vmenu.Item id="ho2">ho2</Vmenu.Item>

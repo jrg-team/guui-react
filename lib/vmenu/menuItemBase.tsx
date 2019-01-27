@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {MenuContext} from './menuContext';
+import {ReactElement} from 'react';
 
 export interface IMenuItemBaseProps extends IStyledProps {
   id: string;
@@ -13,9 +14,22 @@ class MenuItemBase<P extends IMenuItemBaseProps, S extends IMenuItemBaseState> e
   static contextType = MenuContext;
   context!: React.ContextType<typeof MenuContext>;
 
+  get children() {
+    const children = this.props.children as Array<ReactElement<any>>;
+    if (!children.map) { return children; }
+    return children.map(child => {
+      if (typeof child.type !== 'string' && (child.type.displayName === 'MenuDir' || child.type.displayName === 'MenuItem')) {
+        return {...child, props: {...child.props, innerLevel: this.props.innerLevel! + 1}};
+      } else {
+        return child;
+      }
+    });
+  }
+
   get classes() {
     return {
-      selected: this.props.id === this.context.selected
+      selected: this.props.id === this.context.selected,
+      [`level${this.props.innerLevel}`]: true
     };
   }
 }

@@ -1,17 +1,32 @@
 @import "helper";
 
 #{component(vmenu)} {
-  border: 1px solid red;
+
+  %item {
+    padding: 8px 0 8px 8px;
+  }
 
   #{component(menuItem)} {
+    @extend %item;
+
     &-selected {
       background: red;
+    }
+
+    &-level2 {
+      padding-left: calc(1em + 8px);
     }
   }
 
   #{component(menuDir)} {
+
     &-title {
+      @extend %item;
       background: gray;
     }
+
+    &-children {
+    }
+
   }
 }
