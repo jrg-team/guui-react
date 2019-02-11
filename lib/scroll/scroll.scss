@@ -7,6 +7,7 @@
   &-track {
     $width: 12px;
     position: absolute;
+    user-select: none;
     width: $width;
     height: 100%;
     background: fade_out(black, 0.8);

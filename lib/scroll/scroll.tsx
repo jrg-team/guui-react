@@ -113,6 +113,31 @@ class Scroll extends React.Component<IProps, IState> {
     }
   }
 
+  dragging = false;
+  position = [0, 0];
+
+  onDragging = (e: MouseEvent) => {
+    const {pageX, pageY} = e;
+    const newPosition = [pageX, pageY];
+    const deltaY = newPosition[1] - this.position[1];
+    const deltaT = deltaY * this.state.contentHeight / this.state.viewHeight;
+    this.setState({
+      y: this.state.y + deltaT
+    });
+    this.position = newPosition;
+  };
+  onDragEnd = () => {
+    document.removeEventListener('mousemove', this.onDragging);
+    document.removeEventListener('mouseup', this.onDragEnd);
+  };
+  onDragBar = (e: React.MouseEvent) => {
+    this.dragging = true;
+    const {pageX, pageY} = e;
+    this.position = [pageX, pageY];
+    document.addEventListener('mousemove', this.onDragging);
+    document.addEventListener('mouseup', this.onDragEnd);
+  };
+
   render() {
     return (
       <div ref={this.refWrapper} className={sc()} style={this.props.style} {...this.eventHandlers}>
@@ -128,7 +153,9 @@ class Scroll extends React.Component<IProps, IState> {
                  transform: `translateY(${this.barY}px)`,
                  height: `${this.barHeight}px`
                }}>
-            <div className={sc('track-bar-inner')}/>
+            <div className={sc('track-bar-inner')}
+                 onMouseDown={this.onDragBar}
+            />
           </div>
         </div>
       </div>
