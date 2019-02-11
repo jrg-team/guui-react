@@ -2,6 +2,31 @@
 
 #{component(scroll)} {
   overflow: hidden;
-  padding: 18px;
-  border: 3px solid blue;
+  position: relative;
+
+  &-track {
+    $width: 12px;
+    position: absolute;
+    width: $width;
+    height: 100%;
+    background: fade_out(black, 0.8);
+    top: 0;
+    right: 0;
+
+    &-bar {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      padding: 2px;
+      display: flex;
+
+      &-inner {
+        background: lighten(black, 30%);
+        height: 100%;
+        width: 100%;
+        border-radius: $width / 2;
+      }
+    }
+  }
 }
