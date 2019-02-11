@@ -6,6 +6,7 @@ export interface IMenuContext {
   unfold: (id: string) => void;
   fold: (id: string) => void;
   unfolded: string[];
+  folded: string[];
   initFolding?: 'unfoldAll' | 'foldAll';
 }
 

@@ -6,6 +6,7 @@ const componentName = 'MenuItem';
 const sc = createScopedClasses(componentName);
 
 interface IProps extends IMenuItemBaseProps {
+  href?: string;
 }
 
 interface IState {
@@ -20,11 +21,24 @@ class MenuItem extends MenuItemBase<IProps, IState> {
     super(props);
   }
 
+  onClick = () => {
+    this.context.setSelected(this.props.id);
+  };
+
   render() {
     return (
-      <div className={sc('', this.classes)} onClick={() => this.context.setSelected(this.props.id)}>
-        {this.children}
-      </div>
+      this.props.href ?
+        (
+          <a className={sc('', this.classes)} onClick={this.onClick}
+             href={this.props.href}>
+            {this.children}
+          </a>
+        ) :
+        (
+          <div className={sc('', this.classes)} onClick={this.onClick}>
+            {this.children}
+          </div>
+        )
     );
   }
 }

@@ -1,32 +1,123 @@
 @import "helper";
 
 #{component(vmenu)} {
+  border-right: 1px solid lighten($grey, 20%);
+  color: $text-color;
 
   %item {
-    padding: 8px 0 8px 8px;
+    padding: 12px;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
   }
 
   #{component(menuItem)} {
     @extend %item;
 
     &-selected {
-      background: red;
+      background: lighten($blue, 40%);
+      color: darken($blue, 20%);
     }
 
     &-level2 {
-      padding-left: calc(1em + 8px);
+    }
+  }
+}
+
+#{component(menuDir)} {
+
+  &-title {
+    @extend %item;
+  }
+
+  &-children {
+  }
+
+  & #{component(menuItem)} {
+    padding-left: calc(1em + 8px);
+  }
+
+  & & #{component(menuItem)} {
+    padding-left: calc(2em + 8px);
+  }
+  & & & #{component(menuItem)} {
+    padding-left: calc(3em + 8px);
+  }
+  & & & & #{component(menuItem)} {
+    padding-left: calc(4em + 8px);
+  }
+  & & & & & #{component(menuItem)} {
+    padding-left: calc(5em + 8px);
+  }
+
+  & & &-title {
+    padding-left: calc(1em + 8px);
+  }
+  & & & &-title {
+    padding-left: calc(2em + 8px);
+  }
+  & & & & &-title {
+    padding-left: calc(3em + 8px);
+  }
+  & & & & & &-title {
+    padding-left: calc(4em + 8px);
+  }
+
+
+  & & {
+
+  }
+
+  &-title {
+    display: flex;
+    align-items: center;
+
+    &-content {
+      flex-grow: 1;
+    }
+
+    &-indicator {
+      margin-left: auto;
+      position: relative;
+      width: 20px;
+      height: 20px;
+
+      &::before, &::after {
+        $height: 2px;
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: $height;
+        top: 50%;
+        margin-top: -$height / 2;
+        transition: all 250ms;
+      }
+
+      $angle: 45deg;
+      $offset: 2px;
+
+      &::before {
+        background: currentColor;
+        left: $offset;
+        transform: rotateZ(-$angle);
+      }
+
+      &::after {
+        background: currentColor;
+        right: $offset;
+        transform: rotateZ($angle);
+      }
+
+      &-unfolded {
+        &::before {
+          transform: rotateZ($angle);
+        }
+
+        &::after {
+          transform: rotateZ(-$angle);
+        }
+      }
     }
   }
 
-  #{component(menuDir)} {
-
-    &-title {
-      @extend %item;
-      background: gray;
-    }
-
-    &-children {
-    }
-
-  }
 }

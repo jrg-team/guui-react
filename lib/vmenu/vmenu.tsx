@@ -15,6 +15,7 @@ export interface IProps extends IStyledProps {
   onSelect?: (selected: string | undefined) => void;
   defaultSelected?: string;
   defaultUnfolded?: string[];
+  defaultFolded?: string[];
   initFolding?: 'unfoldAll' | 'foldAll';
   unfoldLimit?: 1;
 }
@@ -22,18 +23,20 @@ export interface IProps extends IStyledProps {
 export interface IState {
   selected?: string;
   unfolded: string[];
+  folded: string[];
 }
 
 class Vmenu extends React.Component<IProps, IState> {
   static displayName = componentName;
   static defaultProps = {
     unfolded: [],
-    defaultFolding: 'foldAll',
+    initFolding: 'foldAll',
   };
   static propTypes = {
     selected: PropTypes.string,
     unfolded: PropTypes.arrayOf(PropTypes.string),
-    defaultFolding: PropTypes.oneOf(['unfoldAll', 'foldAll']),
+    folded: PropTypes.arrayOf(PropTypes.string),
+    initFolding: PropTypes.oneOf(['unfoldAll', 'foldAll']),
     onSelect: PropTypes.func,
     children: menuChildrenValidator,
   };
@@ -44,7 +47,8 @@ class Vmenu extends React.Component<IProps, IState> {
     super(props);
     this.state = {
       selected: 'defaultSelected' in props ? this.props.defaultSelected : undefined,
-      unfolded: this.props.defaultUnfolded || []
+      unfolded: this.props.defaultUnfolded || [],
+      folded: this.props.defaultFolded || []
     };
   }
 
@@ -79,18 +83,52 @@ class Vmenu extends React.Component<IProps, IState> {
 
   onUnfold = (id: string) => {
     this.setState({
-      unfolded: this.state.unfolded.concat([id])
+      folded: this.removeFolded(id),
+      unfolded: this.addUnfolded(id)
     });
   };
   onFold = (id: string) => {
-    const index = this.state.unfolded.indexOf(id);
+    console.log('id');
+    console.log(id);
     this.setState({
-      unfolded: [
-        ...this.state.unfolded.slice(0, index),
-        ...this.state.unfolded.slice(index + 1)
-      ]
+      folded: this.addFolded(id),
+      unfolded: this.removeUnfolded(id)
     });
   };
+
+  addFolded(id: string) {
+    console.log(this.state.folded.concat([id]));
+    return this.state.folded.concat([id]);
+  }
+
+  addUnfolded(id: string) {
+    console.log(this.state.unfolded.concat([id]));
+    return this.state.unfolded.concat([id]);
+  }
+
+  removeFolded(id: string) {
+    const index = this.state.folded.indexOf(id);
+    if (index >= 0) {
+      return [
+        ...this.state.folded.slice(0, index),
+        ...this.state.folded.slice(index + 1)
+      ];
+    } else {
+      return this.state.folded;
+    }
+  }
+
+  removeUnfolded(id: string) {
+    const index = this.state.unfolded.indexOf(id);
+    if (index >= 0) {
+      return [
+        ...this.state.unfolded.slice(0, index),
+        ...this.state.unfolded.slice(index + 1)
+      ];
+    } else {
+      return this.state.unfolded;
+    }
+  }
 
   render() {
 
@@ -101,6 +139,7 @@ class Vmenu extends React.Component<IProps, IState> {
           setSelected: this.onSelect,
           initFolding: this.props.initFolding,
           unfolded: this.state.unfolded,
+          folded: this.state.folded,
           unfold: this.onUnfold,
           fold: this.onFold,
         }}>

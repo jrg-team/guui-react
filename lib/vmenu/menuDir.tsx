@@ -23,7 +23,9 @@ class MenuDir extends MenuItemBase<IProps, IState> {
   }
 
   get folded() {
-    if (includes(this.context.unfolded, this.props.id)) {
+    if (includes(this.context.folded, this.props.id)) {
+      return true;
+    } else if (includes(this.context.unfolded, this.props.id)) {
       return false;
     } else {
       return this.context.initFolding === 'foldAll';
@@ -31,7 +33,13 @@ class MenuDir extends MenuItemBase<IProps, IState> {
   }
 
   get unfolded() {
-    return !this.folded;
+    if (includes(this.context.unfolded, this.props.id)) {
+      return true;
+    } else if (includes(this.context.folded, this.props.id)) {
+      return false;
+    } else {
+      return this.context.initFolding === 'unfoldAll';
+    }
   }
 
   toggle = () => {
@@ -45,7 +53,10 @@ class MenuDir extends MenuItemBase<IProps, IState> {
   render() {
     return (
       <div className={sc('', this.classes)}>
-        <div className={sc('title')} onClick={this.toggle}>{this.props.title}</div>
+        <div className={sc('title')} onClick={this.toggle}>
+          <span className={sc('title-content')}>{this.props.title}</span>
+          <span className={sc('title-indicator', {'title-indicator-unfolded': this.unfolded})}></span>
+        </div>
         {
           this.unfolded &&
           <div className={sc('children')}>
