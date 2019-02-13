@@ -2,14 +2,10 @@ import * as React from 'react';
 import {createScopedClasses} from 'utils/classes';
 import {createRef} from 'react';
 import './scroll.scss';
+import debounce from 'utils/debounce';
 
 const componentName = 'Scroll';
 const sc = createScopedClasses(componentName);
-
-interface IEventHandlers {
-  onTouchMove?: React.TouchEventHandler<Element>;
-  onWheel?: React.WheelEventHandler<Element>;
-}
 
 interface IState {
   contentHeight: number;
@@ -120,10 +116,12 @@ class Scroll extends React.Component<IProps, IState> {
     this.lastPosition = newPosition;
   };
   onMouseEnter = (e: MouseEvent) => {
+    console.log('1');
     if (this.dragging) {
       this.hideScrollbarAfterDrag = false;
       return;
     }
+    console.log('2');
     this.setState({
       scrollbarVisible: true
     });
@@ -138,23 +136,49 @@ class Scroll extends React.Component<IProps, IState> {
     });
   };
 
+  getHeights(wrapper: HTMLDivElement, content: HTMLDivElement) {
+    const {height: contentHeight} = content.getBoundingClientRect();
+    const {height: viewHeight} = wrapper.getBoundingClientRect();
+    this.setState({contentHeight, viewHeight});
+  }
+
+  bindEvents(wrapper: HTMLDivElement) {
+    wrapper.addEventListener('wheel', this.onWheel);
+    wrapper.addEventListener('mouseenter', this.onMouseEnter);
+    wrapper.addEventListener('mouseleave', this.onMouseLeave);
+    wrapper.addEventListener('touchmove', this.onTouchMove);
+    wrapper.addEventListener('touchstart', this.onTouchStart);
+  }
+
+  listenToContent(wrapper: HTMLDivElement, content: HTMLDivElement) {
+    const targetNode = content;
+    const config = {attributes: true, childList: true, subtree: true};
+    const onChange = debounce(() => {
+      this.getHeights(wrapper, content);
+      console.log('ok');
+    }, 100);
+    const callback: MutationCallback = (mutationsList) => {
+      for (const mutation of mutationsList) {
+        if (mutation.type === 'childList') {
+          onChange();
+        }
+      }
+    };
+    const observer = new MutationObserver(callback);
+    observer.observe(targetNode, config);
+  }
+
   componentDidMount(): void {
     const content = this.refContent.current;
     const wrapper = this.refWrapper.current;
     if (content && wrapper) {
-      const {height: contentHeight} = content.getBoundingClientRect();
-      const {height: viewHeight} = wrapper.getBoundingClientRect();
-      this.setState({contentHeight, viewHeight});
-      wrapper.addEventListener('wheel', this.onWheel);
-      wrapper.addEventListener('mouseenter', this.onMouseEnter);
-      wrapper.addEventListener('mouseleave', this.onMouseLeave);
-      wrapper.addEventListener('touchmove', this.onTouchMove);
-      wrapper.addEventListener('touchstart', this.onTouchStart);
+      this.getHeights(wrapper, content);
+      this.bindEvents(wrapper);
+      this.listenToContent(wrapper, content);
     }
   }
 
   componentWillUnmount(): void {
-
     const content = this.refContent.current;
     const wrapper = this.refWrapper.current;
     if (content && wrapper) {
@@ -175,6 +199,7 @@ class Scroll extends React.Component<IProps, IState> {
     this.position = newPosition;
   };
   onDragEnd = () => {
+    this.dragging = false;
     if (this.hideScrollbarAfterDrag) {
       this.setState({
         scrollbarVisible: false
