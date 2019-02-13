@@ -49,6 +49,20 @@ class Scroll extends React.Component<IProps, IState> {
     };
   }
 
+  get y() {
+    return this.state.y;
+  }
+
+  set y(value) {
+    if (value < 0) {
+      this.setState({y: 0});
+    } else if (value > this.scrollYMax) {
+      this.setState({y: this.scrollYMax});
+    } else {
+      this.setState({y: value});
+    }
+  }
+
   get contentRect() {
     return this.refContent.current!.getBoundingClientRect();
   }
@@ -79,15 +93,9 @@ class Scroll extends React.Component<IProps, IState> {
   }
 
   updateContentY(deltaY: number, callback?: () => void) {
-    const y = this.state.y + this.scale(deltaY, 3, 60);
-    if (y < 0) {
-      this.setState({y: 0});
-    } else if (y > this.scrollYMax) {
-      this.setState({y: this.scrollYMax});
-    } else {
-      callback && callback();
-      this.setState({y});
-    }
+    const y = this.y + this.scale(deltaY, 3, 60);
+    if (y >= 0 && y <= this.scrollYMax) { callback && callback(); }
+    this.y = y;
   }
 
   scale(n: number, rate: number, limit: number) {
@@ -121,9 +129,7 @@ class Scroll extends React.Component<IProps, IState> {
     const newPosition = [pageX, pageY];
     const deltaY = newPosition[1] - this.position[1];
     const deltaT = deltaY * this.state.contentHeight / this.state.viewHeight;
-    this.setState({
-      y: this.state.y + deltaT
-    });
+    this.y += deltaT;
     this.position = newPosition;
   };
   onDragEnd = () => {
