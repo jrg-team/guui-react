@@ -27,21 +27,20 @@ class Scroll extends React.Component<IProps, IState> {
   private readonly refWrapper: React.RefObject<HTMLDivElement>;
   private readonly refContent: React.RefObject<HTMLDivElement>;
   private readonly refBar: React.RefObject<HTMLDivElement>;
-  private readonly eventHandlers: IEventHandlers;
 
   constructor(props: IProps) {
     super(props);
     this.refWrapper = createRef();
     this.refContent = createRef();
     this.refBar = createRef();
-    this.eventHandlers = {
-      onWheel: (e) => {
-        this.updateContentY(e.deltaY, () => e.preventDefault());
-      },
-      onTouchMove: (e) => {
-        e.preventDefault();
-      }
-    };
+    // this.eventHandlers = {
+    //   onWheel: (e) => {
+    //     this.updateContentY(e.deltaY, () => e.preventDefault());
+    //   },
+    //   onTouchMove: (e) => {
+    //     e.preventDefault();
+    //   }
+    // };
     this.state = {
       y: 0,
       contentHeight: 0,
@@ -111,6 +110,22 @@ class Scroll extends React.Component<IProps, IState> {
     }
   }
 
+  onWheel = (e: WheelEvent) => {
+    this.updateContentY(e.deltaY, () => e.preventDefault());
+  };
+  lastPosition = [0, 0];
+  onTouchStart = (e: TouchEvent) => {
+    const {clientX, clientY} = e.touches[0];
+    this.lastPosition = [clientX, clientY];
+  };
+  onTouchMove = (e: TouchEvent) => {
+    const {clientX, clientY} = e.touches[0];
+    const newPosition = [clientX, clientY];
+    const deltaY = newPosition[1] - this.lastPosition[1];
+    this.updateContentY(-deltaY, () => e.preventDefault());
+    this.lastPosition = newPosition;
+  };
+
   componentDidMount(): void {
     const content = this.refContent.current;
     const wrapper = this.refWrapper.current;
@@ -118,6 +133,18 @@ class Scroll extends React.Component<IProps, IState> {
       const {height: contentHeight} = content.getBoundingClientRect();
       const {height: viewHeight} = wrapper.getBoundingClientRect();
       this.setState({contentHeight, viewHeight});
+      wrapper.addEventListener('wheel', this.onWheel);
+      wrapper.addEventListener('touchmove', this.onTouchMove);
+      wrapper.addEventListener('touchstart', this.onTouchStart);
+    }
+  }
+
+  componentWillUnmount(): void {
+
+    const content = this.refContent.current;
+    const wrapper = this.refWrapper.current;
+    if (content && wrapper) {
+      wrapper.removeEventListener('wheel', this.onWheel);
     }
   }
 
@@ -146,7 +173,7 @@ class Scroll extends React.Component<IProps, IState> {
 
   render() {
     return (
-      <div ref={this.refWrapper} className={sc()} style={this.props.style} {...this.eventHandlers}>
+      <div ref={this.refWrapper} className={sc()} style={this.props.style}>
         <div ref={this.refContent} style={{
           transform: `translateY(-${this.state.y}px)`,
           transition: `all 50ms`
