@@ -15,6 +15,7 @@ interface IState {
   contentHeight: number;
   viewHeight: number;
   y: number;
+  scrollbarVisible: boolean;
 }
 
 export interface IProps extends IStyledProps {
@@ -33,18 +34,11 @@ class Scroll extends React.Component<IProps, IState> {
     this.refWrapper = createRef();
     this.refContent = createRef();
     this.refBar = createRef();
-    // this.eventHandlers = {
-    //   onWheel: (e) => {
-    //     this.updateContentY(e.deltaY, () => e.preventDefault());
-    //   },
-    //   onTouchMove: (e) => {
-    //     e.preventDefault();
-    //   }
-    // };
     this.state = {
       y: 0,
       contentHeight: 0,
       viewHeight: 0,
+      scrollbarVisible: false,
     };
   }
 
@@ -125,6 +119,24 @@ class Scroll extends React.Component<IProps, IState> {
     this.updateContentY(-deltaY, () => e.preventDefault());
     this.lastPosition = newPosition;
   };
+  onMouseEnter = (e: MouseEvent) => {
+    if (this.dragging) {
+      this.hideScrollbarAfterDrag = false;
+      return;
+    }
+    this.setState({
+      scrollbarVisible: true
+    });
+  };
+  onMouseLeave = (e: MouseEvent) => {
+    if (this.dragging) {
+      this.hideScrollbarAfterDrag = true;
+      return;
+    }
+    this.setState({
+      scrollbarVisible: false
+    });
+  };
 
   componentDidMount(): void {
     const content = this.refContent.current;
@@ -134,6 +146,8 @@ class Scroll extends React.Component<IProps, IState> {
       const {height: viewHeight} = wrapper.getBoundingClientRect();
       this.setState({contentHeight, viewHeight});
       wrapper.addEventListener('wheel', this.onWheel);
+      wrapper.addEventListener('mouseenter', this.onMouseEnter);
+      wrapper.addEventListener('mouseleave', this.onMouseLeave);
       wrapper.addEventListener('touchmove', this.onTouchMove);
       wrapper.addEventListener('touchstart', this.onTouchStart);
     }
@@ -149,6 +163,7 @@ class Scroll extends React.Component<IProps, IState> {
   }
 
   dragging = false;
+  hideScrollbarAfterDrag = false;
   position = [0, 0];
 
   onDragging = (e: MouseEvent) => {
@@ -160,6 +175,11 @@ class Scroll extends React.Component<IProps, IState> {
     this.position = newPosition;
   };
   onDragEnd = () => {
+    if (this.hideScrollbarAfterDrag) {
+      this.setState({
+        scrollbarVisible: false
+      });
+    }
     document.removeEventListener('mousemove', this.onDragging);
     document.removeEventListener('mouseup', this.onDragEnd);
   };
@@ -180,17 +200,19 @@ class Scroll extends React.Component<IProps, IState> {
         }}>
           {this.props.children}
         </div>
-        <div className={sc('track')}>
-          <div ref={this.refBar} className={sc('track-bar')}
-               style={{
-                 transform: `translateY(${this.barY}px)`,
-                 height: `${this.barHeight}px`
-               }}>
-            <div className={sc('track-bar-inner')}
-                 onMouseDown={this.onDragBar}
-            />
+        {this.state.scrollbarVisible && (
+          <div className={sc('track')}>
+            <div ref={this.refBar} className={sc('track-bar')}
+                 style={{
+                   transform: `translateY(${this.barY}px)`,
+                   height: `${this.barHeight}px`
+                 }}>
+              <div className={sc('track-bar-inner')}
+                   onMouseDown={this.onDragBar}
+              />
+            </div>
           </div>
-        </div>
+        )}
       </div>
     );
   }
