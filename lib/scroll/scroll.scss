@@ -4,6 +4,28 @@
   overflow: hidden;
   position: relative;
 
+  &-loading {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: red;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -5px;
+    margin-top: -5px;
+    transition: all 100ms;
+
+    &-wrapper {
+      position: absolute;
+      width: 100%;
+    }
+  }
+
+  &-content {
+    transition: all 60ms;
+  }
+
   &-track {
     $width: 12px;
     position: absolute;

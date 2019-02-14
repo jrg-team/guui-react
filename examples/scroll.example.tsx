@@ -4,27 +4,9 @@ import {Scroll} from '../lib/index';
 export default class A extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
-    this.state = {
-      visible: false
-    };
   }
 
   componentDidMount(): void {
-    setTimeout(() => {
-      this.setState({
-        visible: true
-      });
-    }, 50);
-    setTimeout(() => {
-      this.setState({
-        visible: false
-      });
-    }, 100);
-    setTimeout(() => {
-      this.setState({
-        visible: true
-      });
-    }, 150);
   }
 
   render() {
@@ -34,14 +16,6 @@ export default class A extends React.Component<any, any> {
         <div>
           <Scroll style={{height: 300}}>
             <div style={{background: '#ddd'}}>
-              <div>
-                {this.state.visible &&
-                (
-                  <div>
-                    <p>多</p><p>多</p><p>多</p><p>多</p><p>多</p><p>多</p><p>多</p><p>多</p><p>多</p><p>多</p>
-                  </div>
-                )}
-              </div>
               <p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p><p>8</p><p>9</p><p>10</p><p>11</p><p>12</p>
               <p>13</p>
               <p>14</p><p>15</p><p>16</p><p>17</p><p>18</p><p>19</p><p>20</p><p>21</p><p>22</p><p>23</p><p>24</p>

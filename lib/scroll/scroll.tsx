@@ -3,6 +3,7 @@ import {createScopedClasses} from 'utils/classes';
 import {createRef} from 'react';
 import './scroll.scss';
 import debounce from 'utils/debounce';
+import PropTypes from 'prop-types';
 
 const componentName = 'Scroll';
 const sc = createScopedClasses(componentName);
@@ -14,16 +15,32 @@ interface IState {
   scrollbarVisible: boolean;
 }
 
+interface Callbacks {
+  onTop?: () => void;
+  onOverTop?: () => void;
+  onBottom?: () => void;
+  onOverBottom?: () => void;
+  onScroll?: () => void;
+}
+
 export interface IProps extends IStyledProps {
+  overScroll: 'up' | 'down' | 'both' | undefined;
+  overScrollLimit: number;
 }
 
 class Scroll extends React.Component<IProps, IState> {
   static displayName = componentName;
-  static defaultProps = {};
-  static propTypes = {};
+  static defaultProps = {
+    overScrollLimit: 100
+  };
+  static propTypes = {
+    overScroll: PropTypes.oneOf(['up', 'down', 'both']),
+    overScrollLimit: PropTypes.number,
+  };
   private readonly refWrapper: React.RefObject<HTMLDivElement>;
   private readonly refContent: React.RefObject<HTMLDivElement>;
   private readonly refBar: React.RefObject<HTMLDivElement>;
+  private scrollDisabled = false;
 
   constructor(props: IProps) {
     super(props);
@@ -43,13 +60,7 @@ class Scroll extends React.Component<IProps, IState> {
   }
 
   set y(value) {
-    if (value < 0) {
-      this.setState({y: 0});
-    } else if (value > this.scrollYMax) {
-      this.setState({y: this.scrollYMax});
-    } else {
-      this.setState({y: value});
-    }
+    this.setState({y: this.yLimit(value)});
   }
 
   get contentRect() {
@@ -81,9 +92,26 @@ class Scroll extends React.Component<IProps, IState> {
     return this.contentRect.height! - this.wrapperRect.height! + (borderTopWidthNumber + borderBottomWidthNumber + paddingTopNumber + paddingBottomNumber);
   }
 
-  updateContentY(deltaY: number, callback?: () => void) {
-    const y = this.y + this.scale(deltaY, 3, 60);
-    if (y >= 0 && y <= this.scrollYMax) { callback && callback(); }
+  yLimit(y: number) {
+    const low = -this.props.overScrollLimit;
+    if (y < low) {
+      return low;
+    } else if (y > this.scrollYMax) {
+      return this.scrollYMax;
+    } else {
+      return y;
+    }
+  }
+
+  updateContentY(deltaY: number, callbacks: Callbacks) {
+    const y = this.yLimit(this.y + this.scale(deltaY, 3, 60));
+    if (y === this.y) {return;}
+    if (y <= -this.props.overScrollLimit) {
+      callbacks.onOverTop && callbacks.onOverTop();
+    }
+    if (y >= -this.props.overScrollLimit && y <= this.scrollYMax) {
+      callbacks.onScroll && callbacks.onScroll();
+    }
     this.y = y;
   }
 
@@ -101,7 +129,7 @@ class Scroll extends React.Component<IProps, IState> {
   }
 
   onWheel = (e: WheelEvent) => {
-    this.updateContentY(e.deltaY, () => e.preventDefault());
+    this.updateContentY(e.deltaY, {onScroll: () => e.preventDefault()});
   };
   lastPosition = [0, 0];
   onTouchStart = (e: TouchEvent) => {
@@ -109,19 +137,29 @@ class Scroll extends React.Component<IProps, IState> {
     this.lastPosition = [clientX, clientY];
   };
   onTouchMove = (e: TouchEvent) => {
+    if (this.scrollDisabled) {return;}
     const {clientX, clientY} = e.touches[0];
     const newPosition = [clientX, clientY];
     const deltaY = newPosition[1] - this.lastPosition[1];
-    this.updateContentY(-deltaY, () => e.preventDefault());
+    this.updateContentY(-deltaY, {
+        onScroll: () => e.preventDefault(),
+        onOverTop: () => {
+          console.log('顶端');
+          this.scrollDisabled = true;
+          setTimeout(() => {
+            this.y = 0;
+            this.scrollDisabled = false;
+          }, 1000);
+        }
+      }
+    );
     this.lastPosition = newPosition;
   };
   onMouseEnter = (e: MouseEvent) => {
-    console.log('1');
     if (this.dragging) {
       this.hideScrollbarAfterDrag = false;
       return;
     }
-    console.log('2');
     this.setState({
       scrollbarVisible: true
     });
@@ -216,12 +254,23 @@ class Scroll extends React.Component<IProps, IState> {
     document.addEventListener('mouseup', this.onDragEnd);
   };
 
+  get loadingScale() {
+    if (this.y < 0) {
+      return this.y / this.props.overScrollLimit * 5;
+    }
+    return 1;
+  }
+
   render() {
     return (
       <div ref={this.refWrapper} className={sc()} style={this.props.style}>
-        <div ref={this.refContent} style={{
-          transform: `translateY(-${this.state.y}px)`,
-          transition: `all 50ms`
+        <div className={sc('loading-wrapper')} style={{height: this.props.overScrollLimit}}>
+          <div className={sc('loading')} style={{
+            transform: `scale(${this.loadingScale})`,
+          }}/>
+        </div>
+        <div ref={this.refContent} className={sc('content')} style={{
+          transform: `translateY(${-this.state.y}px)`,
         }}>
           {this.props.children}
         </div>
