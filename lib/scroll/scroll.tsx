@@ -144,7 +144,6 @@ class Scroll extends React.Component<IProps, IState> {
     this.updateContentY(-deltaY, {
         onScroll: () => e.preventDefault(),
         onOverTop: () => {
-          console.log('顶端');
           this.scrollDisabled = true;
           setTimeout(() => {
             this.y = 0;
