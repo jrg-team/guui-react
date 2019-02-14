@@ -7,6 +7,16 @@ function pick<T extends { [k: string]: any }, K extends keyof T>(object: T, ...k
   }, {} as Pick<T, K>);
 }
 
+function objectToArray(object: object): Array<{ key: any, value: any }> {
+  const array = [];
+  for (const key in object) {
+    if (object.hasOwnProperty(key)) {
+      array.push({key, value: (object as any)[key]});
+    }
+  }
+  return array;
+}
+
 function contains<T>(array: T[], item: T) {
   return array.indexOf(item) >= 0;
 }
@@ -23,4 +33,4 @@ function includes(array: any[], item: any) {
   return array.indexOf(item) >= 0;
 }
 
-export {pick, contains, range, includes};
+export {pick, contains, range, includes, objectToArray};

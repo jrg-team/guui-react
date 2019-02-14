@@ -23,7 +23,8 @@ import ListExample from 'examples/list.example';
 import ClickOutsideExample from 'examples/clickOutside.example';
 import ScrollExample from 'examples/scroll.example';
 
-import VmenuExample from 'lib/vmenu/vmenu.example';
+import VmenuExample from 'lib/vmenu/vmenu.example';
+import CityExample from 'examples/city.example';
 
 void 'examples 不要改动这一行代码！'; // tslint:disable-line
 
@@ -75,6 +76,7 @@ ReactDOM.render(
               <li><Link to="/clickOutside">ClickOutside</Link></li>
               <li><Link to="/scroll">Scroll</Link></li>
               <li><Link to="/vmenu">Vmenu</Link></li>
+              <li><Link to="/city">City</Link></li>
               {void 'links 不要改动这一行代码！' /* tslint:disable-line */}
             </ol>
           </Aside>
@@ -97,6 +99,7 @@ ReactDOM.render(
             <Route path="/clickOutside" component={ClickOutsideExample}/>
             <Route path="/scroll" component={ScrollExample}/>
             <Route path="/vmenu" component={VmenuExample}/>
+            <Route path="/city" component={CityExample}/>
             {void 'routes 不要改动这一行代码！' /* tslint:disable-line */}
           </Main>
         </Layout>

@@ -16,7 +16,7 @@ class {%upperName%} extends React.Component<IProps, IState> {
   static propTypes = {};
 
   constructor(props: IProps) {
-    super(props)
+    super(props);
   }
 
   render() {

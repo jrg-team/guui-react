@@ -24,7 +24,7 @@ interface Callbacks {
 }
 
 export interface IProps extends IStyledProps {
-  overScroll: 'up' | 'down' | 'both' | undefined;
+  overScroll?: 'up' | 'down' | 'both';
   overScrollLimit: number;
 }
 

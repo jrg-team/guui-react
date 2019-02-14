@@ -1,0 +1,46 @@
+@import "helper";
+
+#{component(city)} {
+  &-popup {
+    &-wrapper {
+      overflow: auto;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+    }
+  }
+
+  &-hotCities {
+    > ul {
+      display: flex;
+      flex-wrap: wrap;
+
+      > li {
+        width: 16.6666%;
+      }
+    }
+  }
+
+  &-letters {
+    > ol {
+      display: flex;
+      flex-wrap: wrap;
+
+      > li {
+        width: 1 / 6 *100%;
+      }
+    }
+  }
+
+  &-citiesForLetter {
+    display: flex;
+    flex-wrap: wrap;
+
+    > li {
+      width: 33.3333%;
+    }
+  }
+}
