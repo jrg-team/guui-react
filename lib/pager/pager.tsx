@@ -2,6 +2,7 @@ import * as React from 'react';
 import {createScopedClasses} from 'utils/classes';
 import {range} from 'utils/collection';
 import './pager.scss';
+import Icon from '../icon/icon';
 
 const componentName = 'Pager';
 const sc = createScopedClasses(componentName);
@@ -54,9 +55,9 @@ class Pager extends React.Component<IProps, IState> {
   render() {
     return (
       <div className={sc()}>
-        <button className={sc('next')}> &lt; </button>
+        <button className={sc('next')}> <Icon name="left"/> </button>
         {this.items}
-        <button className={sc('pre')}> &gt; </button>
+        <button className={sc('prev')}> <Icon name="right"/> </button>
       </div>
     );
   }
