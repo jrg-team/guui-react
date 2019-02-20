@@ -1,22 +1,45 @@
 @import "helper";
 
+%row {
+  padding-left: 16px;
+  padding-right: 16px;
+  border-bottom: 1px solid $grey;
+}
+
 #{component(city)} {
-  &-popup {
-    &-wrapper {
-      overflow: auto;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: white;
-    }
+  &-popupWrapper {
+    font-size: 14px;
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+  }
+
+
+  &-search {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    @extend %row;
+  }
+
+  &-autoLocate {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    @extend %row;
   }
 
   &-hotCities {
+    h2 {
+      @extend %row;
+    }
+
     > ul {
       display: flex;
       flex-wrap: wrap;
+      @extend %row;
 
       > li {
         width: 16.6666%;
@@ -24,7 +47,15 @@
     }
   }
 
+  &-allCities {
+    h2 {
+      @extend %row;
+    }
+  }
+
   &-letters {
+    @extend %row;
+
     > ol {
       display: flex;
       flex-wrap: wrap;
@@ -33,6 +64,10 @@
         width: 1 / 6 *100%;
       }
     }
+  }
+
+  &-cities {
+    @extend %row;
   }
 
   &-citiesForLetter {

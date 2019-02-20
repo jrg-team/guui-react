@@ -60,7 +60,7 @@ class City extends React.Component<IProps, IState> {
         <div className={sc()} onClick={this.onClickCity}>北京</div>
         {
           ReactDOM.createPortal(
-            <div className={sc('popup-wrapper')}>
+            <div className={sc('popupWrapper')}>
               <div className={sc('search')}>
                 <Input after="搜索"/>
               </div>
@@ -95,20 +95,22 @@ class City extends React.Component<IProps, IState> {
                     {this.letters.map(l => <li key={l}>{l}</li>)}
                   </ol>
                 </div>
-                <ol className={sc('cities')}>
-                  {citiesByLetter.map(item => {
-                    return (
-                      <li key={item.letter}>
-                        <h3 className={sc('letter')}>{item.letter}</h3>
-                        <ul className={sc('citiesForLetter')}>
-                          {item.cities.map((city: string) =>
-                            <li className={sc('city')} key={city}>{city}</li>
-                          )}
-                        </ul>
-                      </li>
-                    );
-                  })}
-                </ol>
+                <div className={sc('cities')}>
+                  <ol>
+                    {citiesByLetter.map(item => {
+                      return (
+                        <li key={item.letter}>
+                          <h3 className={sc('letter')}>{item.letter}</h3>
+                          <ul className={sc('citiesForLetter')}>
+                            {item.cities.map((city: string) =>
+                              <li className={sc('city')} key={city}>{city}</li>
+                            )}
+                          </ul>
+                        </li>
+                      );
+                    })}
+                  </ol>
+                </div>
               </div>
             </div>,
             document.body
