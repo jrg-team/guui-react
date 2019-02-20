@@ -1,0 +1,8 @@
+@import "helper";
+
+#{component(pager)} {
+  margin: 8px 0;
+  &-item { height: $input-height; width: $input-height; border: 1px solid $input-border-color; background: none;
+    border-radius: $input-border-radius; margin: 0 4px;
+  }
+}

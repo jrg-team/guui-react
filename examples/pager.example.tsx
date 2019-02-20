@@ -7,7 +7,7 @@ export default function (props: any) {
       <h2>普通示例</h2>
       <div>
         <Pager current={1} total={3} />
-        <Pager current={1} total={10} />
+        <Pager current={5} total={10} />
       </div>
     </div>
   );

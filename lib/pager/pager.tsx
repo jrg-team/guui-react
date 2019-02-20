@@ -1,28 +1,62 @@
 import * as React from 'react';
 import {createScopedClasses} from 'utils/classes';
 import {range} from 'utils/collection';
+import './pager.scss';
 
 const componentName = 'Pager';
 const sc = createScopedClasses(componentName);
 
-export interface IProps extends IStyledProps {
+interface IProps extends IStyledProps {
   current?: number;
   total: number;
   defaultCurrent?: number;
+  onChange?: (value: number) => void;
 }
 
-class Pager extends React.Component<IProps> {
+interface IState {
+  current?: number;
+}
+
+class Pager extends React.Component<IProps, IState> {
   static displayName = componentName;
   static defaultProps = {};
   static propTypes = {};
 
+  get current() {
+    if ('defaultCurrent' in this.props) {
+      return this.state.current || 1;
+    } else {
+      return this.props.current || 1;
+    }
+  }
+
+  set current(value: number) {
+    if ('defaultCurrent' in this.props) {
+      this.setState({current: value});
+    } else {
+      this.props.onChange && this.props.onChange(value);
+    }
+  }
+
+  get items() {
+    return range(1, this.props.total)
+      .filter((item) => item === 1 || item === this.props.total || Math.abs(item - this.current) <= 2)
+      .reduce((prev, next) => {
+        const last = prev[prev.length - 1];
+        const x = last !== -1 && last - next < -1;
+        return prev.concat(x ? [-1, next] : [next]);
+      }, [] as number[])
+      .map((item) => item === -1 ?
+        <span key={item} className={sc('separator')}>...</span>
+        : <button key={item} className={sc('item')}>{item}</button>);
+  }
+
   render() {
-    const xxx = range(1, this.props.total).map((item) => {
-      return <button key={item}>{item}</button>;
-    });
     return (
       <div className={sc()}>
-        {xxx}
+        <button className={sc('next')}> &lt; </button>
+        {this.items}
+        <button className={sc('pre')}> &gt; </button>
       </div>
     );
   }
