@@ -1,0 +1,36 @@
+@import "helper";
+
+#{component(slides)} {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  &-inner{
+    display: flex;
+    transition: all 1s;
+  }
+
+  &-slide{
+    flex: 1;
+  }
+
+  &-nav{
+    position: absolute;
+    bottom: 20px;
+    right: 0;left: 0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span{
+      width: 10px;
+      height: 10px;
+      border-radius: 5px;
+      margin: 0 10px;
+      background: $grey;
+      cursor: pointer;
+      &.active{
+        background: $green;
+      }
+    }
+  }
+}
