@@ -1,9 +1,10 @@
 @import "helper";
 %item { height: $input-height; width: $input-height; border: 1px solid $input-border-color; background: none;
   border-radius: $input-border-radius; margin: 0 4px; vertical-align: top;}
+%center { display: flex; align-items: center; justify-content: center;  }
 #{component(pager)} {
-  margin: 8px 0;
+  margin: 8px 0; display: flex;
   &-item { @extend %item; }
-  &-next { @extend %item; }
-  &-prev { @extend %item; }
+  &-next { @extend %item; @extend %center;}
+  &-prev { @extend %item; @extend %center;}
 }
