@@ -51,3 +51,5 @@ export {default as Scroll} from './scroll/scroll';
 export {default as Vmenu} from './vmenu/vmenu';
 
 export {default as City} from './city/city';
+
+export {default as Dialog} from './dialog/dialog';

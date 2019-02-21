@@ -25,6 +25,7 @@ import ScrollExample from 'examples/scroll.example';
 
 import VmenuExample from 'lib/vmenu/vmenu.example';
 import CityExample from 'examples/city.example';
+import DialogExample from 'examples/dialog.example';
 
 void 'examples 不要改动这一行代码！'; // tslint:disable-line
 
@@ -77,6 +78,7 @@ ReactDOM.render(
               <li><Link to="/scroll">Scroll</Link></li>
               <li><Link to="/vmenu">Vmenu</Link></li>
               <li><Link to="/city">City</Link></li>
+              <li><Link to="/dialog">Dialog</Link></li>
               {void 'links 不要改动这一行代码！' /* tslint:disable-line */}
             </ol>
           </Aside>
@@ -100,6 +102,7 @@ ReactDOM.render(
             <Route path="/scroll" component={ScrollExample}/>
             <Route path="/vmenu" component={VmenuExample}/>
             <Route path="/city" component={CityExample}/>
+            <Route path="/dialog" component={DialogExample}/>
             {void 'routes 不要改动这一行代码！' /* tslint:disable-line */}
           </Main>
         </Layout>
