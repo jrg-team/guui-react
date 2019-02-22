@@ -13,9 +13,9 @@ interface IProps extends IStyledProps {
   vertical?: boolean;
   autoplay?: boolean;
   current?: number;
+  navVisible?: boolean;
   defaultCurrent?: number;
   children: Array<ReactElement<any>>;
-  className?: string;
 }
 
 interface IState {
@@ -25,9 +25,13 @@ interface IState {
 
 class Slides extends React.Component<IProps, IState> {
   static displayName = componentName;
+  static defaultProps = {
+    navVisible: true
+  };
   static propTypes = {
     vertical: PropTypes.bool,
     autoplay: PropTypes.bool,
+    navVisible: PropTypes.bool,
     current: PropTypes.number,
     defaultCurrent: PropTypes.number,
   };
@@ -35,6 +39,7 @@ class Slides extends React.Component<IProps, IState> {
   private readonly refSlides: React.RefObject<HTMLDivElement>;
   private refSlidesInner: React.RefObject<HTMLDivElement>;
   private prev: number;
+  private autoplayTimerId: number;
 
   get current() {
     return ('defaultCurrent' in this.props ? this.state.current : this.props.current) || 1;
@@ -76,13 +81,24 @@ class Slides extends React.Component<IProps, IState> {
   componentDidMount(): void {
     const width = this.refSlides.current!.offsetWidth;
     this.refSlidesInner.current!.addEventListener('transitionend', this.afterChange.bind(this));
+    if (this.props.autoplay) {
+      this.autoplayTimerId = window.setInterval(() => {
+        if (this.current === this.props.children.length) {
+          this.current = 1;
+        } else {
+          this.current += 1;
+        }
+      }, 3000);
+    }
     this.setState({width}, () => {
-      this.jumpTo(this.current);
+      this.current = this.current;
+      this.refSlidesInner.current!.style.transition = 'transform 1s';
     });
   }
 
   componentWillUnmount(): void {
     this.refSlidesInner.current!.removeEventListener('transitionend', this.afterChange.bind(this));
+    window.clearInterval(this.autoplayTimerId);
   }
 
   renderNav() {
@@ -117,7 +133,7 @@ class Slides extends React.Component<IProps, IState> {
     return (
       <div className={`${sc()} ${this.props.className}`} ref={this.refSlides}>
         {this.renderChildren()}
-        {this.renderNav()}
+        {this.props.navVisible && this.renderNav()}
       </div>
     );
   }
