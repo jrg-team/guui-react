@@ -40,7 +40,7 @@ class Pager extends React.Component<IProps, IState> {
   }
 
   onClickItem = (value: number, e: React.MouseEvent<HTMLSpanElement>) => {
-    if(value <= this.props.total && value >= 1) {
+    if (value <= this.props.total && value >= 1) {
       this.current = value;
     }
   };
@@ -60,8 +60,8 @@ class Pager extends React.Component<IProps, IState> {
         return prev.concat(x ? [-1, next] : [next]);
       }, [] as number[])
       .map((item, index) => item === -1 ?
-        <span key={index} className={sc('separator')} onClick={this.onClickItem.bind(null, this.jumpPage(index))}>...</span>
-        : <button key={index} className={sc('item')} onClick={this.onClickItem.bind(null, item)}>{item}</button>);
+        <span key={index} className={sc('separator')} onClick={(e) => this.onClickItem(this.jumpPage(index), e)}>...</span>
+        : <button key={index} className={sc('item')} onClick={(e) => this.onClickItem(item, e)}>{item}</button>);
   }
 
   render() {
