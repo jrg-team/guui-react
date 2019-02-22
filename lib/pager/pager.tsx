@@ -61,7 +61,7 @@ class Pager extends React.Component<IProps, IState> {
       }, [] as number[])
       .map((item, index) => item === -1 ?
         <span key={index} className={sc('separator')} onClick={(e) => this.onClickItem(this.jumpPage(index), e)}>...</span>
-        : <button key={index} className={sc('item')} onClick={(e) => this.onClickItem(item, e)}>{item}</button>);
+        : <button key={index} className={sc('item',{active:item === this.current})} onClick={(e) => this.onClickItem(item, e)}>{item}</button>);
   }
 
   render() {

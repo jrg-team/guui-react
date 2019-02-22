@@ -9,7 +9,7 @@ export default function (props: any) {
     <div className="PagerExample">
       <h2>普通示例</h2>
       <div>
-        <Pager current={page} total={10} onChange={value => setPage(value)}/>
+        <Pager current={page} total={100} onChange={value => setPage(value)}/>
       </div>
     </div>
   );
