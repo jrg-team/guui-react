@@ -1,0 +1,15 @@
+@import "helper";
+.SlidesExample {
+  .sildes-demo{
+    width: 400px;
+    border: 1px solid $blue;
+    margin: 20px 0;
+  }
+  .card{
+    height: 200px;
+    background: $red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
