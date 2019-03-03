@@ -1,0 +1,309 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pager prop current = 1 1`] = `
+<div
+  className="gu-pager"
+>
+  <button
+    className="gu-pager-prev"
+    onClick={[Function]}
+  >
+    <svg
+      className="gu-icon gu-icon-left "
+      style={
+        Object {
+          "fill": undefined,
+        }
+      }
+    >
+      <use
+        xlinkHref="#left"
+      />
+    </svg>
+  </button>
+  <button
+    className="gu-pager-item gu-pager-active"
+    onClick={[Function]}
+  >
+    1
+  </button>
+  <button
+    className="gu-pager-item"
+    onClick={[Function]}
+  >
+    2
+  </button>
+  <button
+    className="gu-pager-item"
+    onClick={[Function]}
+  >
+    3
+  </button>
+  <button
+    className="gu-pager-next"
+    onClick={[Function]}
+  >
+    <svg
+      className="gu-icon gu-icon-right "
+      style={
+        Object {
+          "fill": undefined,
+        }
+      }
+    >
+      <use
+        xlinkHref="#right"
+      />
+    </svg>
+  </button>
+</div>
+`;
+
+exports[`Pager prop total = 5 1`] = `
+<div
+  className="gu-pager"
+>
+  <button
+    className="gu-pager-prev"
+    onClick={[Function]}
+  >
+    <svg
+      className="gu-icon gu-icon-left "
+      style={
+        Object {
+          "fill": undefined,
+        }
+      }
+    >
+      <use
+        xlinkHref="#left"
+      />
+    </svg>
+  </button>
+  <button
+    className="gu-pager-item"
+    onClick={[Function]}
+  >
+    1
+  </button>
+  <button
+    className="gu-pager-item gu-pager-active"
+    onClick={[Function]}
+  >
+    2
+  </button>
+  <button
+    className="gu-pager-item"
+    onClick={[Function]}
+  >
+    3
+  </button>
+  <button
+    className="gu-pager-item"
+    onClick={[Function]}
+  >
+    4
+  </button>
+  <button
+    className="gu-pager-item"
+    onClick={[Function]}
+  >
+    5
+  </button>
+  <button
+    className="gu-pager-next"
+    onClick={[Function]}
+  >
+    <svg
+      className="gu-icon gu-icon-right "
+      style={
+        Object {
+          "fill": undefined,
+        }
+      }
+    >
+      <use
+        xlinkHref="#right"
+      />
+    </svg>
+  </button>
+</div>
+`;
+
+exports[`Pager 应该要有一个省略号 1`] = `
+<div
+  className="gu-pager"
+>
+  <button
+    className="gu-pager-prev"
+    onClick={[Function]}
+  >
+    <svg
+      className="gu-icon gu-icon-left "
+      style={
+        Object {
+          "fill": undefined,
+        }
+      }
+    >
+      <use
+        xlinkHref="#left"
+      />
+    </svg>
+  </button>
+  <button
+    className="gu-pager-item"
+    onClick={[Function]}
+  >
+    1
+  </button>
+  <span
+    className="gu-pager-separator"
+    onClick={[Function]}
+  >
+    ...
+  </span>
+  <button
+    className="gu-pager-item"
+    onClick={[Function]}
+  >
+    6
+  </button>
+  <button
+    className="gu-pager-item"
+    onClick={[Function]}
+  >
+    7
+  </button>
+  <button
+    className="gu-pager-item gu-pager-active"
+    onClick={[Function]}
+  >
+    8
+  </button>
+  <button
+    className="gu-pager-item"
+    onClick={[Function]}
+  >
+    9
+  </button>
+  <button
+    className="gu-pager-item"
+    onClick={[Function]}
+  >
+    10
+  </button>
+  <button
+    className="gu-pager-next"
+    onClick={[Function]}
+  >
+    <svg
+      className="gu-icon gu-icon-right "
+      style={
+        Object {
+          "fill": undefined,
+        }
+      }
+    >
+      <use
+        xlinkHref="#right"
+      />
+    </svg>
+  </button>
+</div>
+`;
+
+exports[`Pager 应该要有两个省略号 1`] = `
+<div
+  className="gu-pager"
+>
+  <button
+    className="gu-pager-prev"
+    onClick={[Function]}
+  >
+    <svg
+      className="gu-icon gu-icon-left "
+      style={
+        Object {
+          "fill": undefined,
+        }
+      }
+    >
+      <use
+        xlinkHref="#left"
+      />
+    </svg>
+  </button>
+  <button
+    className="gu-pager-item"
+    onClick={[Function]}
+  >
+    1
+  </button>
+  <span
+    className="gu-pager-separator"
+    onClick={[Function]}
+  >
+    ...
+  </span>
+  <button
+    className="gu-pager-item"
+    onClick={[Function]}
+  >
+    3
+  </button>
+  <button
+    className="gu-pager-item"
+    onClick={[Function]}
+  >
+    4
+  </button>
+  <button
+    className="gu-pager-item gu-pager-active"
+    onClick={[Function]}
+  >
+    5
+  </button>
+  <button
+    className="gu-pager-item"
+    onClick={[Function]}
+  >
+    6
+  </button>
+  <button
+    className="gu-pager-item"
+    onClick={[Function]}
+  >
+    7
+  </button>
+  <span
+    className="gu-pager-separator"
+    onClick={[Function]}
+  >
+    ...
+  </span>
+  <button
+    className="gu-pager-item"
+    onClick={[Function]}
+  >
+    10
+  </button>
+  <button
+    className="gu-pager-next"
+    onClick={[Function]}
+  >
+    <svg
+      className="gu-icon gu-icon-right "
+      style={
+        Object {
+          "fill": undefined,
+        }
+      }
+    >
+      <use
+        xlinkHref="#right"
+      />
+    </svg>
+  </button>
+</div>
+`;
