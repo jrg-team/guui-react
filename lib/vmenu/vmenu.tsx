@@ -133,7 +133,7 @@ class Vmenu extends React.Component<IProps, IState> {
   render() {
 
     return (
-      <div className={sc()}>
+      <div className={sc()} style={this.props.style}>
         <MenuContext.Provider value={{
           selected: this.selected,
           setSelected: this.onSelect,
