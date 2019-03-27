@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {createScopedClasses} from 'utils/classes';
+import classes, {createScopedClasses} from 'utils/classes';
 import MenuItem from './menuItem';
 import MenuDir from './menuDir';
 import './vmenu.scss';
@@ -133,7 +133,7 @@ class Vmenu extends React.Component<IProps, IState> {
   render() {
 
     return (
-      <div className={sc()} style={this.props.style}>
+      <div className={classes(sc(), this.props.className)} style={this.props.style}>
         <MenuContext.Provider value={{
           selected: this.selected,
           setSelected: this.onSelect,
