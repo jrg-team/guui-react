@@ -30,7 +30,7 @@ const renderColumn = (item: DataSourceItem, col: ColumnConfig) => {
   }
 };
 
-const Table: GFC<IProps> = ({dataSource, columns, className, style, ...rest}) => {
+const Table: GFC<IProps> = ({dataSource, columns, className, style}) => {
   const headers = columns.map(col =>
     <th key={col.name} className={sc('header')}>
       {col.name}
