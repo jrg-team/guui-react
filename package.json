@@ -1,6 +1,6 @@
 {
   "name": "guui-react",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "main": "dist/lib/index.js",
   "types": "dist/lib/index",
   "files": [
