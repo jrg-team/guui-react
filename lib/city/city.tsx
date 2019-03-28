@@ -10,8 +10,6 @@ const citiesByLetter = objectToArray(cities)
   .sort((a, b) => a.key - b.key)
   .map(c => ({letter: c.key, cities: c.value}));
 
-console.log(citiesByLetter);
-
 const componentName = 'City';
 const sc = createScopedClasses(componentName);
 

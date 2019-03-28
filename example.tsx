@@ -17,13 +17,14 @@ import RadioExample from 'examples/radio.example';
 import IconExample from 'examples/icon.example';
 import BreadcrumbExample from 'examples/breadcrumb.example';
 import DatepickerExample from 'examples/datepicker.example';
-import TableExample from 'examples/table.example';
+import TableExample from 'lib/table/table.example';
 import PagerExample from 'examples/pager.example';
 import ListExample from 'examples/list.example';
 import ClickOutsideExample from 'examples/clickOutside.example';
 import ScrollExample from 'examples/scroll.example';
 
-import VmenuExample from 'lib/vmenu/vmenu.example';
+import VmenuExample from 'lib/vmenu/vmenu.example';
+
 import CityExample from 'examples/city.example';
 import DialogExample from 'examples/dialog.example';
 import SlidesExample from 'examples/slides.example';

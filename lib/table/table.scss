@@ -1,0 +1,29 @@
+@import "helper";
+
+#{component(table)} {
+  width: 100%;
+  border-collapse: collapse;
+
+  $border-color: lighten($grey, 25%);
+
+  &-wrapper {
+
+  }
+
+  &-header {
+    text-align: left;
+    font-weight: normal;
+    padding: 8px;
+    border-bottom: 1px solid $border-color;
+  }
+
+  &-td {
+    padding: 8px;
+    border-bottom: 1px solid $border-color;
+  }
+
+  > thead {
+    background: lighten($grey, 29%);
+  }
+
+}
