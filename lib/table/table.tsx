@@ -6,12 +6,12 @@ import './table.scss';
 const componentName = 'Table';
 const sc = createScopedClasses(componentName);
 
-interface ColumnConfig {
+export interface TableColumnConfig {
   name: string;
   render: ((item: DataSourceItem) => ReactNode) | string;
 }
 
-interface DataSourceItem {
+export interface DataSourceItem {
   [K: string]: any;
 
   id: string | number;
@@ -19,10 +19,10 @@ interface DataSourceItem {
 
 export interface IProps extends IStyledProps {
   dataSource: DataSourceItem[];
-  columns: ColumnConfig[];
+  columns: TableColumnConfig[];
 }
 
-const renderColumn = (item: DataSourceItem, col: ColumnConfig) => {
+const renderColumn = (item: DataSourceItem, col: TableColumnConfig) => {
   if (typeof col.render === 'string') {
     return item[col.render];
   } else {
