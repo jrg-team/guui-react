@@ -45,18 +45,24 @@ const Table: GFC<IProps> = ({dataSource, columns, className, style}) => {
       )}
     </tr>
   );
+  const table = (
+    <table className={sc()}>
+      <thead>
+      <tr>
+        {headers}
+      </tr>
+      </thead>
+      <tbody>
+      {rows}
+      </tbody>
+    </table>
+  );
+  const empty = (
+    <div className={sc('empty')}>没有数据</div>
+  );
   return (
     <div className={classes(sc('wrapper'), className)} style={style}>
-      <table className={sc()}>
-        <thead>
-        <tr>
-          {headers}
-        </tr>
-        </thead>
-        <tbody>
-        {rows}
-        </tbody>
-      </table>
+      {dataSource && dataSource.length > 0 ? table : empty}
     </div>
   );
 };
