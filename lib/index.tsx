@@ -39,7 +39,7 @@ export {default as Breadcrumb, IBreadcrumbItem, BI, Renderer} from './breadcrumb
 export {default as Datepicker} from './datepicker/datepicker';
 
 export {default as Table} from './table/table';
-export {TableColumnConfig} from './table/table';
+export {TableColumn} from './table/table';
 export {TableDataSourceItem} from './table/table';
 
 export {default as Pager} from './pager/pager';

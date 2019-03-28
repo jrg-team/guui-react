@@ -3,7 +3,7 @@ import {Pager} from '../lib/index';
 import {useState} from 'react';
 
 export default function (props: any) {
-  const [page,setPage] = useState(5)
+  const [page, setPage] = useState(5);
 
   return (
     <div className="PagerExample">

@@ -45,7 +45,7 @@ const Button: GFC<IProps> = (props) => {
   const icon = props.icon && <Icon key="notLoadingIcon" name={props.icon} fill={props.iconFill}/>;
   const loadingIcon = (
     <Icon key="loadingIcon" afterMount={afterLoadingIconMount} name="loading"
-      className={sc('loadingIcon')}/>
+          className={sc('loadingIcon')}/>
   );
   const onClick = (e: React.MouseEvent) => {
     if (props.disabled) {return e.preventDefault(); }
@@ -67,7 +67,8 @@ const Button: GFC<IProps> = (props) => {
       </button>
     ) :
     (
-      <a href={props.href} target={props.target} className={buttonClass} style={props.style} onClick={onClick} tabIndex={props.disabled ? -1 : undefined}>
+      <a href={props.href} target={props.target} className={buttonClass} style={props.style} onClick={onClick}
+         tabIndex={props.disabled ? -1 : undefined}>
         {inner}
       </a>
     )

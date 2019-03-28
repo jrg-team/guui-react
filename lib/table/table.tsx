@@ -6,9 +6,9 @@ import './table.scss';
 const componentName = 'Table';
 const sc = createScopedClasses(componentName);
 
-export interface TableColumnConfig {
+export interface TableColumn {
   name: string;
-  render: ((item: TableDataSourceItem) => ReactNode) | string;
+  render: ((item: TableDataSourceItem, column: TableColumn) => ReactNode) | string;
 }
 
 export interface TableDataSourceItem {
@@ -19,14 +19,14 @@ export interface TableDataSourceItem {
 
 export interface IProps extends IStyledProps {
   dataSource: TableDataSourceItem[];
-  columns: TableColumnConfig[];
+  columns: TableColumn[];
 }
 
-const renderColumn = (item: TableDataSourceItem, col: TableColumnConfig) => {
+const renderColumn = (item: TableDataSourceItem, col: TableColumn) => {
   if (typeof col.render === 'string') {
     return item[col.render];
   } else {
-    return col.render(item);
+    return col.render.call(undefined, item, col);
   }
 };
 
