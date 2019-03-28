@@ -8,21 +8,21 @@ const sc = createScopedClasses(componentName);
 
 export interface TableColumnConfig {
   name: string;
-  render: ((item: DataSourceItem) => ReactNode) | string;
+  render: ((item: TableDataSourceItem) => ReactNode) | string;
 }
 
-export interface DataSourceItem {
+export interface TableDataSourceItem {
   [K: string]: any;
 
   id: string | number;
 }
 
 export interface IProps extends IStyledProps {
-  dataSource: DataSourceItem[];
+  dataSource: TableDataSourceItem[];
   columns: TableColumnConfig[];
 }
 
-const renderColumn = (item: DataSourceItem, col: TableColumnConfig) => {
+const renderColumn = (item: TableDataSourceItem, col: TableColumnConfig) => {
   if (typeof col.render === 'string') {
     return item[col.render];
   } else {
