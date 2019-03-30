@@ -8,6 +8,7 @@ const sc = createScopedClasses(componentName);
 
 export interface TableColumn {
   name: string;
+  width?: string;
   render: ((item: TableDataSourceItem, column: TableColumn) => ReactNode) | string;
 }
 
@@ -32,7 +33,7 @@ const renderColumn = (item: TableDataSourceItem, col: TableColumn) => {
 
 const Table: GFC<IProps> = ({dataSource, columns, className, style}) => {
   const headers = columns.map(col =>
-    <th key={col.name} className={sc('header')}>
+    <th key={col.name} className={sc('header')} style={{width: col.width}}>
       {col.name}
     </th>
   );

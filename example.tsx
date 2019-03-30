@@ -29,6 +29,8 @@ import CityExample from 'examples/city.example';
 import DialogExample from 'examples/dialog.example';
 import SlidesExample from 'examples/slides.example';
 
+import FormExample from 'lib/form/form.example';
+
 void 'examples 不要改动这一行代码！'; // tslint:disable-line
 
 ReactDOM.render(
@@ -82,6 +84,7 @@ ReactDOM.render(
               <li><Link to="/city">City</Link></li>
               <li><Link to="/dialog">Dialog</Link></li>
               <li><Link to="/slides">Slides</Link></li>
+              <li><Link to="/form">Form</Link></li>
               {void 'links 不要改动这一行代码！' /* tslint:disable-line */}
             </ol>
           </Aside>
@@ -107,6 +110,7 @@ ReactDOM.render(
             <Route path="/city" component={CityExample}/>
             <Route path="/dialog" component={DialogExample}/>
             <Route path="/slides" component={SlidesExample}/>
+            <Route path="/form" component={FormExample}/>
             {void 'routes 不要改动这一行代码！' /* tslint:disable-line */}
           </Main>
         </Layout>

@@ -57,3 +57,5 @@ export {default as City} from './city/city';
 export {default as Dialog} from './dialog/dialog';
 
 export {default as Slides} from './slides/slides';
+
+export {default as Form} from './form/form';

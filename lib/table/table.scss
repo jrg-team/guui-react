@@ -15,6 +15,7 @@
     font-weight: normal;
     padding: 8px;
     border-bottom: 1px solid $border-color;
+    box-sizing: content-box;
   }
 
   &-td {

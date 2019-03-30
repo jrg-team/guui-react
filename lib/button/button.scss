@@ -3,7 +3,7 @@
 #{component(button)} {transition: all $transition-duration;
   display: inline-flex; vertical-align: middle; justify-content: center; align-items: center; border-radius: $input-border-radius; border: none;
   margin-left: 4px; margin-right: 4px; line-height: 1.2;
-  position: relative;
+  position: relative; white-space: nowrap;
   & { height: $input-height; font-size: 14px; padding: 0 16px;
     &-big { height: $input-height-big; font-size: 20px; padding: 0 24px; }
     &-small { height: $input-height-small; font-size: 12px; padding: 0 12px; }
