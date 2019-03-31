@@ -1,0 +1,53 @@
+@import "helper";
+
+@keyframes #{componentWithoutDot(form,slideDown)} {
+  0% { opacity: 0; height: 0;}
+  100% { opacity: 1; height: $input-height-small;}
+}
+
+#{component(form)} {
+  &-table { border-collapse: collapse; }
+
+  &-td { padding: 8px 8px 8px 0;
+
+    &:last-child { padding-right: 0; }
+  }
+
+  &-tr:first-child &-td { padding-top: 0; }
+
+  &-tr:last-child &-td { padding-bottom: 0; }
+
+  &-vertical &-row {
+    margin: 8px 0;
+
+    &:first-child { margin-top: 0; }
+
+    &:last-child { margin-bottom: 0; }
+  }
+
+  &-vertical &-label {
+    margin-bottom: 8px;
+  }
+
+  &-vertical &-input-wrapper {
+    margin-bottom: 4px;
+  }
+
+  &-error {
+    font-size: $font-size-small;
+    color: red;
+  }
+
+  &-vertical &-error {
+    height: $input-height-small;
+    animation: #{componentWithoutDot(form,slideDown)} $transition-duration;
+  }
+
+  &-horizontal &-error {
+    line-height: $input-height;
+  }
+
+  &-vertical &-buttons {
+    margin-top: 24px;
+  }
+}
