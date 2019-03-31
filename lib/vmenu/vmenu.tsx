@@ -88,8 +88,6 @@ class Vmenu extends React.Component<IProps, IState> {
     });
   };
   onFold = (id: string) => {
-    console.log('id');
-    console.log(id);
     this.setState({
       folded: this.addFolded(id),
       unfolded: this.removeUnfolded(id)
@@ -97,12 +95,10 @@ class Vmenu extends React.Component<IProps, IState> {
   };
 
   addFolded(id: string) {
-    console.log(this.state.folded.concat([id]));
     return this.state.folded.concat([id]);
   }
 
   addUnfolded(id: string) {
-    console.log(this.state.unfolded.concat([id]));
     return this.state.unfolded.concat([id]);
   }
 
