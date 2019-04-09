@@ -1,108 +1,99 @@
-import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import {default as Button, IProps as ButtonProps} from '../button/button';
-import {createScopedClasses} from '../../include/utils/classes';
+import {createScopedClasses} from 'utils/classes';
+import './dialog.scss';
+import ReactDOM from 'react-dom';
+import {Button, Icon} from '../index';
+import {ReactElement, ReactFragment, ReactNode, Fragment} from 'react';
 
 const componentName = 'Dialog';
 const sc = createScopedClasses(componentName);
 
 interface IProps {
-  title?: string;
   visible: boolean;
-  closable?: boolean;
-  footer?: string | React.ReactNode;
-  okText?: string;
-  okButtonProps?: ButtonProps;
-  cancelText?: string;
-  cancelButtonProps?: ButtonProps;
-  width?: string | number;
-  children: React.ReactElement<any>;
-  onCancel?: React.MouseEventHandler<HTMLButtonElement | HTMLSpanElement>;
-  onConfirm?: React.MouseEventHandler<HTMLButtonElement>;
+  mask?: {
+    visible?: boolean;
+    closeOnClick?: boolean;
+  };
+  onClose: React.MouseEventHandler;
+  buttons?: ReactFragment | ReactElement;
 }
 
-interface IState {
-  x: string;
-}
-
-class Dialog extends React.Component<IProps, IState> {
-  static propTypes = {
-    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    footer: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    title: PropTypes.string,
-    closable: PropTypes.bool,
-    okText: PropTypes.string,
-    cancelText: PropTypes.string,
-    okButtonProps: PropTypes.object,
-    cancelButtonProps: PropTypes.object,
-    visible: PropTypes.bool
-  };
-
-  public static defaultProps: Partial<IProps> = {
-    width: 500,
-    okText: '确定',
-    cancelText: '取消',
-    closable: true,
-  };
-
+class Dialog extends React.PureComponent<IProps> {
   constructor(props: IProps) {
     super(props);
   }
 
-  onCancel = (e: React.MouseEvent<HTMLButtonElement | HTMLSpanElement>) => {
-    this.props.onCancel && this.props.onCancel(e);
-  }
-
-  onConfirm = (e: React.MouseEvent<HTMLButtonElement>) => {
-    this.props.onConfirm && this.props.onConfirm(e);
-  }
+  onClose: React.MouseEventHandler = (e) => {
+    this.props.onClose(e);
+  };
 
   render() {
-    const {children, title, closable, footer} = this.props;
-
-    const renderTitle = () => {
-      let titleHtml;
-      if (title) {
-        titleHtml = <span className={sc('title')}>{title}</span>;
-      }
-      return titleHtml;
-    };
-
-    const renderFooter = () => {
-      if (footer === null) {
-        return '';
-      } else if (footer === undefined) {
-        return (
-          <div className={sc('footer')}>
-            <Button {...this.props.cancelButtonProps} onClick={this.onCancel}>{this.props.cancelText}</Button>
-            <Button {...this.props.okButtonProps} onClick={this.onConfirm}>{this.props.okText}</Button>
+    return this.props.visible ?
+      ReactDOM.createPortal(
+        <div className={sc('wrapper')}>
+          {this.props.mask && this.props.mask.visible &&
+          <div className={sc('mask')}
+               onClick={this.props.mask.closeOnClick ? this.onClose : undefined}>
+          </div>}
+          <div className={sc('')}>
+            <Icon className={sc('close')} onClick={this.onClose} name="close"/>
+            <header className={sc('header')}>
+              提示
+            </header>
+            <main className={sc('main')}>
+              {this.props.children}
+            </main>
+            {this.props.buttons &&
+            <footer className={sc('footer')}>
+              {this.props.buttons}
+            </footer>
+            }
           </div>
-        );
-      } else {
-        return (
-          <div className={sc('footer')}>
-            {footer}
-          </div>
-        );
-      }
-    };
-    if (this.props.visible) {
-      return (
-        <div className={sc()}>
-          <header>
-            {renderTitle()}
-            {closable ? <span className={sc('close')} onClick={this.onCancel}>x</span> : ''}
-          </header>
-          <div className="content">
-            {children}
-          </div>
-          {renderFooter()}
         </div>
-      );
-    } else {
-      return '';
-    }
+        ,
+        document.body
+      ) :
+      null;
   }
 }
+
+const createModal = (content: ReactNode, buttons?: ReactFragment | ReactElement) => {
+  const render = (props: IProps, children: ReactNode) => {
+    ReactDOM.render(React.createElement(Dialog, props, children), container);
+  };
+  const onClose = () => {
+    render({...props, visible: false}, content);
+    ReactDOM.unmountComponentAtNode(container);
+    container.remove();
+    return true;
+  };
+  const props = {
+    visible: true,
+    onClose,
+    buttons,
+  };
+  const container = document.createElement('div');
+  document.body.appendChild(container);
+  render(props, content);
+  return onClose;
+};
+
+export const alert = (content: ReactNode, callback: () => void) => {
+  const close = createModal(content,
+    <Button level="important" onClick={() => close() && callback && callback()}>确定</Button>);
+};
+
+export const confirm = (content: ReactNode, yes: () => void, no?: () => void) => {
+  const close = createModal(content,
+    <Fragment>
+      <Button onClick={() => close() && no && no()}>取消</Button>
+      <Button level="important" onClick={() => close() && yes && yes()}>确定</Button>
+    </Fragment>
+  );
+};
+
+export const modal = (content: ReactNode) => {
+  return createModal(content);
+};
 
 export default Dialog;

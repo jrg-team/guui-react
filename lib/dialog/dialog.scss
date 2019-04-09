@@ -1,0 +1,52 @@
+@import "helper";
+%padding {
+  padding: 8px 12px;
+}
+.gu-dialog { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white;
+  border: $grey;
+  box-shadow: 0 0 5px $black;
+  z-index: 2;
+  border-radius: $input-border-radius;
+  min-width: 15em;
+  &-mask { position: fixed; top: 0;left: 0; width: 100%; height: 100%; background: fade_out($black, 0.5); z-index: 1; }
+  &-header {
+    display: flex;
+    align-items: center;
+    @extend %padding;
+    background: $main-color;
+    color: white;
+    font-size: 1em;
+  }
+  &-main {
+    @extend %padding;
+    min-height: 6em;
+  }
+  &-footer {
+    @extend %padding;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  &-close {
+    color: $main-color;
+    margin-left: auto;
+    position: absolute;
+    bottom: 100%;
+    left: 100%;
+    font-size: 0.8em;
+    background: $white;
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    transform: translate(-50%, 50%);
+    box-shadow: 0 0 5px $black;
+    cursor: pointer;
+    margin-right: 0;
+    > svg {
+      transition: transform 250ms;
+      &:hover {
+        transform: rotate(90deg);
+      }
+    }
+  }
+}

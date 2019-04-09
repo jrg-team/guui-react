@@ -1,5 +1,4 @@
 @import "helper";
-
 #{component(button)} {transition: all $transition-duration;
   display: inline-flex; vertical-align: middle; justify-content: center; align-items: center; border-radius: $input-border-radius; border: none;
   margin-left: 4px; margin-right: 4px; line-height: 1.2;
@@ -17,6 +16,7 @@
     &:focus, &:hover { box-shadow: none; }
   }
   &-default { border: 1px solid $input-border-color; color: $text-color;
+    background: white;
     &:focus, &:hover { color: $main-color; border-color: $main-color; }
     &#{component(button, ghost)} { color: $white; border-color: $white;
       &:focus, &:hover { color: $main-color; border-color: $main-color; }

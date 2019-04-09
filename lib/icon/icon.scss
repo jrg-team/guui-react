@@ -1,25 +1,16 @@
 @import "helper";
-
 @keyframes #{$prefix}-keyframes-spin {
   0% {transform: rotate(0);}
   100% {transform: rotate(360deg);}
 }
-
 @mixin spin() {
   animation: #{$prefix}-keyframes-spin 1s linear infinite;
 }
-
-#{component(icon)} {
-  width: 1.1em;
-  height: 1.1em;
-  color: inherit;
-  margin: 0 .2em;
-  fill: currentColor;
-  &:first-child {
-    margin-left: 0;
-  }
-  &:last-child {
-    margin-right: 0;
+.gu-icon { width: 1.1em; height: 1.1em; color: inherit; fill: currentColor;
+  &-wrapper {
+    display: inline-flex; align-items: center; justify-content: center; margin: 0 .2em;
+    &:first-child { margin-left: 0; }
+    &:last-child { margin-left: 0; }
   }
   &-loading {
     @include spin;

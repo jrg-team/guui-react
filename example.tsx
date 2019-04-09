@@ -26,7 +26,7 @@ import ScrollExample from 'examples/scroll.example';
 import VmenuExample from 'lib/vmenu/vmenu.example';
 
 import CityExample from 'examples/city.example';
-import DialogExample from 'examples/dialog.example';
+import DialogExample from 'lib/dialog/dialog.example';
 import SlidesExample from 'examples/slides.example';
 
 import FormExample from 'lib/form/form.example';

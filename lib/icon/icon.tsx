@@ -8,7 +8,7 @@ import './icon.scss';
 const componentName = 'Icon';
 const sc = createScopedClasses(componentName);
 
-interface IProps extends IStyledProps {
+interface IProps extends React.HTMLAttributes<HTMLElement> {
   name: string;
   fill?: string;
   beforeMount?: (el: Element | null | Text) => void;
@@ -17,8 +17,7 @@ interface IProps extends IStyledProps {
 
 class Icon extends React.Component<IProps> {
   static displayName = componentName;
-  static defaultProps = {
-  };
+  static defaultProps = {};
   static propTypes = {
     name: PropTypes.string.isRequired,
     fill: PropTypes.string,
@@ -33,11 +32,14 @@ class Icon extends React.Component<IProps> {
   }
 
   render() {
+    const {className, style, name, fill, ...rest} = this.props;
     return (
-      <svg className={classes(sc('', this.props.name), this.props.className)}
-        style={{fill: this.props.fill, ...this.props.style}}>
-        <use xlinkHref={`#${this.props.name}`}/>
-      </svg>
+      <span className={classes(sc('wrapper'), className)} style={style} {...rest}>
+        <svg className={classes(sc('', name))}
+             style={{fill}}>
+          <use xlinkHref={`#${name}`}/>
+        </svg>
+      </span>
     );
   }
 }
